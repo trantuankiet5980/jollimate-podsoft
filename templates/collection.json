@@ -23,14 +23,14 @@
         "heading_9Jg4UQ": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Looking for a meaningful gift for Mom?</strong>",
+            "heading": "<strong>Personalized Gifts</strong>",
             "heading_size": "h1"
           }
         },
         "text_UHXbe7": {
           "type": "text",
           "settings": {
-            "text": "<p>Create a personalized gift with names, photos, and memories she’ll cherish forever.<br/><br/>Perfect for Mother’s Day, birthdays, or simply to say “I love you.” ❤️<br/><br/>Trusted by thousands of customers.</p>"
+            "text": "<p>Create a custom gift with names, photos, and memories they will cherish.</p>"
           }
         }
       },
@@ -55,8 +55,8 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
-        "products_per_page": 16,
-        "columns_desktop": 4,
+        "products_per_page": 15,
+        "columns_desktop": 5,
         "image_ratio": "square",
         "show_secondary_image": false,
         "show_vendor": false,
