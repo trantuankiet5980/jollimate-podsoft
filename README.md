@@ -34,7 +34,7 @@ To work on this theme locally, you will need the [Shopify CLI](https://shopify.d
 1. Clone this repository to your local machine.
 2. Navigate to the project directory:
    ```bash
-   cd jollibi
+   cd jollimate-podsoft
    ```
 3. Start the local development server using the Shopify CLI:
    ```bash
