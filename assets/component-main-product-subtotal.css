@@ -1,0 +1,72 @@
+.product-subtotal-block {
+  margin: 1rem 0;
+  font-family: inherit;
+  padding: 0;
+}
+
+.product-subtotal__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.product-subtotal__label-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-subtotal__main-label {
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.product-subtotal__item-count {
+  font-size: 1.4rem;
+  color: #888;
+}
+
+.product-subtotal__value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f97b22;
+}
+
+.product-subtotal__row--saving {
+  justify-content: flex-end;
+  margin-top: -0.2rem;
+  margin-bottom: 1rem;
+}
+
+.product-subtotal__saving-text {
+  font-size: 1.4rem;
+  color: #888;
+}
+
+.product-subtotal__info-icon {
+  display: flex;
+  align-items: center;
+  color: #888;
+  margin-left: 0.4rem;
+}
+
+.product-subtotal__divider {
+  border-top: 1px dotted #ccc;
+  margin: 1rem 0;
+}
+
+.product-subtotal__row--total .product-subtotal__label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.product-subtotal__row--total .product-subtotal__value {
+  font-size: 2rem;
+}
+
+.product-subtotal-block.hidden {
+  display: none !important;
+}

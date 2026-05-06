@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "help-center-hero",
+      "settings": {
+        "show_section": true,
+        "title": "Hi, How can Jollimate help you?",
+        "search_placeholder": "Search for answers"
+      }
+    },
+    "main": {
+      "type": "help-center-search",
+      "settings": {}
+    },
+    "footer": {
+      "type": "help-center-footer",
+      "settings": {
+        "brand_text": "Jollimate Help Center"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "footer"
+  ]
+}

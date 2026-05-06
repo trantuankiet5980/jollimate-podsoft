@@ -1,0 +1,364 @@
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
+
+{%- assign sid = section.id -%}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  .sbp-section-{{ sid }} {
+    font-family: 'Poppins', sans-serif;
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .sbp-container-{{ sid }} {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sbp-header-{{ sid }} {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .sbp-badge-{{ sid }} {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f97b22;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .sbp-heading-{{ sid }} {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Swiper */
+  .sbp-swiper-wrapper-{{ sid }} {
+    position: relative;
+    padding: 0;
+  }
+
+  .sbp-swiper-{{ sid }} {
+    overflow: hidden;
+  }
+
+  .sbp-swiper-{{ sid }} .swiper-slide {
+    height: auto;
+  }
+
+  /* Card */
+  .sbp-card-{{ sid }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+  }
+
+  .sbp-card-{{ sid }}:hover {
+    transform: translateY(-4px);
+  }
+
+  .sbp-card-image-wrap-{{ sid }} {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    background: {{ section.settings.card_bg_color }};
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .sbp-card-image-{{ sid }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .sbp-card-{{ sid }}:hover .sbp-card-image-{{ sid }} {
+    transform: scale(1.06);
+  }
+
+  .sbp-card-title-{{ sid }} {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* Navigation */
+  .sbp-nav-prev-{{ sid }},
+  .sbp-nav-next-{{ sid }} {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .sbp-nav-prev-{{ sid }}:hover,
+  .sbp-nav-next-{{ sid }}:hover {
+    background: #f97b22;
+    border-color: #f97b22;
+    box-shadow: 0 4px 16px rgba(249,123,34,0.35);
+  }
+
+  .sbp-nav-prev-{{ sid }} svg,
+  .sbp-nav-next-{{ sid }} svg {
+    width: 18px;
+    height: 18px;
+    stroke: #333;
+    fill: none;
+    transition: stroke 0.3s ease;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .sbp-nav-prev-{{ sid }}:hover svg,
+  .sbp-nav-next-{{ sid }}:hover svg { stroke: #fff; }
+
+  .sbp-nav-prev-{{ sid }} { left: -15px; }
+  .sbp-nav-next-{{ sid }} { right: -15px; }
+
+  .sbp-nav-prev-{{ sid }}.swiper-button-disabled,
+  .sbp-nav-next-{{ sid }}.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .sbp-nav-prev-{{ sid }}.swiper-button-lock,
+  .sbp-nav-next-{{ sid }}.swiper-button-lock {
+    display: none;
+  }
+
+  /* Pagination */
+  .sbp-swiper-wrapper-{{ sid }} .swiper-pagination {
+    position: relative;
+    margin-top: 24px;
+  }
+
+  .sbp-swiper-wrapper-{{ sid }} .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #ddd;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .sbp-swiper-wrapper-{{ sid }} .swiper-pagination-bullet-active {
+    background: #f97b22;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 749px) {
+    .sbp-section-{{ sid }} { overflow: hidden; }
+    .sbp-heading-{{ sid }} { font-size: 28px; }
+    .sbp-header-{{ sid }} { margin-bottom: 20px; }
+    .sbp-container-{{ sid }} { padding: 0 16px; }
+    .sbp-swiper-{{ sid }} { overflow: visible; }
+    .sbp-swiper-{{ sid }} .swiper-wrapper { padding: 0 8px; box-sizing: border-box; }
+    .sbp-nav-prev-{{ sid }}, .sbp-nav-next-{{ sid }} { display: none; }
+    .sbp-card-title-{{ sid }} { font-size: 12px; }
+  }
+</style>
+
+<div class="sbp-section-{{ sid }}">
+  <div class="sbp-container-{{ sid }}">
+    <div class="sbp-header-{{ sid }}">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="sbp-badge-{{ sid }}">{{ section.settings.badge_text }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="sbp-heading-{{ sid }}">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="sbp-swiper-wrapper-{{ sid }}">
+      <button class="sbp-nav-prev-{{ sid }}" id="sbp-prev-{{ sid }}" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="sbp-nav-next-{{ sid }}" id="sbp-next-{{ sid }}" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+
+      <div class="swiper sbp-swiper-{{ sid }}" id="sbp-swiper-{{ sid }}">
+        <div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            {%- assign card_link = block.settings.link | default: '#' -%}
+            {%- assign img_class = 'sbp-card-image-' | append: sid -%}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <a href="{{ card_link }}" class="sbp-card-{{ sid }}">
+                <div class="sbp-card-image-wrap-{{ sid }}">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: img_class }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: img_class }}
+                  {%- endif -%}
+                </div>
+                {%- if block.settings.title != blank -%}
+                  <div class="sbp-card-title-{{ sid }}">{{ block.settings.title }}</div>
+                {%- endif -%}
+              </a>
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('#sbp-swiper-{{ sid }}', {
+      slidesPerView: 2,
+      spaceBetween: 12,
+      loop: true,
+      grabCursor: true,
+      pagination: {
+        el: '#sbp-swiper-{{ sid }} .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '#sbp-next-{{ sid }}',
+        prevEl: '#sbp-prev-{{ sid }}',
+      },
+      breakpoints: {
+        600: {
+          slidesPerView: 3,
+          spaceBetween: 12,
+        },
+        900: {
+          slidesPerView: 5,
+          spaceBetween: 16,
+        },
+        1100: {
+          slidesPerView: 6,
+          spaceBetween: 20,
+        },
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Shop By Product",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "🛍️ BROWSE BY TYPE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop By Product"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#fdf0ec"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_item",
+      "name": "Product Type",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Product"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Product",
+      "blocks": [
+        { "type": "product_item", "settings": { "title": "Soft Toy Bunny" } },
+        { "type": "product_item", "settings": { "title": "Flower Vase" } },
+        { "type": "product_item", "settings": { "title": "Ring Dish" } },
+        { "type": "product_item", "settings": { "title": "T-Shirt" } },
+        { "type": "product_item", "settings": { "title": "Leather Pocket Hug" } },
+        { "type": "product_item", "settings": { "title": "Mug" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

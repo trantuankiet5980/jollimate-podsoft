@@ -1,0 +1,376 @@
+/* =====================================================
+   ACCOUNT PAGE STYLES
+   ===================================================== */
+
+.account-page {
+  background: #f5f5f5;
+  min-height: 60vh;
+  padding: 40px 0;
+}
+
+.account-page .page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.account-page__layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+.account-page__sidebar {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px 0;
+}
+
+.account-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-nav__link {
+  display: block;
+  padding: 12px 25px;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.account-nav__link:hover {
+  color: #000;
+  background: #f9f9f9;
+}
+
+.account-nav__link--active {
+  color: #000;
+  font-weight: 600;
+  border-left-color: #000;
+  background: #f9f9f9;
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+.account-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =====================================================
+   ACCOUNT CARD
+   ===================================================== */
+.account-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 25px 30px;
+}
+
+.account-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.account-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.account-card__header .account-card__title {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.account-card__add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.account-card__add-btn:hover {
+  border-color: #000;
+  color: #000;
+}
+
+/* =====================================================
+   PROFILE FORM
+   ===================================================== */
+.profile-form {
+  max-width: 600px;
+}
+
+.profile-form__row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-form__label {
+  flex: 0 0 140px;
+  font-size: 14px;
+  color: #666;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.profile-form__field {
+  flex: 1;
+}
+
+.profile-form__input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.profile-form__input:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.profile-form__field--readonly {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.profile-form__edit-link {
+  color: #666;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.profile-form__edit-link:hover {
+  text-decoration: underline;
+}
+
+.profile-form__field--radio {
+  display: flex;
+  gap: 25px;
+}
+
+.profile-form__radio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-form__radio input {
+  cursor: pointer;
+}
+
+.profile-form__field--date {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-form__select {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+  min-width: 90px;
+}
+
+.profile-form__select:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.profile-form__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.profile-form__change-password {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.profile-form__change-password:hover {
+  text-decoration: underline;
+}
+
+.profile-form__save-btn {
+  padding: 12px 40px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-form__save-btn:hover {
+  background: #333;
+}
+
+/* =====================================================
+   ADDRESSES LIST
+   ===================================================== */
+.addresses-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.address-item {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  position: relative;
+}
+
+.address-item__badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.address-item__name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.addresses-list__empty {
+  color: #999;
+  font-size: 14px;
+}
+
+/* =====================================================
+   SIGN OUT
+   ===================================================== */
+.account-page__signout {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signout-btn {
+  padding: 12px 30px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.signout-btn:hover {
+  border-color: #000;
+  color: #000;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media screen and (max-width: 900px) {
+  .account-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .account-page__sidebar {
+    order: -1;
+  }
+
+  .account-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .account-nav__link {
+    padding: 10px 15px;
+    border-left: none;
+    border-radius: 6px;
+  }
+
+  .account-nav__link--active {
+    background: #000;
+    color: #fff;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-form__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .profile-form__label {
+    flex: none;
+    text-align: left;
+    padding-right: 0;
+  }
+
+  .profile-form__input {
+    max-width: 100%;
+  }
+
+  .profile-form__field--date {
+    flex-wrap: wrap;
+  }
+
+  .profile-form__actions {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .profile-form__save-btn {
+    width: 100%;
+  }
+
+  .account-card {
+    padding: 20px;
+  }
+}

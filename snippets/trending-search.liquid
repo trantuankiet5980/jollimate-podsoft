@@ -1,0 +1,102 @@
+<style>
+  .trending-search__recent-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 0 !important;
+    padding-inline-start: 0 !important;
+    list-style: none !important;
+  }
+  .trending-search__list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 0.8rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 0 !important;
+    padding-inline-start: 0 !important;
+    list-style: none !important;
+  }
+  .trending-search__recent-list .trending-search__item {
+    padding: 0 !important;
+    margin: 0 0 0.4rem 0 !important;
+  }
+  .trending-search__list .trending-search__item {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .trending-search__list .trending-search__link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0.5rem 1.2rem !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-radius: 50px !important;
+    font-size: 1.3rem !important;
+    color: #333 !important;
+    background: #f8f8f8 !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+  }
+  .trending-search__list .trending-search__link:hover {
+    background: #f0f0f0 !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    padding-left: 1.2rem !important;
+    margin-left: 0 !important;
+  }
+  .trending-search__list .trending-search__link svg {
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+  }
+  .trending-search__recent-list .trending-search__link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 0.8rem 1rem !important;
+    border-radius: 8px !important;
+    word-break: break-word !important;
+    text-decoration: none !important;
+  }
+  .trending-search__recent-list .trending-search__link:hover {
+    background-color: #f6f6f6 !important;
+  }
+  .trending-search__recent-list .trending-search__link svg {
+    flex-shrink: 0 !important;
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+  .trending-search__recent {
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+</style>
+<div class="trending-search-results" data-trending-search style="display:none;">
+  <div class="trending-search__recent" data-recent-searches hidden>
+    <div class="trending-search__recent-header">
+      <h3 class="trending-search__heading h5">Recent searches</h3>
+      <button type="button" class="trending-search__clear" data-clear-recent>Clear all</button>
+    </div>
+    <ul class="trending-search__recent-list list-unstyled" data-recent-list></ul>
+  </div>
+  {%- if section.settings.trending_queries != blank -%}
+    <h3 class="trending-search__heading h5">{{ section.settings.trending_queries_heading }}</h3>
+    <ul class="trending-search__list list-unstyled" role="list">
+      {%- assign trending_queries = section.settings.trending_queries | split: ',' -%}
+      {%- for query in trending_queries -%}
+        <li class="trending-search__item">
+          <a href="{{ routes.search_url }}?q={{ query | strip }}" class="trending-search__link link link--text">
+            <svg class="icon icon-trending" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+              <polyline points="17 6 23 6 23 12"></polyline>
+            </svg>
+            <span>{{ query | strip }}</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</div>

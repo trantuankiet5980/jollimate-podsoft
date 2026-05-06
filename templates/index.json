@@ -1,0 +1,1199 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_WwitxW": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n.hero-banner{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:7552/2176}\n.hero-banner img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner__btn{\n  position:absolute;\n  bottom:22%;\n  left:50%;\n  transform:translateX(-50%);\n  background:#fff;\n  color:#d4618c;\n  text-decoration:none;\n  padding:14px 44px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner__btn:hover{\n  background:#F97B22;\n  color:#fff;\n  box-shadow:0 4px 16px rgba(249,123,34,0.4);\n}\n@media(max-width:768px){\n  .hero-banner{\n    padding:0 12px;\n    aspect-ratio:1328/784;\n  }\n  .hero-banner img{\n    border-radius:12px;\n  }\n  .hero-banner__btn{\n    bottom:12%;\n    left:50%;\n    padding:8px 24px;\n    font-size:14px;\n    border-radius:25px;\n  }\n}\n</style>\n<div class=\"hero-banner\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/Iaoe5.jpg?v=1774948649&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/Iaoe5.jpg?v=1774948649&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/Iaoe5.jpg?v=1774948649 1328w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=1904 1904w\" sizes=\"100vw\" width=\"7552\" height=\"2176\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" alt=\"Mother's Day Collection - Personalized Gifts\">\n  </picture>\n  <a href=\"/collections/mothers-day\" class=\"hero-banner__btn\">PERSONALIZE NOW</a>\n</div>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "hero_banner": {
+      "type": "image-banner",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/BANNER_MOTHERDAY-PC_1.png",
+        "image_2": "shopify://shop_images/BANNER_MOTHERDAY-MOBILE.png",
+        "image_overlay_opacity": 0,
+        "banner_link": "shopify://collections/mother-day",
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false,
+        "show_overlay_content": false,
+        "overlay_badge": "✨ Special Collection",
+        "overlay_heading_1": "Gifts That Bring",
+        "overlay_heading_2": "Joy & Happiness",
+        "overlay_subtext": "Personalized gifts made with love for the people who matter most.",
+        "overlay_btn1_text": "Shop Now",
+        "overlay_btn1_url": "shopify://collections/all",
+        "overlay_btn2_text": "View Collections",
+        "overlay_btn2_url": "shopify://collections"
+      }
+    },
+    "collections_custom": {
+      "type": "collections-custom",
+      "blocks": {
+        "cc_1": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Mug.png",
+            "title": "Mugs",
+            "link": "shopify://collections/mug"
+          }
+        },
+        "cc_4": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Can.png",
+            "title": "Leather Can Cooler",
+            "link": "shopify://collections/can"
+          }
+        },
+        "cc_5": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/puzzle.png",
+            "title": "Puzzles",
+            "link": "shopify://collections/custom-photo-puzzle"
+          }
+        },
+        "cc_7": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/keychain.png",
+            "title": "Keychains",
+            "link": "shopify://collections/memory-remembrance-pin"
+          }
+        },
+        "collection_item_gpVQmg": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/ring.png",
+            "title": "Wedding Gift",
+            "link": "/collections/wedding"
+          }
+        },
+        "cc_8": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/picture.png",
+            "title": "Wall Art",
+            "link": "shopify://collections/photo"
+          }
+        },
+        "cc_9": {
+          "type": "collection_item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/puzzle.png",
+            "title": "Block Puzzles",
+            "link": "shopify://collections/block-puzzles"
+          }
+        },
+        "cc_10": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/image-removebg-preview_6.png",
+            "title": "Apparel",
+            "link": "shopify://collections/apparel"
+          }
+        }
+      },
+      "block_order": [
+        "cc_1",
+        "cc_4",
+        "cc_5",
+        "cc_7",
+        "collection_item_gpVQmg",
+        "cc_8",
+        "cc_9",
+        "cc_10"
+      ],
+      "settings": {
+        "heading": "",
+        "padding_top": 16,
+        "padding_bottom": 0,
+        "circle_bg_color": "#f9e7ea",
+        "bg_gradient": "linear-gradient(180deg, rgba(249, 231, 234, 1), rgba(249, 242, 236, 1) 100%)"
+      }
+    },
+    "benefits_bar": {
+      "type": "benefits-bar",
+      "blocks": {
+        "bb_1": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "gift",
+            "title": "Personalized Gifts",
+            "subtitle": "Made just for you"
+          }
+        },
+        "bb_2": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "shipping",
+            "title": "Free Shipping",
+            "subtitle": "On orders $49+"
+          }
+        },
+        "bb_3": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "secure",
+            "title": "Secure Payment",
+            "subtitle": "100% protected"
+          }
+        },
+        "bb_4": {
+          "type": "benefit_item",
+          "settings": {
+            "icon": "returns",
+            "title": "Easy Returns",
+            "subtitle": "30-day guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "bb_1",
+        "bb_2",
+        "bb_3",
+        "bb_4"
+      ],
+      "disabled": true,
+      "settings": {
+        "background_color": "#f97b22",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "new_on_gossby_custom": {
+      "type": "custom-collection-grid",
+      "blocks": {
+        "collection_item_pPVyLx": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/photomagnet.jpg",
+            "title": "Photo Magnet",
+            "link": "shopify://collections/photo-magnet"
+          }
+        },
+        "new_1": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/photogift.png",
+            "title": "Photo Gift",
+            "link": "shopify://collections/photo-gift"
+          }
+        },
+        "new_2": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/car.png",
+            "title": "Photo Car Hanging",
+            "link": "shopify://collections/photo-car-hanging"
+          }
+        },
+        "new_3": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/wartercolor.png",
+            "title": "Watercolor Portrait",
+            "link": "shopify://collections/watercolor-portrait"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_pPVyLx",
+        "new_1",
+        "new_2",
+        "new_3"
+      ],
+      "settings": {
+        "badge_text": "",
+        "heading": "Popular Collections",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "hot_products": {
+      "type": "featured-collection",
+      "settings": {
+        "badge_text": "",
+        "title": "Top Trending Gifts",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "best-selling",
+        "products_to_show": 10,
+        "columns_desktop": 5,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "shopping_for": {
+      "type": "shopping-for",
+      "blocks": {
+        "tag_item_hfMt8V": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Graduated",
+            "link": "shopify://collections/graduation"
+          }
+        },
+        "sf_3": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Mom/Grandma",
+            "link": "shopify://collections/for-her"
+          }
+        },
+        "sf_4": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Dad/Grandpa",
+            "link": "shopify://collections/for-him"
+          }
+        },
+        "sf_5": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Couple",
+            "link": "shopify://collections/couple"
+          }
+        },
+        "sf_6": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Friends",
+            "link": "shopify://collections/for-friends"
+          }
+        },
+        "sf_7": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Family",
+            "link": "shopify://collections/family"
+          }
+        },
+        "sf_8": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Pet Lovers",
+            "link": "shopify://collections/for-pet-lover"
+          }
+        },
+        "sf_9": {
+          "type": "tag_item",
+          "settings": {
+            "label": "Coworkers",
+            "link": "shopify://collections/for-coworkers"
+          }
+        }
+      },
+      "block_order": [
+        "tag_item_hfMt8V",
+        "sf_3",
+        "sf_4",
+        "sf_5",
+        "sf_6",
+        "sf_7",
+        "sf_8",
+        "sf_9"
+      ],
+      "settings": {
+        "heading": "Who Are You Shopping For Today?",
+        "background_color": "#ffffff",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "shop_by_occasions": {
+      "type": "category-slider",
+      "blocks": {
+        "occ_1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Birthday.png",
+            "title": "Birthday",
+            "link": "/collections/birthday"
+          }
+        },
+        "occ_2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Anniversary.png",
+            "title": "Anniversary",
+            "link": "/collections/anniversary"
+          }
+        },
+        "occ_3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Wedding.png",
+            "title": "Wedding",
+            "link": "/collections/wedding"
+          }
+        },
+        "occ_4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Mother_day.png",
+            "title": "Mother's Day",
+            "link": "/collections/mothers-day"
+          }
+        },
+        "occ_5": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Travel.png",
+            "title": "Travel",
+            "link": "shopify://collections/summer-fun"
+          }
+        },
+        "occ_6": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Easter_1.webp",
+            "title": "Easter",
+            "link": "shopify://collections/ambiance"
+          }
+        },
+        "occ_7": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/New_Baby.png",
+            "title": "New Baby",
+            "link": "shopify://collections/beanie"
+          }
+        },
+        "occ_8": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pet.png",
+            "title": "Pet",
+            "link": "shopify://collections/for-pet-lover"
+          }
+        }
+      },
+      "block_order": [
+        "occ_1",
+        "occ_2",
+        "occ_3",
+        "occ_4",
+        "occ_5",
+        "occ_6",
+        "occ_7",
+        "occ_8"
+      ],
+      "settings": {
+        "badge_text": "",
+        "heading": "Shop By Occasions",
+        "card_shape": "rounded",
+        "background_color": "#ffffff",
+        "card_bg_color": "#fdf0ec",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "custom_liquid_hyAUV3": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n.hero-banner-2{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:1904/544}\n.hero-banner-2 img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner-2__btn{\n  position:absolute;\n  bottom:22%;\n  left:50%;\n  transform:translateX(-50%);\n  background:#b21d31;\n  color:#fff;\n  text-decoration:none;\n  padding:14px 48px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner-2__btn:hover{\n  background:#1a3a5c;\n  color:#fff;\n  box-shadow:0 4px 16px rgba(26,58,92,0.4);\n}\n@media(max-width:768px){\n  .hero-banner-2{\n    padding:0 12px;\n    aspect-ratio:1248/832;\n  }\n  .hero-banner-2 img{\n    border-radius:12px;\n  }\n  .hero-banner-2__btn{\n    bottom:41.5%;\n    left:35%;\n    padding:6px 20px;\n    font-size:10px;\n    border-radius:25px;\n  }\n}\n</style>\n<div class=\"hero-banner-2\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/c70b6.jpg?v=1774948870&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/c70b6.jpg?v=1774948870&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/c70b6.jpg?v=1774948870 1248w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=1904 1904w\" sizes=\"100vw\" width=\"1904\" height=\"544\" loading=\"lazy\" decoding=\"async\" alt=\"America's 250th Anniversary - Personalized Patriotic Gifts\">\n  </picture>\n  <a href=\"/collections/americas-2026\" class=\"hero-banner-2__btn\">PERSONALIZE NOW</a>\n</div>",
+        "color_scheme": "background-1",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "split_promo_banner": {
+      "type": "split-promo-banner",
+      "disabled": true,
+      "settings": {
+        "heading": "America's 250th Anniversary",
+        "subtext": "Mark 250 years with custom gifts and decor made for proud everyday moments.",
+        "button_label": "Customize now",
+        "button_link": "/collections/all",
+        "desktop_image": "shopify://shop_images/250th_WEB_BANNER_9aa8eef3-a163-40ca-8833-8b4dc97472da.png",
+        "mobile_image": "shopify://shop_images/250th_WEB_BANNER-MOBILE.png",
+        "background_color": "#ffffff",
+        "card_bg_color": "#fdf0ec",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "popular_collections_grid": {
+      "type": "popular-collections-grid",
+      "blocks": {
+        "pc_1": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "family-keepsakes",
+            "image": "shopify://shop_images/image-removebg-preview_2.png",
+            "title": "Family Keepsakes",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "pc_2": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "cozy-home",
+            "image": "shopify://shop_images/image-removebg-preview_3.png",
+            "title": "Cozy Home",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "pc_3": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "kitchen-dining",
+            "image": "shopify://shop_images/apron_22.png",
+            "title": "Kitchen & Dining",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "pc_4": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "photo-art",
+            "image": "shopify://shop_images/photohanging.png",
+            "title": "Photo & Art",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "pc_5": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "anniversary",
+            "image": "shopify://shop_images/Ring_Dish.png",
+            "title": "Anniversary",
+            "subtitle": "",
+            "link": ""
+          }
+        },
+        "pc_6": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "accessories-1",
+            "image": "shopify://shop_images/photopin.png",
+            "title": "Accessories",
+            "subtitle": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "pc_1",
+        "pc_2",
+        "pc_3",
+        "pc_4",
+        "pc_5",
+        "pc_6"
+      ],
+      "disabled": true,
+      "settings": {
+        "badge_text": "✨ EXPLORE",
+        "heading": "Popular Collections",
+        "card_bg_color": "#fdf0ec",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "popular_collections_custom": {
+      "type": "custom-collection-grid",
+      "blocks": {
+        "col_1": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/collection-1.webp",
+            "title": "For Kid",
+            "link": "shopify://collections/custom-kids-gift-collection-personalized-treasures-for-your-little-ones"
+          }
+        },
+        "col_2": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/collection-2.webp",
+            "title": "For Family",
+            "link": "shopify://collections/personalized-family-gifts-create-custom-gifts-for-your-loved-ones"
+          }
+        },
+        "col_3": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/collection-3.webp",
+            "title": "For Coworker",
+            "link": "shopify://collections/colleagues-corner-festive-customized-gift-ideas"
+          }
+        },
+        "col_4": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/collection-4.webp",
+            "title": "For Her",
+            "link": "shopify://collections/perfect-personalized-gifts-for-her-best-idea-for-her-special-day"
+          }
+        },
+        "col_5": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/collection-5.webp",
+            "title": "For Him",
+            "link": "shopify://collections/unique-personalized-gifts-for-him-perfect-for-any-occasion"
+          }
+        },
+        "col_6": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/collection-6.webp",
+            "title": "For Bestie",
+            "link": "shopify://collections/personalized-best-friend-gifts-create-custom-gifts-for-best-friends"
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3",
+        "col_4",
+        "col_5",
+        "col_6"
+      ],
+      "disabled": true,
+      "settings": {
+        "badge_text": "DON'T MISS OUT",
+        "heading": "Explore Popular Collections",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "trending_week": {
+      "type": "custom-collection-grid",
+      "blocks": {
+        "tr_1": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/trending-1.webp",
+            "title": "F-Caw",
+            "link": "shopify://collections/f-caw"
+          }
+        },
+        "tr_2": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/trending-2.webp",
+            "title": "Personalized Puzzle",
+            "link": "shopify://collections/personalized-puzzle"
+          }
+        },
+        "tr_3": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/trending-3.webp",
+            "title": "Photo Ornaments",
+            "link": "shopify://collections/photo-ornaments"
+          }
+        },
+        "tr_4": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/trending-4.webp",
+            "title": "Metal Card",
+            "link": "shopify://collections/metal-card-1"
+          }
+        }
+      },
+      "block_order": [
+        "tr_1",
+        "tr_2",
+        "tr_3",
+        "tr_4"
+      ],
+      "disabled": true,
+      "settings": {
+        "badge_text": "DON'T MISS OUT",
+        "heading": "Trending This Week",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "promo_image_banner": {
+      "type": "image-banner",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Custom_Photo_Gifts_Banner_087fe4ab-ec0f-4b3f-8277-dcf1fb722916.webp",
+        "image_2": "shopify://shop_images/Thi_t_k_ch_a_co_ten_1.png",
+        "image_overlay_opacity": 0,
+        "banner_link": "shopify://collections/mother-day",
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "show_overlay_content": false,
+        "overlay_badge": "✨ Special Collection",
+        "overlay_heading_1": "Gifts That Bring",
+        "overlay_heading_2": "Joy & Happiness",
+        "overlay_subtext": "Personalized gifts made with love for the people who matter most.",
+        "overlay_btn1_text": "Shop Now",
+        "overlay_btn1_url": "",
+        "overlay_btn2_text": "View Collections",
+        "overlay_btn2_url": ""
+      }
+    },
+    "product_list_main": {
+      "type": "featured-collection-filterable",
+      "blocks": {
+        "collection_filter_NnfC8K": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "For Dad/Grandpa",
+            "collection": "grandpa"
+          }
+        },
+        "filter_2": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "Graduation",
+            "collection": "graduation"
+          }
+        },
+        "filter_1": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "For Mom/Grandma",
+            "collection": "personalized-gifts-for-mom"
+          }
+        },
+        "collection_filter_kxXAaF": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "",
+            "collection": ""
+          }
+        },
+        "filter_3": {
+          "type": "collection_filter",
+          "disabled": true,
+          "settings": {
+            "label": "Easter",
+            "collection": "easter"
+          }
+        },
+        "filter_4": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "Graduation",
+            "collection": "graduation-1"
+          }
+        },
+        "filter_5": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "Hot Picks",
+            "collection": "hot-this-month"
+          }
+        },
+        "filter_6": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "America's 250th",
+            "collection": "americas-2026"
+          }
+        },
+        "filter_7": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "Travel",
+            "collection": "travel"
+          }
+        },
+        "filter_8": {
+          "type": "collection_filter",
+          "settings": {
+            "label": "Memorial",
+            "collection": "memorial"
+          }
+        }
+      },
+      "block_order": [
+        "collection_filter_NnfC8K",
+        "filter_2",
+        "filter_1",
+        "collection_filter_kxXAaF",
+        "filter_3",
+        "filter_4",
+        "filter_5",
+        "filter_6",
+        "filter_7",
+        "filter_8"
+      ],
+      "settings": {
+        "badge_text": "",
+        "title": "Browse More Curated Choices",
+        "heading_size": "h1",
+        "collection": "best-selling",
+        "products_to_show": 10,
+        "columns_desktop": 5,
+        "full_width": false,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "custom_liquid_4bkYd4": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n.hero-banner-3{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:1904/544}\n.hero-banner-3 img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner-3__btn{\n  position:absolute;\n  bottom:12%;\n  left:50%;\n  transform:translateX(-50%);\n  background:#F97B22;\n  color:#fff;\n  text-decoration:none;\n  padding:18px 56px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner-3__btn:hover{\n  background:#333;\n  color:#fff;\n  box-shadow:0 4px 16px rgba(249,123,34,0.4);\n}\n@media(max-width:768px){\n  .hero-banner-3{\n    padding:0 12px;\n    aspect-ratio:1248/832;\n  }\n  .hero-banner-3 img{\n    border-radius:12px;\n  }\n  .hero-banner-3__btn{\n    bottom:41%;\n    left:36%;\n    padding:6px 18px;\n    font-size:12px;\n    border-radius:25px;\n  }\n}\n</style>\n<div class=\"hero-banner-3\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/X3NdL_89ffbd7a-de0f-4988-a490-ddd24d48feec.jpg?v=1774949941&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/X3NdL_89ffbd7a-de0f-4988-a490-ddd24d48feec.jpg?v=1774949941&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/X3NdL_89ffbd7a-de0f-4988-a490-ddd24d48feec.jpg?v=1774949941 1248w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=1904 1904w\" sizes=\"100vw\" width=\"1904\" height=\"544\" loading=\"lazy\" decoding=\"async\" alt=\"Class 2026 Graduation Day - Personalized Graduation Gifts\">\n  </picture>\n  <a href=\"/collections/graduation-gift\" class=\"hero-banner-3__btn\">PERSONALIZE NOW</a>\n</div>",
+        "color_scheme": "background-1",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "split_promo_banner_2": {
+      "type": "split-promo-banner",
+      "disabled": true,
+      "settings": {
+        "heading": "Graduation Gifts",
+        "subtext": "Celebrate their big moment with a personalized gift that feels truly made for them.",
+        "button_label": "Customize now",
+        "button_link": "/collections/all",
+        "desktop_image": "shopify://shop_images/WEB_BANNER_GRADUATION_DAY-PC.png",
+        "mobile_image": "shopify://shop_images/WEB_BANNER_GRADUATION_DAY-MOBILE_231c82ac-dbd5-45e1-897d-a1a32333c348.png",
+        "background_color": "#ffffff",
+        "card_bg_color": "#fdf0ec",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "badge_text": "",
+        "title": "Exciting New Arrivals",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 10,
+        "columns_desktop": 5,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "popular_categories": {
+      "type": "custom-collection-grid",
+      "blocks": {
+        "cat_1": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/popular-1.webp",
+            "title": "Puzzle",
+            "link": "shopify://collections/puzzle"
+          }
+        },
+        "cat_2": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/popular-2.webp",
+            "title": "Mug",
+            "link": "shopify://collections/mug"
+          }
+        },
+        "cat_3": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Thi_t_k_ch_a_co_ten_2.png",
+            "title": "Apron",
+            "link": "shopify://collections/apron"
+          }
+        },
+        "cat_4": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/Thi_t_k_ch_a_co_ten_3.png",
+            "title": "Leather Can Cooler",
+            "link": "shopify://collections/leather-can-cooler"
+          }
+        },
+        "cat_5": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/popular-5.webp",
+            "title": "Car Accessorie",
+            "link": "shopify://collections/car-accessorie"
+          }
+        },
+        "cat_6": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/popular-6.webp",
+            "title": "Canvas",
+            "link": "shopify://collections/canvas"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6"
+      ],
+      "disabled": true,
+      "settings": {
+        "badge_text": "DON'T MISS OUT",
+        "heading": "Shop Our Most Popular Categories",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "shop_by_recipients": {
+      "type": "category-slider",
+      "blocks": {
+        "rec_1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Mom-Grandma.png",
+            "title": "Mom/Grandma",
+            "link": "shopify://collections/gradma"
+          }
+        },
+        "rec_2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Dad-Grandpa.png",
+            "title": "Dad/Grandpa",
+            "link": "/collections/grandpa"
+          }
+        },
+        "rec_3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Kids.png",
+            "title": "Kid & Baby",
+            "link": "shopify://collections/for-kid"
+          }
+        },
+        "rec_4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Couple.png",
+            "title": "Couple",
+            "link": "shopify://collections/couple"
+          }
+        },
+        "rec_5": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/bestie.png",
+            "title": "Bestie",
+            "link": "shopify://collections/for-friends"
+          }
+        },
+        "rec_6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pet_Lover.png",
+            "title": "Pet Lover",
+            "link": "shopify://collections/for-pet-lover"
+          }
+        }
+      },
+      "block_order": [
+        "rec_1",
+        "rec_2",
+        "rec_3",
+        "rec_4",
+        "rec_5",
+        "rec_6"
+      ],
+      "settings": {
+        "badge_text": "",
+        "heading": "Shop By Recipients",
+        "card_shape": "circle",
+        "background_color": "#ffffff",
+        "card_bg_color": "#fdf0ec",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "shop_by_product": {
+      "type": "shop-by-product",
+      "blocks": {
+        "sbp_1": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/rabbit.png",
+            "title": "Soft Toy Bunny",
+            "link": "shopify://collections/soft-toy-bunny"
+          }
+        },
+        "sbp_2": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/vase.png",
+            "title": "Flower Vase",
+            "link": "shopify://collections/flover-vase"
+          }
+        },
+        "sbp_3": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/ringdish.png",
+            "title": "Ring Dish",
+            "link": "shopify://collections/wood-ring-dish"
+          }
+        },
+        "sbp_4": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/bluejean-52-1.png",
+            "title": "T-Shirt",
+            "link": "shopify://collections/apparel"
+          }
+        },
+        "sbp_5": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/Leather_Pocket_Hug.png",
+            "title": "Leather Pocket Hug",
+            "link": "/collections/leather-can-cooler"
+          }
+        },
+        "sbp_6": {
+          "type": "product_item",
+          "settings": {
+            "image": "shopify://shop_images/Mug_c015a51c-bc1d-4256-856e-a590bdae67a8.png",
+            "title": "Mug",
+            "link": "/collections/mug"
+          }
+        }
+      },
+      "block_order": [
+        "sbp_1",
+        "sbp_2",
+        "sbp_3",
+        "sbp_4",
+        "sbp_5",
+        "sbp_6"
+      ],
+      "disabled": true,
+      "settings": {
+        "badge_text": "",
+        "heading": "Shop By Product",
+        "background_color": "#ffffff",
+        "card_bg_color": "#fdf0ec",
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "brand_story": {
+      "type": "brand-story",
+      "blocks": {
+        "bs_col_1": {
+          "type": "column",
+          "settings": {
+            "col_heading": "Jollimate Story",
+            "col_text": "Jollimate was built on the rising trend of personalization, offering unique gifts that celebrate individuality and love. Our online store simplifies the design process, allowing customers to easily personalize items with their interests and names."
+          }
+        },
+        "bs_col_2": {
+          "type": "column",
+          "settings": {
+            "col_heading": "Creativity meets emotion",
+            "col_text": "Bringing your unique stories to life through art. Jollimate is where creativity meets emotion. Every design tells a story, and each print is a journey. Let’s make your ideas a reality with unique personalized gifts for every occasion!"
+          }
+        }
+      },
+      "block_order": [
+        "bs_col_1",
+        "bs_col_2"
+      ],
+      "settings": {
+        "title": "What is Jollimate?",
+        "title_color": "#1a1a1a",
+        "background_color": "#ffffff",
+        "card_bg_color": "#fdf0ec",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "trending_searches": {
+      "type": "trending-searches",
+      "blocks": {
+        "ts_1": {
+          "type": "search_tag",
+          "disabled": true,
+          "settings": {
+            "label": "easter gifts",
+            "link": "/search?q=easter+gifts"
+          }
+        },
+        "ts_2": {
+          "type": "search_tag",
+          "settings": {
+            "label": "graduation gifts",
+            "link": "/search?q=graduation+gifts&options[prefix]=last&type=product"
+          }
+        },
+        "ts_3": {
+          "type": "search_tag",
+          "settings": {
+            "label": "gift for mom",
+            "link": "/search?q=mothers+day&options[prefix]=last&type=product"
+          }
+        },
+        "ts_4": {
+          "type": "search_tag",
+          "settings": {
+            "label": "travel",
+            "link": "/search?q=travel&options[prefix]=last&type=product"
+          }
+        },
+        "ts_5": {
+          "type": "search_tag",
+          "settings": {
+            "label": "america's 250th",
+            "link": "shopify://collections/americas-2026"
+          }
+        },
+        "ts_6": {
+          "type": "search_tag",
+          "settings": {
+            "label": "memorial gifts",
+            "link": "/search?q=memorial+gifts"
+          }
+        },
+        "ts_7": {
+          "type": "search_tag",
+          "disabled": true,
+          "settings": {
+            "label": "america's 250th",
+            "link": "shopify://collections/americas-2026"
+          }
+        },
+        "ts_8": {
+          "type": "search_tag",
+          "settings": {
+            "label": "anniversary gifts",
+            "link": "/search?q=anniversary+gifts&options[prefix]=last&type=product"
+          }
+        }
+      },
+      "block_order": [
+        "ts_1",
+        "ts_2",
+        "ts_3",
+        "ts_4",
+        "ts_5",
+        "ts_6",
+        "ts_7",
+        "ts_8"
+      ],
+      "settings": {
+        "heading": "Trending Searches Now",
+        "background_color": "#ffffff",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "17728575539f0a52db": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_WwitxW",
+    "hero_banner",
+    "collections_custom",
+    "benefits_bar",
+    "new_on_gossby_custom",
+    "hot_products",
+    "shopping_for",
+    "shop_by_occasions",
+    "custom_liquid_hyAUV3",
+    "split_promo_banner",
+    "popular_collections_grid",
+    "popular_collections_custom",
+    "trending_week",
+    "promo_image_banner",
+    "product_list_main",
+    "custom_liquid_4bkYd4",
+    "split_promo_banner_2",
+    "new_arrivals",
+    "popular_categories",
+    "shop_by_recipients",
+    "shop_by_product",
+    "brand_story",
+    "trending_searches",
+    "17728575539f0a52db"
+  ]
+}

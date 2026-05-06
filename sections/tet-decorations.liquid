@@ -1,0 +1,240 @@
+{% schema %}
+{
+  "name": "Tet Decorations",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Side Banners (Couplets / Doi Lien)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_side_banners",
+      "label": "Enable Side Banners",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "left_banner",
+      "label": "Left Banner Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_banner",
+      "label": "Right Banner Image"
+    },
+    {
+      "type": "range",
+      "id": "banner_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Banner Width",
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "banner_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Position Top (%)",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "New Year Popup"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_popup",
+      "label": "Enable Popup",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "popup_image",
+      "label": "Popup Image"
+    },
+    {
+      "type": "text",
+      "id": "popup_heading",
+      "label": "Popup Heading",
+      "default": "Happy Lunar New Year!"
+    },
+    {
+      "type": "textarea",
+      "id": "popup_text",
+      "label": "Popup Text",
+      "default": "Wishing you a year filled with prosperity, joy, and good health."
+    },
+    {
+      "type": "color",
+      "id": "popup_bg",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "popup_text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tet Decorations"
+    }
+  ]
+}
+{% endschema %}
+
+{%- style -%}
+  /* Side Banners */
+  .tet-side-banner {
+    position: fixed;
+    top: {{ section.settings.banner_top }}%;
+    z-index: 99;
+    width: {{ section.settings.banner_width }}px;
+    max-width: 15vw;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .tet-side-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .tet-side-banner.tet-left {
+    left: 10px;
+  }
+  .tet-side-banner.tet-right {
+    right: 10px;
+  }
+  @media (max-width: 1200px) {
+    .tet-side-banner {
+      display: none;
+    }
+  }
+
+  /* Popup */
+  .tet-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .tet-popup-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  .tet-popup-content {
+    background: {{ section.settings.popup_bg }};
+    color: {{ section.settings.popup_text_color }};
+    padding: 0;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .tet-popup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.8);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .tet-popup-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .tet-popup-text-content {
+    padding: 30px 20px;
+  }
+  .tet-popup-heading {
+    margin: 0 0 10px;
+    color: inherit;
+  }
+{%- endstyle -%}
+
+{% if section.settings.enable_side_banners %}
+  {% if section.settings.left_banner != blank %}
+    <div class="tet-side-banner tet-left">
+      {{ section.settings.left_banner | image_url: width: 600 | image_tag: loading: 'lazy' }}
+    </div>
+  {% endif %}
+
+  {% if section.settings.right_banner != blank %}
+    <div class="tet-side-banner tet-right">
+      {{ section.settings.right_banner | image_url: width: 600 | image_tag: loading: 'lazy' }}
+    </div>
+  {% endif %}
+{% endif %}
+
+{% if section.settings.enable_popup %}
+  <div class="tet-popup-overlay" id="TetPopupModal">
+    <div class="tet-popup-content">
+      <button type="button" class="tet-popup-close-btn" onclick="closeTetPopup()">×</button>
+      {% if section.settings.popup_image != blank %}
+        <div class="tet-popup-image">
+          {{ section.settings.popup_image | image_url: width: 800 | image_tag: loading: 'lazy' }}
+        </div>
+      {% endif %}
+      <div class="tet-popup-text-content">
+        {% if section.settings.popup_heading != blank %}
+          <h2 class="tet-popup-heading h2">{{ section.settings.popup_heading }}</h2>
+        {% endif %}
+        {% if section.settings.popup_text != blank %}
+          <p>{{ section.settings.popup_text }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const popupShown = sessionStorage.getItem('tet_popup_shown_v1');
+      const popupOverlay = document.getElementById('TetPopupModal');
+
+      // Only show if not shown in session and popup content exists
+      if (!popupShown && popupOverlay) {
+        setTimeout(() => {
+          popupOverlay.classList.add('is-visible');
+        }, 2000);
+      }
+    });
+
+    function closeTetPopup() {
+      const popupOverlay = document.getElementById('TetPopupModal');
+      if (popupOverlay) {
+        popupOverlay.classList.remove('is-visible');
+        sessionStorage.setItem('tet_popup_shown_v1', 'true');
+      }
+    }
+  </script>
+{% endif %}

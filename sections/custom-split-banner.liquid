@@ -1,0 +1,299 @@
+{% schema %}
+{
+  "name": "Split Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Banner Height",
+      "default": 450
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Box Background",
+      "default": "#fffcf5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner Item",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "text",
+          "id": "context",
+          "label": "Context (Top Label)",
+          "default": "Hot Season"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Banner Title"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Description goes here"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split Banner",
+      "blocks": [{ "type": "banner" }, { "type": "banner" }]
+    }
+  ]
+}
+{% endschema %}
+
+<!-- Import Google Font Fredoka One -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+  .split-banner-heading {
+    font-family: 'Fredoka One', cursive !important; /* Force use of Fredoka One */
+    letter-spacing: 0.5px;
+  }
+</style>
+
+<div
+  class="page-width"
+  {% comment %} style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;" {% endcomment %}
+  style="padding-top: 20px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="split-banner-grid{% if section.blocks.size == 1 %} split-banner-grid--single{% endif %}">
+    {% for block in section.blocks %}
+      <div
+        class="split-banner-item"
+        style="color: {{ block.settings.text_color }}; min-height: {{ section.settings.min_height }}px;"
+      >
+        <div class="split-banner-image">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'split-banner-img' }}
+          {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg split-banner-img' }}
+          {% endif %}
+        </div>
+
+        <div class="split-banner-content" style="background-color: {{ section.settings.content_bg_color }};">
+          {% if block.settings.context != blank %}
+            <div class="split-banner-context">{{ block.settings.context }}</div>
+          {% endif %}
+
+          <h3 class="split-banner-heading">{{ block.settings.heading }}</h3>
+          <p class="split-banner-subheading">{{ block.settings.subheading }}</p>
+
+          {% if block.settings.button_label != blank %}
+            <a href="{{ block.settings.button_link | default: '#' }}" class="button">
+              {{- block.settings.button_label -}}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .split-banner-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .split-banner-grid--single {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: 750px) {
+    .split-banner-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .split-banner-grid--single {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .split-banner-item {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Mobile: Stacked */
+    min-height: 400px;
+    justify-content: flex-end; /* Mobile: Align to bottom if image is bg, but we will stack */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .split-banner-image {
+    width: 100%;
+    height: 300px; /* Mobile: Fixed height for image */
+    position: relative;
+    order: 2; /* Mobile: Image bottom */
+  }
+
+  .split-banner-content {
+    order: 1; /* Mobile: Text top */
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    width: 100%;
+    background-color: var(--content-bg-color, #fffcf5); /* Fallback */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Desktop Overlay Layout */
+  @media screen and (min-width: 750px) {
+    .split-banner-item {
+      display: block; /* Content is absolute, so block is fine */
+      min-height: 450px; /* User setting */
+    }
+
+    .split-banner-image {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      order: unset;
+    }
+
+    .split-banner-content {
+      position: absolute;
+      bottom: 30px; /* Floating from bottom */
+      left: 30px; /* Floating from left */
+      width: 45%; /* Card width approx */
+      max-width: 350px;
+      margin: 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      order: unset;
+      /* Background is handled by inline style on element */
+    }
+
+    .split-banner-grid--single .split-banner-content {
+      /* Adjust single banner if needed, but 2-column is priority */
+      width: 40%;
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+      left: 5%;
+    }
+  }
+
+  .split-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.7s ease;
+  }
+
+  .split-banner-item:hover .split-banner-img {
+    transform: scale(1.02);
+  }
+
+  /* Text Styles */
+  .split-banner-context {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+
+  .split-banner-heading {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: inherit;
+  }
+
+  .split-banner-subheading {
+    margin: 0 0 20px 0;
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.8;
+    color: inherit;
+  }
+
+  /* Button Styles */
+  .split-banner-content .button {
+    margin-top: auto;
+    background-color: #0f4c81;
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+    text-transform: none;
+    border-radius: 6px;
+    padding: 10px 24px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .split-banner-content .button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+</style>

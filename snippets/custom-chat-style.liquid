@@ -1,0 +1,102 @@
+<style>
+  /* Ẩn widget chat lúc ban đầu để tránh chớp giật (FOUC) */
+  inbox-online-store-chat:not(.custom-styled) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  inbox-online-store-chat.custom-styled {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: opacity 0.3s ease !important;
+  }
+</style>
+
+<script>
+  (function() {
+    var customizeChat = setInterval(function() {
+      // Look for the inbox-online-store-chat element
+      var chatHost = document.querySelector('inbox-online-store-chat');
+      if (!chatHost) chatHost = document.querySelector('#ShopifyChat');
+      
+      if (chatHost && chatHost.shadowRoot) {
+        var toggleBtn = chatHost.shadowRoot.querySelector('button.chat-toggle');
+        
+        if (toggleBtn && !chatHost.shadowRoot.querySelector('#custom-chat-style-injected')) {
+          clearInterval(customizeChat);
+          
+          var styleString = `
+            button.chat-toggle {
+              background-color: #F97B22 !important; /* Orange background */
+              border-radius: 40px !important;       /* Pill shape */
+              width: auto !important;
+              height: auto !important;
+              padding: 12px 24px 12px 16px !important;
+              display: flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              border: none !important;
+              box-shadow: 0 4px 12px rgba(249, 123, 34, 0.25) !important;
+              gap: 8px !important;
+              transform: none !important;
+              transition: all 0.3s ease !important;
+            }
+            button.chat-toggle svg {
+              display: none !important; /* Hide original icon */
+            }
+            button.chat-toggle::before {
+              content: "";
+              display: inline-block;
+              width: 24px;
+              height: 24px;
+              /* Question mark outlined SVG */
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /%3E%3C/svg%3E");
+              background-size: contain;
+              background-repeat: no-repeat;
+              flex-shrink: 0;
+            }
+            button.chat-toggle::after {
+              content: "Help";
+              color: white !important;
+              font-family: inherit !important;
+              font-size: 18px !important;
+              font-weight: 700 !important;
+              line-height: 1 !important;
+              margin-left: 4px !important;
+            }
+            .chat-title, .chat-notification, .chat-notification-text {
+              display: none !important;
+            }
+            
+            /* Add slightly hover effect */
+            button.chat-toggle:hover {
+              background-color: #E86A11 !important;
+              transform: translateY(-2px) !important;
+              box-shadow: 0 6px 16px rgba(249, 123, 34, 0.35) !important;
+            }
+          `;
+          
+          var styleFile = document.createElement("style");
+          styleFile.id = "custom-chat-style-injected";
+          styleFile.innerHTML = styleString;
+          chatHost.shadowRoot.appendChild(styleFile);
+
+          // Khôi phục hiển thị host element từ từ
+          requestAnimationFrame(function() {
+            chatHost.classList.add('custom-styled');
+          });
+        }
+      }
+    }, 100); // Check faster (100ms instead of 500ms) to reduce delay
+    
+    // Fallback: Stop checking after 10 seconds to avoid infinite loop
+    // But importantly, ensure we reveal the original chat if modifying fails
+    setTimeout(function() {
+      clearInterval(customizeChat);
+      var chatHost = document.querySelector('inbox-online-store-chat') || document.querySelector('#ShopifyChat');
+      if (chatHost && !chatHost.classList.contains('custom-styled')) {
+         chatHost.classList.add('custom-styled');
+      }
+    }, 5000);
+  })();
+</script>

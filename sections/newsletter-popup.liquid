@@ -1,0 +1,366 @@
+{% schema %}
+{
+  "name": "Newsletter Popup",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_popup",
+      "label": "Enable Popup",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "popup_delay",
+      "label": "Popup Delay (seconds)",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Popup Side Image (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "discount_title",
+      "label": "Popup Title",
+      "default": "Get 10% Off"
+    },
+    {
+      "type": "text",
+      "id": "discount_subtitle",
+      "label": "Popup Subtitle",
+      "default": "Your first order at Jollimate"
+    },
+    {
+      "type": "richtext",
+      "id": "popup_body",
+      "label": "Popup Body Text",
+      "default": "<p>Subscribe to our newsletter and receive a <strong>10% discount</strong> code for your first purchase. Personalized gifts made with love in the USA.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "GET MY 10% OFF"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Discount Code",
+      "default": "WELCOME10"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#F97B22"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Popup"
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.enable_popup %}
+<style>
+.ep-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 99999;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.ep-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+.ep-popup {
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 440px;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+  animation: epSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+}
+@keyframes epSlide {
+  from { transform: translateY(40px) scale(0.97); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.ep-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 32px; height: 32px;
+  font-size: 24px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  border: none;
+  z-index: 10;
+  line-height: 1;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.ep-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+{% if section.settings.bg_image %}
+.ep-image {
+  width: 100%;
+  height: 160px;
+  background-image: url('{{ section.settings.bg_image | image_url }}');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+{% else %}
+.ep-image {
+  display: none;
+}
+{% endif %}
+
+.ep-content-wrap {
+  padding: 40px 32px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ep-header-text { text-align: center; margin-bottom: 20px; }
+.ep-header-text p {
+  color: {{ section.settings.primary_color }};
+  font-size: 13px;
+  margin: 0 0 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.ep-header-text h2 {
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.ep-body .rte {
+  color: #475569;
+  font-size: 15px;
+  margin: 0 0 24px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.ep-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ep-email {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+  color: #0f172a;
+}
+.ep-email:focus {
+  border-color: {{ section.settings.primary_color }};
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(249, 123, 34, 0.1);
+}
+.ep-email::placeholder { color: #94a3b8; }
+
+.ep-submit {
+  width: 100%;
+  padding: 16px;
+  background: {{ section.settings.primary_color }};
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(249, 123, 34, 0.2);
+}
+.ep-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(249, 123, 34, 0.3);
+  filter: brightness(1.05);
+}
+.ep-submit:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ep-dismiss {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 16px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.ep-dismiss:hover { color: #475569; }
+
+/* Success State */
+.ep-success { display: none; text-align: center; }
+.ep-success .ep-check {
+  font-size: 50px;
+  color: {{ section.settings.primary_color }};
+  line-height: 1;
+  margin-bottom: 16px;
+  animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.ep-success h3 { color: #0f172a; font-size: 24px; font-weight: 800; margin: 0 0 8px; }
+.ep-success p { color: #475569; font-size: 15px; margin: 0 0 12px; line-height: 1.5; }
+.ep-success .ep-code {
+  display: inline-block;
+  background: #f8fafc;
+  border: 2px dashed {{ section.settings.primary_color }};
+  color: {{ section.settings.primary_color }};
+  font-size: 26px;
+  font-weight: 800;
+  padding: 12px 28px;
+  border-radius: 12px;
+  margin: 12px 0;
+  letter-spacing: 2px;
+  user-select: all;
+}
+.ep-success .ep-shop-btn {
+  display: block; width: 100%; padding: 16px;
+  background: #0f172a; color: #fff;
+  border-radius: 12px; font-size: 15px; font-weight: 800;
+  cursor: pointer; margin-top: 16px; text-decoration: none;
+  transition: background 0.2s;
+}
+.ep-success .ep-shop-btn:hover { background: #1e293b; }
+.ep-terms { font-size: 12px !important; color: #94a3b8 !important; margin-top: 12px !important; }
+
+@media(max-width: 480px) {
+  .ep-content-wrap {
+    padding: 36px 24px 24px;
+  }
+}
+</style>
+
+<div class="ep-overlay" id="epOverlay">
+  <div class="ep-popup">
+    <button class="ep-close" onclick="closeEP()" aria-label="Close">&times;</button>
+    
+    <div class="ep-image"></div>
+    
+    <div class="ep-content-wrap">
+      <!-- Form View -->
+      <div id="epFormView">
+        <div class="ep-header-text">
+          <p>{{ section.settings.discount_subtitle }}</p>
+          <h2>{{ section.settings.discount_title }}</h2>
+        </div>
+        <div class="ep-body">
+          <div class="rte">{{ section.settings.popup_body }}</div>
+          <div class="ep-input-group">
+            <input type="email" class="ep-email" id="epEmail" placeholder="Enter your email address" autocomplete="email">
+            <button class="ep-submit" id="epBtn" onclick="submitEP()">{{ section.settings.button_text }}</button>
+          </div>
+          <button class="ep-dismiss" onclick="closeEP()">No thanks</button>
+        </div>
+      </div>
+      
+      <!-- Success View -->
+      <div class="ep-success" id="epSuccess">
+        <div class="ep-check">✓</div>
+        <h3>Welcome Aboard!</h3>
+        <p>Here's your exclusive discount code:</p>
+        <div class="ep-code">{{ section.settings.discount_code }}</div>
+        <p>Tap the code to copy it, and apply at checkout.</p>
+        <p class="ep-terms">Valid for 30 days. One use per customer.</p>
+        <a href="javascript:void(0)" class="ep-shop-btn" onclick="closeEP()">START SHOPPING</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* --- CONFIG --- */
+  var POPUP_DELAY = {{ section.settings.popup_delay }} * 1000;
+  var STORAGE_KEY = "ep_shown";
+  
+  window.submitEP = function(){
+    var email = document.getElementById("epEmail").value.trim();
+    if(!email || email.indexOf("@") < 1 || email.indexOf(".") < 1){
+      alert("Please enter a valid email address");
+      return;
+    }
+    document.getElementById("epBtn").disabled = true;
+    document.getElementById("epBtn").textContent = "Sending...";
+    
+    setTimeout(function(){
+      document.getElementById("epFormView").style.display = "none";
+      document.getElementById("epSuccess").style.display = "block";
+      localStorage.setItem(STORAGE_KEY, "1");
+    }, 600);
+  };
+  
+  window.closeEP = function(){
+    document.getElementById("epOverlay").classList.remove("active");
+    localStorage.setItem(STORAGE_KEY, "1");
+  };
+  
+  document.getElementById("epOverlay").addEventListener("click", function(e){
+    if(e.target === this) closeEP();
+  });
+  
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeEP();
+  });
+  
+  setTimeout(function(){
+    if(!localStorage.getItem(STORAGE_KEY)){
+      document.getElementById("epOverlay").classList.add("active");
+    }
+  }, POPUP_DELAY);
+})();
+</script>
+{% endif %}

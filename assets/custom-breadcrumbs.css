@@ -1,0 +1,37 @@
+.ccp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.ccp-breadcrumb__link {
+  color: #666666;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ccp-breadcrumb__link:hover {
+  color: #e63946;
+  /* Default reddish color from contact page */
+}
+
+.ccp-breadcrumb__separator {
+  color: #999999;
+  flex-shrink: 0;
+}
+
+.ccp-breadcrumb--current {
+  color: #999999;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* Adjust for product page specific positioning if needed */
+.product-breadcrumbs {
+  padding-top: 1rem;
+}

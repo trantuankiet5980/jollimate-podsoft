@@ -1,0 +1,298 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: 2.4rem;
+      padding-right: 2.4rem;
+    }
+  }
+
+  .dual-banner__heading {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .dual-banner__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .dual-banner__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .dual-banner__item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: {{ section.settings.image_ratio_desktop | default: '16 / 9' }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .dual-banner__item {
+      aspect-ratio: {{ section.settings.image_ratio_mobile | default: '4 / 3' }};
+    }
+  }
+
+  .dual-banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .dual-banner__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: transparent; /* Changed from rgba(0,0,0,0.1) to transparent */
+  }
+
+  .content-align-left .dual-banner__overlay {
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 10%;
+  }
+
+  .dual-banner__title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #8b4513;
+    margin: 0 0 -0.5rem 0;
+    line-height: 1;
+    z-index: 2;
+  }
+
+  @media screen and (max-width: 749px) {
+    .dual-banner__title {
+      font-size: 3.2rem;
+    }
+  }
+
+  .dual-banner__description {
+    font-size: 1.6rem;
+    color: #333;
+    margin: 0 0 2rem 0;
+    font-weight: 500;
+    max-width: 300px;
+  }
+
+  .dual-banner__button {
+    background-color: #8b4513;
+    color: #fff;
+    padding: 0.8rem 2.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    z-index: 2;
+  }
+
+  .dual-banner__button:hover {
+    background-color: #6d360f;
+    transform: translateY(-2px);
+  }
+{%- endstyle -%}
+
+<div class="dual-banner section-{{ section.id }}-padding">
+  <div class="page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="dual-banner__heading h1">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+
+    <div class="dual-banner__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign is_link = false
+          if block.settings.button_link != blank and block.settings.button_label == blank
+            assign is_link = true
+          endif
+        -%}
+        {%- if is_link -%}
+          <a href="{{ block.settings.button_link }}" class="dual-banner__item content-align-{{ block.settings.content_alignment }}" {{ block.shopify_attributes }}>
+        {%- else -%}
+          <div class="dual-banner__item content-align-{{ block.settings.content_alignment }}" {{ block.shopify_attributes }}>
+        {%- endif -%}
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 1500 | image_tag: class: 'dual-banner__image', loading: 'lazy' }}
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'dual-banner__image placeholder-svg' }}
+          {%- endif -%}
+
+          <div class="dual-banner__overlay">
+            {%- if block.settings.title != blank -%}
+              <h3 class="dual-banner__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="dual-banner__description">{{ block.settings.description | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+              <a href="{{ block.settings.button_link }}" class="dual-banner__button">{{ block.settings.button_label | escape }}</a>
+            {%- endif -%}
+          </div>
+        {%- if is_link -%}
+          </a>
+        {%- else -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Dual Banner",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "Choose way to Love"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Image Sizing"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio_desktop",
+      "label": "Desktop Aspect Ratio",
+      "default": "16 / 9",
+      "options": [
+        { "value": "21 / 9", "label": "Compact (21:9)" },
+        { "value": "16 / 9", "label": "Standard (16:9)" },
+        { "value": "3 / 2", "label": "Tall (3:2)" },
+        { "value": "4 / 3", "label": "Taller (4:3)" },
+        { "value": "1 / 1", "label": "Square (1:1)" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_ratio_mobile",
+      "label": "Mobile Aspect Ratio",
+      "default": "4 / 3",
+      "options": [
+        { "value": "16 / 9", "label": "Wide (16:9)" },
+        { "value": "4 / 3", "label": "Standard (4:3)" },
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 5", "label": "Portrait (4:5)" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Dual Banner",
+      "blocks": [
+        {
+          "type": "banner",
+          "settings": {
+            "button_link": "shopify://collections/all"
+          }
+        },
+        {
+          "type": "banner",
+          "settings": {
+            "button_link": "shopify://collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

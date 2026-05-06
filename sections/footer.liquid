@@ -1,0 +1,893 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .footer {
+    margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+    border-top: none !important;
+  }
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .footer {
+      margin-top: {{ section.settings.margin_top }}px;
+    }
+
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Force Custom Dark Brown Theme Colors */
+  .footer.color-{{ section.settings.color_scheme }} {
+    background-color: #32211B !important;
+    background: #32211B !important;
+    color: #FFFFFF !important;
+    margin-top: 5rem !important; /* Added space above footer */
+    margin-bottom: 0 !important;
+    padding-bottom: 3rem !important; /* adjust for bottom breathing room without external gap */
+  }
+
+  /* Ensure body doesn't push up from the bottom unpredictably */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main#MainContent {
+    flex-grow: 1;
+  }
+
+  /* Custom Footer Styles */
+  .custom-footer__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.5rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .footer .page-width {
+    padding-left: clamp(12px, 2.5vw, 32px);
+    padding-right: clamp(12px, 2.5vw, 32px);
+  }
+
+  @media screen and (min-width: 750px) {
+    .custom-footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: clamp(2rem, 3vw, 5rem);
+      margin-top: 2rem;
+    }
+  }
+
+  .custom-footer__column--brand-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* changed from center to flex-start to align with text if desired, or keep center */
+    text-align: left;
+  }
+  @media screen and (min-width: 750px) {
+    .custom-footer__column--brand-desktop {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+
+
+  .custom-footer__logo a {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .custom-footer__logo img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .custom-footer__logo:hover img {
+    transform: scale(1.05);
+  }
+
+
+  .custom-footer__dmca-badge {
+    display: inline-block;
+    background-color: #00b67a;
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    margin-top: 0.8rem;
+    letter-spacing: 0.02em;
+  }
+
+  .custom-footer__heading {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #FFFFFF !important;
+  }
+
+  .custom-footer__links {
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+     font-weight: 400;
+  }
+
+  .custom-footer__links li {
+    margin-bottom: 0.8rem;
+  }
+
+  .custom-footer__links a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    transition: color 0.2s ease;
+  }
+
+  .custom-footer__links a:hover {
+    color: var(--top-bar-accent, #F97B22);
+    text-decoration: none;
+  }
+
+  .custom-footer__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.1rem;
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .custom-footer__contact-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .custom-footer__contact-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: #F97B22;
+  }
+
+  .custom-footer__contact-item a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none;
+  }
+
+  .custom-footer__contact-item a:hover {
+    color: var(--top-bar-accent, #F97B22);
+    text-decoration: none;
+  }
+
+  .custom-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 1.6rem;
+    margin-top: 3.2rem;
+  }
+
+  .custom-footer__copyright {
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6) !important;
+    line-height: 1.6;
+  }
+
+  .custom-footer__copyright a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none;
+  }
+
+  .custom-footer__copyright a:hover {
+    color: var(--top-bar-accent, #F97B22);
+    text-decoration: none;
+  }
+
+  .custom-footer__mobile-brand {
+    display: none;
+  }
+  @media screen and (max-width: 749px) {
+    .custom-footer__grid {
+      gap: 2rem;
+    }
+
+    .custom-footer__column {
+      flex: 0 0 calc(40% - 1rem);
+      text-align: left;
+    }
+
+    .custom-footer__column:nth-child(odd) {
+      flex: 0 0 calc(60% - 1rem);
+    }
+
+    .custom-footer__mobile-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .custom-footer__mobile-brand .custom-footer__logo {
+      font-size: 3.2rem;
+      margin-bottom: 2rem;
+    }
+
+
+
+    .custom-footer__contact-item {
+      justify-content: flex-start;
+    }
+
+    .custom-footer__copyright {
+      text-align: center;
+      padding-bottom: 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  /* Social & Payment Row */
+  .custom-footer__social-payment-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8rem;
+    padding: 6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .custom-footer__social-icons {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+  }
+
+  .custom-footer__separator {
+    height: 40px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    margin: 0 1rem;
+  }
+
+  .custom-footer__brand-socials {
+    display: flex;
+    flex-direction: row !important;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  .custom-footer__brand-socials a,
+  .custom-footer__brand-socials a:link,
+  .custom-footer__brand-socials a:visited {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #FFFFFF !important;
+    transition: all 0.3s ease;
+  }
+
+  .custom-footer__brand-socials a:hover {
+    background-color: var(--top-bar-accent, #F97B22);
+    transform: translateY(-2px);
+  }
+
+  .custom-footer__brand-socials a svg,
+  .custom-footer__brand-socials a svg path {
+    width: 16px;
+    height: 16px;
+    fill: #FFFFFF !important;
+    color: #FFFFFF !important;
+  }
+
+  .custom-footer__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    text-decoration: none;
+    opacity: 0.9;
+  }
+
+  .custom-footer__social-link:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+
+  .custom-footer__social-link svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Branded Social Colors for Icons */
+  .custom-footer__social-link--facebook { color: #1877f2; }
+  .custom-footer__social-link--facebook-group { color: #1877f2; }
+  .custom-footer__social-link--discord { color: #5865f2; }
+  .custom-footer__social-link--twitter { color: #1da1f2; }
+  .custom-footer__social-link--youtube { color: #ff0000; }
+  .custom-footer__social-link--instagram path {
+    fill: url(#instagram-gradient) !important;
+  }
+  .custom-footer__social-link--pinterest { color: #e60023; }
+
+  .custom-footer__social-link svg {
+    fill: currentColor;
+  }
+
+  .custom-footer__payment-icons {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .custom-footer__payment-icons li {
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-footer__payment-icons svg,
+  .custom-footer__payment-icons .icon {
+    height: auto;
+    width: auto;
+    display: block;
+  }
+
+  .custom-footer__payment-icons .w-24 { width: 9.6rem; }
+  .custom-footer__payment-icons .w-16 { width: 6.4rem; }
+  .custom-footer__payment-icons .w-12 { width: 4.8rem; }
+  .custom-footer__payment-icons .w-8  { width: 3.2rem; }
+
+  @media screen and (max-width: 749px) {
+    .custom-footer__social-payment-row {
+      display: none;
+    }
+
+    .custom-footer__social-icons {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .custom-footer__separator {
+      display: none;
+    }
+
+    .custom-footer__payment-icons {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+{%- endstyle -%}
+
+<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    <!-- Instagram Gradient Definition -->
+    <svg width="0" height="0" style="position:absolute;">
+      <radialGradient id="instagram-gradient" r="150%" cx="30%" cy="107%">
+        <stop stop-color="#fdf497" offset="0" />
+        <stop stop-color="#fdf497" offset="0.05" />
+        <stop stop-color="#fd5949" offset="0.45" />
+        <stop stop-color="#d6249f" offset="0.6" />
+        <stop stop-color="#285AEB" offset="0.9" />
+      </radialGradient>
+    </svg>
+
+    <!-- Social & Payment Row removed as requested -->
+
+    <div class="custom-footer__grid">
+      <div class="custom-footer__column custom-footer__column--brand-desktop">
+        <div class="custom-footer__logo" style="margin-bottom: -5px;">
+          <a href="{{ routes.root_url }}">
+            {%- if settings.logo != blank -%}
+              {{ settings.logo | image_url: width: 300 | image_tag: alt: shop.name }}
+            {%- else -%}
+              {{ shop.name }}
+            {%- endif -%}
+          </a>
+        </div>
+
+        <p
+          class="custom-footer__brand-desc"
+          style="font-size: 13px; line-height: 1.5; margin-top: 20px; margin-bottom: 15px; color: rgba(255,255,255,0.9);"
+        >
+          Spreading joy through personalized gifts that celebrate family, love, and togetherness.
+        </p>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 20px; line-height: 1.6;">
+          <strong style="color: #ffffff; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; display: inline-block;"
+            >Company Address</strong
+          ><br>
+          Jollimate<br>
+          Operated by SURESHIRTS LLC<br>
+          173 Juniper Drive<br>
+          Stateline, NV 89449<br>
+          United States<br>
+          <br>
+          <strong style="color: #ffffff; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; margin-top: 10px; display: inline-block;"
+            >Customer Support</strong
+          ><br>
+          <strong>Phone:</strong> +1 (725) 720-2299<br>
+          <strong>Hours:</strong> Mon–Fri, 9AM–5PM PST<br>
+          <strong>Email:</strong> support@jollimate.com<br>
+        </div>
+
+        <h3 class="custom-footer__heading" style="margin-top: 2rem; font-size: 1.4rem;">Be Social Stay Connected!</h3>
+        <div class="custom-footer__brand-socials">
+          {%- if settings.social_facebook_link != blank -%}
+            <a href="{{ settings.social_facebook_link }}" title="Facebook">{%- render 'icon-facebook' -%}</a>
+          {%- endif -%}
+          {%- if settings.social_instagram_link != blank -%}
+            <a href="{{ settings.social_instagram_link }}" title="Instagram">{%- render 'icon-instagram' -%}</a>
+          {%- endif -%}
+          {%- if settings.social_twitter_link != blank -%}
+            <a href="{{ settings.social_twitter_link }}" title="X">{%- render 'icon-x' -%}</a>
+          {%- endif -%}
+          {%- if settings.social_youtube_link != blank -%}
+            <a href="{{ settings.social_youtube_link }}" title="YouTube">{%- render 'icon-youtube' -%}</a>
+          {%- endif -%}
+          {%- if settings.social_pinterest_link != blank -%}
+            <a href="{{ settings.social_pinterest_link }}" title="Pinterest">{%- render 'icon-pinterest' -%}</a>
+          {%- endif -%}
+          {%- if settings.social_tiktok_link != blank -%}
+            <a href="{{ settings.social_tiktok_link }}" title="TikTok">{%- render 'icon-tiktok' -%}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'logo' -%}
+            {%- comment -%}Logo is already rendered hardcoded above for consistency{%- endcomment -%}
+
+          {%- when 'link_list' -%}
+            <div class="custom-footer__column" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="custom-footer__heading">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+              <ul class="custom-footer__links">
+                {%- if block.settings.menu != blank -%}
+                  {%- for link in block.settings.menu.links -%}
+                    <li>
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {%- endfor -%}
+                {%- endif -%}
+              </ul>
+            </div>
+
+          {%- when 'contact_info' -%}
+            <div class="custom-footer__column" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="custom-footer__heading">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+
+              {%- for i in (1..6) -%}
+                {%- capture icon_id -%}icon_{{ i }}{%- endcapture -%}
+                {%- capture text_id -%}text_{{ i }}{%- endcapture -%}
+                {%- capture link_id -%}link_{{ i }}{%- endcapture -%}
+
+                {%- assign icon_val = block.settings[icon_id] -%}
+                {%- assign text_val = block.settings[text_id] -%}
+                {%- assign link_val = block.settings[link_id] -%}
+
+                {%- if text_val != blank -%}
+                  <div class="custom-footer__contact-item">
+                    {%- if icon_val != 'none' -%}
+                      <div class="custom-footer__contact-icon">
+                        {%- if icon_val == 'phone' -%}
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                          </svg>
+                        {%- elsif icon_val == 'email' -%}
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                          </svg>
+                        {%- else -%}
+                          {% render 'icon-accordion', icon: icon_val %}
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                    {%- if link_val != blank -%}
+                      <a href="{{ link_val }}">{{ text_val }}</a>
+                    {%- else -%}
+                      <span>{{ text_val }}</span>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:15px 0;margin-top:15px;">
+      {% for type in shop.enabled_payment_types %}
+      {{ type | payment_type_svg_tag: class: 'icon icon-payment', style: 'width:38px;height:24px;' }}
+      {% endfor %}
+    </div>
+    <!-- Bottom Copyright Section -->
+    <div class="custom-footer__bottom">
+      <div class="custom-footer__copyright">Copyright © 2026 Jollimate. All Rights Reserved</div>
+
+      <!-- Mobile Brand Section removed as it is now integrated into the main flex grid -->
+    </div>
+  </div>
+</footer>
+
+<style>
+  @media screen and (min-width: 750px) {
+    .mobile-only {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 749px) {
+    .desktop-only {
+      display: none !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "logo_text",
+          "label": "Logo Text",
+          "default": "Jollimate"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "DMCA PROTECTED"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
+      "type": "contact_info",
+      "name": "Contact Info",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "GET IN TOUCH",
+          "label": "Heading"
+        },
+        { "type": "header", "content": "Item 1" },
+        {
+          "type": "select",
+          "id": "icon_1",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "chat_bubble", "label": "Chat" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "map_pin", "label": "Location" }
+          ],
+          "default": "chat_bubble"
+        },
+        { "type": "text", "id": "text_1", "label": "Text", "default": "Livechat 24/7" },
+        { "type": "url", "id": "link_1", "label": "Link" },
+        { "type": "header", "content": "Item 2" },
+        {
+          "type": "select",
+          "id": "icon_2",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "chat_bubble", "label": "Chat" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "map_pin", "label": "Location" }
+          ],
+          "default": "phone"
+        },
+        { "type": "text", "id": "text_2", "label": "Text", "default": "+1 (585) 366 8846" },
+        { "type": "url", "id": "link_2", "label": "Link" },
+        { "type": "header", "content": "Item 3" },
+        {
+          "type": "select",
+          "id": "icon_3",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "chat_bubble", "label": "Chat" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "map_pin", "label": "Location" }
+          ],
+          "default": "phone"
+        },
+        { "type": "text", "id": "text_3", "label": "Text", "default": "+1 (844) 976 2696" },
+        { "type": "url", "id": "link_3", "label": "Link" },
+        { "type": "header", "content": "Item 4" },
+        {
+          "type": "select",
+          "id": "icon_4",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "chat_bubble", "label": "Chat" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "map_pin", "label": "Location" }
+          ],
+          "default": "none"
+        },
+        { "type": "text", "id": "text_4", "label": "Text" },
+        { "type": "url", "id": "link_4", "label": "Link" },
+        { "type": "header", "content": "Item 5" },
+        {
+          "type": "select",
+          "id": "icon_5",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "chat_bubble", "label": "Chat" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "map_pin", "label": "Location" }
+          ],
+          "default": "none"
+        },
+        { "type": "text", "id": "text_5", "label": "Text" },
+        { "type": "url", "id": "link_5", "label": "Link" },
+        { "type": "header", "content": "Item 6" },
+        {
+          "type": "select",
+          "id": "icon_6",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "chat_bubble", "label": "Chat" },
+            { "value": "phone", "label": "Phone" },
+            { "value": "email", "label": "Email" },
+            { "value": "map_pin", "label": "Location" }
+          ],
+          "default": "none"
+        },
+        { "type": "text", "id": "text_6", "label": "Text" },
+        { "type": "url", "id": "link_6", "label": "Link" }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.newsletter_enable.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "newsletter_heading",
+      "default": "Subscribe to our emails",
+      "label": "t:sections.footer.settings.newsletter_heading.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__9.content",
+      "info": "t:sections.footer.settings.header__9.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_follow_on_shop",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_follow_on_shop.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__8.content",
+      "info": "t:sections.footer.settings.header__8.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_policy",
+      "default": false,
+      "label": "t:sections.footer.settings.show_policy.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.footer.settings.margin_top.label",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_list",
+        "settings": {
+          "heading": "INFORMATION"
+        }
+      },
+      {
+        "type": "link_list",
+        "settings": {
+          "heading": "POLICIES"
+        }
+      },
+      {
+        "type": "link_list",
+        "settings": {
+          "heading": "HELP"
+        }
+      },
+      {
+        "type": "contact_info",
+        "settings": {
+          "heading": "GET IN TOUCH",
+          "text_1": "Livechat 24/7",
+          "icon_1": "chat_bubble",
+          "text_2": "+1 (585) 366 8846",
+          "icon_2": "phone",
+          "text_3": "+1 (844) 976 2696",
+          "icon_3": "phone"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

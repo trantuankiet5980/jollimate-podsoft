@@ -1,0 +1,231 @@
+{%- if section.settings.show_section -%}
+{%- style -%}
+  .help-center-articles {
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+  }
+
+  .help-center-articles__column {
+    flex: 1;
+  }
+
+  .help-center-articles__title {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #333;
+  }
+
+  .help-center-articles__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .help-center-articles__item {
+    margin-bottom: 1.5rem;
+  }
+
+  .help-center-articles__link {
+    text-decoration: none;
+    color: #0088cc;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .help-center-articles__link:hover {
+    text-decoration: underline;
+  }
+
+  .help-center-articles__icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    color: #ccc;
+  }
+
+  /* FAQ Accordion Styles */
+  .help-center-faq__details {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .help-center-faq__summary {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: #0088cc;
+    font-size: 1.4rem;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .help-center-faq__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .help-center-faq__summary:hover {
+    text-decoration: underline;
+  }
+
+  .help-center-faq__answer {
+    padding: 1.5rem 0 0 2.6rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .help-center-faq__answer p {
+    margin-bottom: 1rem;
+  }
+
+  .help-center-faq__read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #0088cc;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 749px) {
+    .help-center-articles {
+      flex-direction: column;
+      padding: 2rem;
+      gap: 3rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width">
+  <div class="help-center-articles">
+    <div class="help-center-articles__column">
+      <h2 class="help-center-articles__title">
+        {{ section.settings.trending_title }}
+      </h2>
+      <ul class="help-center-articles__list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'article' -%}
+            <li class="help-center-articles__item">
+              <a href="{{ block.settings.url }}" class="help-center-articles__link">
+                <svg class="help-center-articles__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                {{ block.settings.title }}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="help-center-articles__column">
+      <h2 class="help-center-articles__title">
+        {{ section.settings.faq_title }}
+      </h2>
+      <div class="help-center-faq__container">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            <details class="help-center-faq__details">
+              <summary class="help-center-faq__summary">
+                <svg class="help-center-articles__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <span>{{ block.settings.title }}</span>
+              </summary>
+              <div class="help-center-faq__answer">
+                {{ block.settings.answer }}
+                {%- if block.settings.read_more_url != blank -%}
+                  <a href="{{ block.settings.read_more_url }}" class="help-center-faq__read-more">Read more</a>
+                {%- endif -%}
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Help Center Articles",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show Section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trending_title",
+      "label": "Trending Articles Title",
+      "default": "Trending Articles"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "FAQs Title",
+      "default": "FAQs"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Trending Article",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Article URL"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "FAQ Title"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        },
+        {
+          "type": "url",
+          "id": "read_more_url",
+          "label": "Read More URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

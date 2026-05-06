@@ -1,0 +1,54 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "custom_liquid_A3GPRe": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .announcement-mini-bar{background-color:#1a3a5c;color:#fff;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 12px;padding:6px 15px;font-size:14px;letter-spacing:0.5px;line-height:1.35;text-align:center}\n  .announcement-mini-bar__item{display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}\n  .announcement-mini-bar__icon{width:18px;height:18px;flex:0 0 18px}\n  .announcement-mini-bar__divider{opacity:0.6}\n  @media(max-width:749px){\n    .announcement-mini-bar{padding:4px 8px;font-size:12px;letter-spacing:0;gap:2px 8px;line-height:1.25}\n    .announcement-mini-bar__item{gap:4px;white-space:normal}\n    .announcement-mini-bar__icon{width:14px;height:14px;flex-basis:14px}\n    .announcement-mini-bar__divider{display:none}\n  }\n</style>\n<div class=\"announcement-mini-bar\">\n  <span class=\"announcement-mini-bar__item\"><svg class=\"announcement-mini-bar__icon\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg> FREE SHIPPING on orders $49+</span>\n  <span class=\"announcement-mini-bar__divider\">|</span>\n  <span class=\"announcement-mini-bar__item\">Personalized gifts made with love in the USA</span>\n</div>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        ".header__heading-link .h2 {font-size: 13px;}"
+      ],
+      "settings": {
+        "logo_position": "top-left",
+        "menu": "main-menu",
+        "highlight_item_name": "Mother's Day",
+        "highlight_item_color": "#f97b22",
+        "highlight_item_icon": "",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "reduce-logo-size",
+        "show_line_separator": false,
+        "color_scheme": "accent-2",
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "trending_queries": "mother,photo,t-shirt,mug,apron",
+        "trending_queries_heading": "",
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_A3GPRe",
+    "header"
+  ]
+}

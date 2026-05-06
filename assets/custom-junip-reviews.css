@@ -1,0 +1,220 @@
+/* Custom CSS for Junip empty reviews state to match design */
+
+.junip-product-review-empty {
+  display: block !important;
+  width: 100%;
+}
+
+/* Adjust Junip container padding and max-width */
+.junip-product-review-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 auto !important;
+  max-width: 90% !important;
+  width: 100% !important;
+}
+
+.junip-product-review-empty .junip-product-review-container::before {
+  content: "Customer Reviews";
+  display: block;
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+.junip-product-review-empty .junip-no-reviews {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: left !important;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0 30px 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 30px !important;
+}
+
+/* The wrapper containing the text */
+.junip-product-review-empty .junip-no-reviews > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0 !important;
+  /* Hiding default text "Be the first to leave a review" */
+}
+
+/* The empty stars */
+.junip-product-review-empty .junip-no-reviews > div::before {
+  content: "☆☆☆☆☆";
+  color: #f97b22;
+  /* Orange/Red color from the image */
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+/* The new 'Be the first to write a review' text */
+.junip-product-review-empty .junip-no-reviews > div::after {
+  content: "Be the first to write a review";
+  font-size: 14px !important;
+  color: #121212;
+  font-weight: 400;
+}
+
+/* The "Write a review" button styling (applies to ALL review states) */
+.junip-write-review-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  background: #f97b22 !important;
+  /* Theme Red / Solid Red */
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 0 18px !important;
+  min-height: 38px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: normal !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap;
+}
+
+.junip-write-review-cta:hover {
+  opacity: 0.9 !important;
+}
+
+/* Fix populated review layout to push the button far to the right */
+.junip-product-review-summary-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.junip-product-review-summary-actions {
+  margin-left: auto !important;
+  padding-left: 20px;
+}
+
+/* Reset default paddings from Junip injected classes */
+.junip-product-review-empty .junip-pt-5,
+.junip-product-review-empty .junip-mt-3 {
+  padding-top: 0 !important;
+}
+
+/* Hide the "Reviewed on Junip" footer */
+.junip-powered-by-footer {
+  display: none !important;
+}
+
+/* Align and compact the review filters container ONLY on Desktop */
+@media screen and (min-width: 990px) {
+  .junip-filters-container {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .junip-filters-container > * {
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+
+  /* Make the dropdown container itself look like a modern button */
+  .junip-select,
+  .junip-filter-checkbox-container {
+    border: 1px solid #e1e1e1 !important;
+    border-radius: 30px !important;
+    /* Pill Shape */
+    padding: 8px 18px !important;
+    background-color: #ffffff !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    font-size: 14px !important;
+  }
+
+  .junip-select:hover,
+  .junip-filter-checkbox-container:hover {
+    border-color: #b5b5b5 !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Hide the native select visually but keep it functional to click */
+  .junip-select select {
+    opacity: 0 !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+  }
+
+  /* Style the inner content that replaces the hidden select */
+  .junip-select-content {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    pointer-events: none !important;
+    /* Let clicks pass to the hidden select */
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  .junip-select-label {
+    color: #555 !important;
+    margin-right: 4px !important;
+  }
+
+  .junip-selected-value {
+    color: #000 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Replace the old arrow */
+  .junip-select-arrow {
+    margin-left: 10px !important;
+    border-left: 4px solid transparent !important;
+    border-right: 4px solid transparent !important;
+    border-top: 5px solid #666 !important;
+    width: 0 !important;
+    height: 0 !important;
+    display: inline-block !important;
+    margin-top: 2px !important;
+  }
+
+  .junip-filter-checkbox-container > label {
+    margin: 0 0 0 8px !important;
+    cursor: pointer !important;
+  }
+}
+
+/* Hide review author avatar completely */
+/* .junip-avatar {
+    display: none !important;
+} */
+
+/* Make reviewer name bold and prominent */
+/* .junip-customer-name {
+    font-weight: 700 !important;
+    color: #121212 !important;
+    font-size: 1.05em !important;
+} */

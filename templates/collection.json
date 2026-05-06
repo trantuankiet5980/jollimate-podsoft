@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "rich_text_FWAQTE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9Jg4UQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Looking for a meaningful gift for Mom?</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_UHXbe7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Create a personalized gift with names, photos, and memories she’ll cherish forever.<br/><br/>Perfect for Mother’s Day, birthdays, or simply to say “I love you.” ❤️<br/><br/>Trusted by thousands of customers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9Jg4UQ",
+        "text_UHXbe7"
+      ],
+      "custom_css": [
+        "h2 {font-size: 34px; line-height: 1.2; margin-bottom: 10px;}",
+        ".rte p {max-width: 650px; margin: 6px auto; line-height: 1.4; font-size: 15px;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": false,
+        "enable_filtering": false,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "rich_text_FWAQTE",
+    "product-grid"
+  ]
+}

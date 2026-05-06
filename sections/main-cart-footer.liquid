@@ -1,0 +1,34 @@
+{% comment %}
+  Cart footer is now integrated into main-cart-items.liquid
+  This section is kept minimal to avoid duplicate content
+{% endcomment %}
+
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}" style="display: none;">
+  <div class="js-contents">
+    <!-- Hidden but kept for JavaScript compatibility -->
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

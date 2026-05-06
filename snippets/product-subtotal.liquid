@@ -1,0 +1,45 @@
+{{ 'component-main-product-subtotal.css' | asset_url | stylesheet_tag }}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div class="product-subtotal-block" 
+  id="ProductSubtotal-{{ section_id }}"
+  data-price="{{ current_variant.price }}"
+  data-compare-at-price="{{ current_variant.compare_at_price | default: current_variant.price }}"
+  data-money-format="{{ shop.money_with_currency_format | escape }}"
+  style="display: block !important; opacity: 1 !important; visibility: visible !important;"
+>
+  {%- assign price = current_variant.price -%}
+  {%- assign compare_at_price = current_variant.compare_at_price | default: price -%}
+  {%- assign saving = compare_at_price | minus: price -%}
+
+  <div class="product-subtotal__row">
+    <div class="product-subtotal__label-group">
+      <span class="product-subtotal__main-label">Subtotal</span>
+      <span class="product-subtotal__item-count">(<span class="js-item-count">1</span> item)</span>
+    </div>
+    <span class="product-subtotal__value product-subtotal__value--top" id="SubtotalValue-{{ section_id }}">
+      {{ price | money }}
+    </span>
+  </div>
+
+  <div class="product-subtotal__row product-subtotal__row--saving" {% if saving <= 0 %}style="display:none;"{% endif %}>
+    <div class="product-subtotal__label-group">
+      <span class="product-subtotal__saving-text">
+        (You're saving <span id="SavingValue-{{ section_id }}">{{ saving | money }}</span>)
+      </span>
+      <span class="product-subtotal__info-icon">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      </span>
+    </div>
+  </div>
+
+  <div class="product-subtotal__divider"></div>
+
+  <div class="product-subtotal__row product-subtotal__row--total">
+    <span class="product-subtotal__label">Item Subtotal</span>
+    <span class="product-subtotal__value" id="ItemSubtotalValue-{{ section_id }}">
+      {{ price | money }}
+    </span>
+  </div>
+</div>

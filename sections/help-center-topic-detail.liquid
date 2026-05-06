@@ -1,0 +1,278 @@
+{%- style -%}
+  .help-center-topic {
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .help-center-topic__breadcrumbs {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    color: #999;
+  }
+
+  .help-center-topic__breadcrumbs a {
+    color: #0088cc;
+    text-decoration: none;
+  }
+
+  .help-center-topic__layout {
+    display: flex;
+    gap: 6rem;
+  }
+
+  /* Sidebar */
+  .help-center-topic__sidebar {
+    width: 250px;
+    flex-shrink: 0;
+  }
+
+  .help-center-topic__sidebar-title {
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .help-center-topic__sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .help-center-topic__sidebar-item {
+    margin-bottom: 1rem;
+  }
+
+  .help-center-topic__sidebar-link {
+    display: block;
+    padding: 1.2rem 1.5rem;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .help-center-topic__sidebar-link:hover {
+    background-color: #f5f5f5;
+  }
+
+  .help-center-topic__sidebar-link.is-active {
+    background-color: #fff1f0;
+    color: #333;
+  }
+
+  /* Main Content */
+  .help-center-topic__main {
+    flex: 1;
+  }
+
+  .help-center-topic__header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .help-center-topic__icon {
+    width: 80px;
+    height: 80px;
+    background-color: #fff1f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F97B22;
+    flex-shrink: 0;
+  }
+
+  .help-center-topic__icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .help-center-topic__title {
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+
+  .help-center-topic__article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .help-center-topic__article-item {
+    margin-bottom: 2rem;
+  }
+
+  .help-center-topic__article-link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: #0088cc;
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+
+  .help-center-topic__article-link:hover {
+    text-decoration: underline;
+  }
+
+  .help-center-topic__article-icon {
+    width: 16px;
+    height: 16px;
+    color: #ccc;
+    flex-shrink: 0;
+  }
+
+  .help-center-topic__footer {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    color: #999;
+  }
+
+  .help-center-topic__footer a {
+    color: #F97B22;
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 989px) {
+    .help-center-topic__layout {
+      flex-direction: column;
+      gap: 4rem;
+    }
+    .help-center-topic__sidebar {
+      width: 100%;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width">
+  <div class="help-center-topic">
+    <!-- Breadcrumbs -->
+    <nav class="help-center-topic__breadcrumbs" role="navigation" aria-label="breadcrumbs">
+      <a href="/pages/help-center">Home</a>
+      <span aria-hidden="true"> / </span>
+      <span>{{ page.title }}</span>
+    </nav>
+
+    <div class="help-center-topic__layout">
+      <!-- Sidebar -->
+      <aside class="help-center-topic__sidebar">
+        <h2 class="help-center-topic__sidebar-title">Categories</h2>
+        <ul class="help-center-topic__sidebar-list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'category' -%}
+              <li class="help-center-topic__sidebar-item">
+                <a href="{{ block.settings.url }}" class="help-center-topic__sidebar-link{% if block.settings.url == request.path %} is-active{% endif %}">
+                  {{ block.settings.title }}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="help-center-topic__main">
+        <div class="help-center-topic__header">
+          <div class="help-center-topic__icon">
+            {%- if section.settings.icon_svg != blank -%}
+              {{ section.settings.icon_svg }}
+            {%- else -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              </svg>
+            {%- endif -%}
+          </div>
+          <h1 class="help-center-topic__title">{{ section.settings.title | default: page.title }}</h1>
+        </div>
+
+        <ul class="help-center-topic__article-list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'article' -%}
+              <li class="help-center-topic__article-item">
+                <a href="{{ block.settings.url }}" class="help-center-topic__article-link">
+                  <svg class="help-center-topic__article-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  {{ block.settings.title }}
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        <div class="help-center-topic__footer">
+          <div>Gossby Help Center</div>
+          <a href="#">Back to top</a>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Help Center Topic Detail",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Topic Title",
+      "info": "Leave blank to use page title"
+    },
+    {
+      "type": "html",
+      "id": "icon_svg",
+      "label": "Icon SVG"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Sidebar Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Link Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "article",
+      "name": "Topic Article",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article Title"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Article URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

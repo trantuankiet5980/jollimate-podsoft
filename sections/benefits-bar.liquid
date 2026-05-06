@@ -1,0 +1,239 @@
+{% schema %}
+{
+  "name": "Benefits Bar",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f97b22"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_item",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "gift", "label": "Gift" },
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "secure", "label": "Secure / Shield" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "star", "label": "Star" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "gift"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Short description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Bar",
+      "blocks": [
+        { "type": "benefit_item" },
+        { "type": "benefit_item" },
+        { "type": "benefit_item" },
+        { "type": "benefit_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .bb-section {
+    background: {{ section.settings.background_color | default: '#f97b22' }};
+    min-height: 112px;
+    display: flex;
+    align-items: center;
+  }
+
+  .bb-container {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 16px 20px;
+    width: 100%;
+  }
+
+  .bb-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .bb-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .bb-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .bb-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .bb-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bb-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+
+  .bb-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.3;
+  }
+
+  /* Divider between items */
+  .bb-item + .bb-item {
+    padding-left: 12px;
+  }
+
+  /* Tablet */
+  @media (max-width: 990px) {
+    .bb-grid {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .bb-item {
+      flex: 1 1 calc(50% - 8px);
+      justify-content: flex-start;
+      padding: 8px 0;
+    }
+    .bb-item + .bb-item {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 749px) {
+    .bb-container {
+      padding: 12px 16px;
+    }
+    .bb-grid {
+      gap: 4px;
+    }
+    .bb-item {
+      flex: 1 1 calc(50% - 4px);
+      gap: 8px;
+    }
+    .bb-icon {
+      width: 36px;
+      height: 36px;
+    }
+    .bb-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+    .bb-title {
+      font-size: 12px;
+    }
+    .bb-subtitle {
+      font-size: 10px;
+    }
+  }
+</style>
+
+<div
+  class="bb-section"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="bb-container">
+    <div class="bb-grid">
+      {% for block in section.blocks %}
+        <div class="bb-item" {{ block.shopify_attributes }}>
+          <div class="bb-icon">
+            {% case block.settings.icon %}
+              {% when 'gift' %}
+                <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1"></rect><path d="M12 8v13"></path><path d="M3 14h18"></path><path d="M19 8H5a2 2 0 0 1 0-4h2.6a2 2 0 0 1 1.5.7L12 8"></path><path d="M5 8h14a2 2 0 0 0 0-4h-2.6a2 2 0 0 0-1.5.7L12 8"></path></svg>
+              {% when 'shipping' %}
+                <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              {% when 'secure' %}
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+              {% when 'returns' %}
+                <svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"></path><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><path d="M7 23l-4-4 4-4"></path><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+              {% when 'star' %}
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              {% when 'heart' %}
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              {% when 'check' %}
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            {% endcase %}
+          </div>
+          <div class="bb-text">
+            <span class="bb-title">{{ block.settings.title }}</span>
+            <span class="bb-subtitle">{{ block.settings.subtitle }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

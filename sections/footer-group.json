@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "newsletter_popup": {
+      "type": "newsletter-popup",
+      "settings": {
+        "enable_popup": false,
+        "popup_delay": 20,
+        "discount_title": "Get 10% Off",
+        "discount_subtitle": "Your first order at Jollimate",
+        "popup_body": "<p>Subscribe to our newsletter and receive a <strong>10% discount code</strong> for your first purchase. Personalized gifts made with love in the USA.</p>",
+        "button_text": "GET MY 10% OFF",
+        "discount_code": "WELCOME10",
+        "primary_color": "#f97b22"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "footer_logo": {
+          "type": "logo",
+          "settings": {
+            "logo_text": "Jollimate",
+            "badge_text": ""
+          }
+        },
+        "footer_policies": {
+          "type": "link_list",
+          "settings": {
+            "heading": "POLICIES",
+            "menu": "footer-policies-menu"
+          }
+        },
+        "footer_information": {
+          "type": "link_list",
+          "settings": {
+            "heading": "INFORMATION",
+            "menu": "footer"
+          }
+        },
+        "footer_help": {
+          "type": "link_list",
+          "settings": {
+            "heading": "HELP",
+            "menu": "help"
+          }
+        }
+      },
+      "block_order": [
+        "footer_logo",
+        "footer_policies",
+        "footer_information",
+        "footer_help"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    }
+  },
+  "order": [
+    "newsletter_popup",
+    "footer"
+  ]
+}

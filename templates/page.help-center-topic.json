@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "help-center-topic-detail",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "title": "Shipping & Delivery",
+            "url": "#"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "title": "Product Information",
+            "url": "#"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "title": "Promotion Code",
+            "url": "#"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "title": "Manage & Cancel Order",
+            "url": "#"
+          }
+        },
+        "cat_5": {
+          "type": "category",
+          "settings": {
+            "title": "General Inquiries",
+            "url": "#"
+          }
+        },
+        "cat_6": {
+          "type": "category",
+          "settings": {
+            "title": "Payments & Billing",
+            "url": "#"
+          }
+        },
+        "cat_7": {
+          "type": "category",
+          "settings": {
+            "title": "Refund & Resend",
+            "url": "#"
+          }
+        },
+        "cat_8": {
+          "type": "category",
+          "settings": {
+            "title": "Account Questions",
+            "url": "#"
+          }
+        },
+        "cat_9": {
+          "type": "category",
+          "settings": {
+            "title": "Product Care",
+            "url": "#"
+          }
+        },
+        "article_1": {
+          "type": "article",
+          "settings": {
+            "title": "What are my options for shipping methods?",
+            "url": "#"
+          }
+        },
+        "article_2": {
+          "type": "article",
+          "settings": {
+            "title": "Track my orders using my Gossby Account",
+            "url": "#"
+          }
+        },
+        "article_3": {
+          "type": "article",
+          "settings": {
+            "title": "Where does my Gossby order ship from?",
+            "url": "#"
+          }
+        },
+        "article_4": {
+          "type": "article",
+          "settings": {
+            "title": "How long does it take to receive my Gossby order?",
+            "url": "#"
+          }
+        },
+        "article_5": {
+          "type": "article",
+          "settings": {
+            "title": "Why is my parcel stuck in transit for days?",
+            "url": "#"
+          }
+        },
+        "article_6": {
+          "type": "article",
+          "settings": {
+            "title": "What shipping couriers does Gossby use?",
+            "url": "#"
+          }
+        },
+        "article_7": {
+          "type": "article",
+          "settings": {
+            "title": "Does Gossby ship to my country?",
+            "url": "#"
+          }
+        },
+        "article_8": {
+          "type": "article",
+          "settings": {
+            "title": "How to track my Gossby order?",
+            "url": "#"
+          }
+        },
+        "article_9": {
+          "type": "article",
+          "settings": {
+            "title": "How to use Express shipping service?",
+            "url": "#"
+          }
+        },
+        "article_10": {
+          "type": "article",
+          "settings": {
+            "title": "Why is my Gossby tracking number not working?",
+            "url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6",
+        "cat_7",
+        "cat_8",
+        "cat_9",
+        "article_1",
+        "article_2",
+        "article_3",
+        "article_4",
+        "article_5",
+        "article_6",
+        "article_7",
+        "article_8",
+        "article_9",
+        "article_10"
+      ],
+      "settings": {
+        "title": "Shipping & Delivery",
+        "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><rect x=\"2\" y=\"8\" width=\"14\" height=\"10\" rx=\"2\" ry=\"2\"></rect><path d=\"M16 11h3l3 3v4h-6v-7z\"></path><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>"
+      }
+    },
+    "footer": {
+      "type": "help-center-footer",
+      "settings": {
+        "brand_text": "Jollimate Help Center"
+      }
+    }
+  },
+  "order": ["main", "footer"]
+}

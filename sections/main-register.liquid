@@ -1,0 +1,287 @@
+{{ 'auth-page.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} ── Font selector ─────────────────────────────────── {%- endcomment -%}
+{%- assign brand_font = section.settings.brand_font | default: 'inter' -%}
+{%- case brand_font -%}
+  {%- when 'playfair' -%}
+    {%- assign font_family = 'Playfair Display, serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap' -%}
+  {%- when 'poppins' -%}
+    {%- assign font_family = 'Poppins, sans-serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap' -%}
+  {%- when 'nunito' -%}
+    {%- assign font_family = 'Nunito, sans-serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap' -%}
+  {%- when 'lobster' -%}
+    {%- assign font_family = 'Lobster, cursive' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Lobster&display=swap' -%}
+  {%- when 'raleway' -%}
+    {%- assign font_family = 'Raleway, sans-serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&display=swap' -%}
+  {%- when 'dm_serif' -%}
+    {%- assign font_family = 'DM Serif Display, serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap' -%}
+  {%- else -%}
+    {%- assign font_family = 'Inter, sans-serif' -%}
+    {%- assign font_url = '' -%}
+{%- endcase -%}
+{%- if font_url != '' -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="{{ font_url }}" rel="stylesheet">
+{%- endif -%}
+
+{%- comment -%} ── Brand panel background ────────────────────────── {%- endcomment -%}
+{%- if section.settings.brand_image != blank -%}
+  {%- assign brand_bg = section.settings.brand_image | image_url: width: 1200 -%}
+  {%- assign brand_style = 'background-image:url('
+    | append: brand_bg
+    | append: ');background-size:cover;background-position:center;'
+  -%}
+{%- else -%}
+  {%- assign brand_style = '' -%}
+{%- endif -%}
+
+<div class="auth-page">
+  {%- comment -%} ══════════ LEFT: BRAND PANEL ══════════ {%- endcomment -%}
+  <div
+    class="auth-page__brand{% if section.settings.brand_image != blank %} auth-page__brand--has-image{% endif %}"
+    style="{{ brand_style }}"
+  >
+    <a href="{{ routes.root_url }}" class="auth-page__brand-logo">
+      {%- if settings.logo != blank -%}
+        {{
+          settings.logo
+          | image_url: width: 200
+          | image_tag: alt: shop.name, loading: 'eager', width: 200, height: 60
+        }}
+      {%- else -%}
+        <span class="auth-page__brand-logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <h2 class="auth-page__brand-headline" style="font-family:{{ font_family }};">
+      {{ section.settings.brand_headline }}
+    </h2>
+    <p class="auth-page__brand-sub">{{ section.settings.brand_subtext }}</p>
+
+    {%- if section.settings.feature_1 != blank
+      or section.settings.feature_2 != blank
+      or section.settings.feature_3 != blank
+    -%}
+      <ul class="auth-page__brand-features" style="list-style:none;padding:0;margin:0;">
+        {%- if section.settings.feature_1 != blank -%}
+          <li class="auth-page__brand-feature">
+            <span class="auth-page__brand-feature-dot"></span>
+            <span>{{ section.settings.feature_1 }}</span>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.feature_2 != blank -%}
+          <li class="auth-page__brand-feature">
+            <span class="auth-page__brand-feature-dot"></span>
+            <span>{{ section.settings.feature_2 }}</span>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.feature_3 != blank -%}
+          <li class="auth-page__brand-feature">
+            <span class="auth-page__brand-feature-dot"></span>
+            <span>{{ section.settings.feature_3 }}</span>
+          </li>
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ══════════ RIGHT: FORM PANEL ══════════ {%- endcomment -%}
+  <div class="auth-page__form-panel">
+    <div class="auth-page__form-inner">
+      {%- comment -%} Mobile logo {%- endcomment -%}
+      <div class="auth-page__form-logo">
+        <a href="{{ routes.root_url }}">
+          {%- if settings.logo != blank -%}
+            {{
+              settings.logo
+              | image_url: width: 130
+              | image_tag: alt: shop.name, loading: 'eager', width: 130, height: 40
+            }}
+          {%- else -%}
+            <span class="auth-page__form-logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+
+      {%- form 'create_customer', id: 'RegisterForm', novalidate: 'novalidate' -%}
+        {%- assign register_success = form.posted_successfully? -%}
+
+        {%- if register_success -%}
+          {%- comment -%} ── SUCCESS → redirect to login with notice ── {%- endcomment -%}
+          <script>
+            window.location.replace('{{ routes.account_login_url }}?registered=1');
+          </script>
+          <noscript>
+            <meta http-equiv="refresh" content="0;url={{ routes.account_login_url }}?registered=1">
+          </noscript>
+          <p style="text-align:center;color:#999;padding:60px 0 40px;font-size:1.4rem;">
+            Account created! Redirecting...
+          </p>
+
+        {%- else -%}
+          {%- comment -%} ── REGISTER FORM ──────────────────────────── {%- endcomment -%}
+          <h1 class="auth-page__heading">Create your account</h1>
+          <p class="auth-page__subheading">It's free and takes less than a minute</p>
+
+          {%- if form.errors -%}
+            <div class="auth-page__error">
+              {%- if form.errors contains 'email' -%}
+                This email is already registered.
+                <a
+                  href="{{ routes.account_login_url }}"
+                  style="color:inherit;font-weight:700;text-decoration:underline;"
+                  >Sign in</a
+                >
+                or
+                <a
+                  href="{{ routes.account_login_url }}"
+                  onclick="sessionStorage.setItem('authShowRecover','1');"
+                  style="color:inherit;font-weight:700;text-decoration:underline;"
+                  >reset your password</a
+                >.
+              {%- elsif form.errors contains 'password' -%}
+                Password must be at least 8 characters.
+              {%- else -%}
+                Please check your details and try again.
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          <div class="auth-page__field">
+            <label class="auth-page__label" for="RegisterEmail">Email address</label>
+            <input
+              class="auth-page__input"
+              type="email"
+              name="customer[email]"
+              id="RegisterEmail"
+              autocomplete="email"
+              autocapitalize="off"
+              spellcheck="false"
+              placeholder="you@example.com"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+              {% endif %}
+              required
+            >
+          </div>
+
+          <div class="auth-page__field">
+            <label class="auth-page__label" for="RegisterPassword">Password</label>
+            <input
+              class="auth-page__input"
+              type="password"
+              name="customer[password]"
+              id="RegisterPassword"
+              autocomplete="new-password"
+              placeholder="At least 8 characters"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+              {% endif %}
+              required
+            >
+          </div>
+
+          <div class="auth-page__field">
+            <label class="auth-page__label" for="RegisterPasswordConfirm">Confirm password</label>
+            <input
+              class="auth-page__input"
+              type="password"
+              name="customer[password_confirmation]"
+              id="RegisterPasswordConfirm"
+              autocomplete="new-password"
+              placeholder="Re-enter your password"
+              required
+            >
+          </div>
+
+          <button type="submit" class="auth-page__btn">Create Account</button>
+
+          <p class="auth-page__terms">
+            By creating an account you agree to our
+            <a href="/policies/terms-of-service" target="_blank">Terms of Service</a>
+            and <a href="/policies/privacy-policy" target="_blank">Privacy Policy</a>.
+          </p>
+
+          <p class="auth-page__footer">
+            Already have an account?
+            <a href="{{ routes.account_login_url }}">Sign in</a>
+          </p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left Panel"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Background image",
+      "info": "Leave empty to use the default red gradient. Recommended: 1200 x 1600px"
+    },
+    {
+      "type": "select",
+      "id": "brand_font",
+      "label": "Headline font",
+      "default": "inter",
+      "options": [
+        { "value": "inter", "label": "Inter (default)" },
+        { "value": "playfair", "label": "Playfair Display – elegant serif" },
+        { "value": "dm_serif", "label": "DM Serif Display – classy" },
+        { "value": "poppins", "label": "Poppins – modern" },
+        { "value": "nunito", "label": "Nunito – friendly & round" },
+        { "value": "raleway", "label": "Raleway – minimal" },
+        { "value": "lobster", "label": "Lobster – playful script" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "brand_headline",
+      "label": "Headline",
+      "default": "Start your gifting journey today"
+    },
+    {
+      "type": "text",
+      "id": "brand_subtext",
+      "label": "Subtext",
+      "default": "Create an account to enjoy exclusive perks, order tracking, and personalised recommendations."
+    },
+    {
+      "type": "header",
+      "content": "Feature list (optional)"
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "100% personalised products"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Secure & private checkout"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "Exclusive member discounts"
+    }
+  ]
+}
+{% endschema %}

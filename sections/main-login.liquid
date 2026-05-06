@@ -1,0 +1,324 @@
+{{ 'auth-page.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} Font for brand headline {%- endcomment -%}
+{%- assign brand_font = section.settings.brand_font | default: 'inter' -%}
+{%- case brand_font -%}
+  {%- when 'playfair' -%}
+    {%- assign font_family = 'Playfair Display, serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap' -%}
+  {%- when 'poppins' -%}
+    {%- assign font_family = 'Poppins, sans-serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap' -%}
+  {%- when 'nunito' -%}
+    {%- assign font_family = 'Nunito, sans-serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap' -%}
+  {%- when 'lobster' -%}
+    {%- assign font_family = 'Lobster, cursive' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Lobster&display=swap' -%}
+  {%- when 'raleway' -%}
+    {%- assign font_family = 'Raleway, sans-serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&display=swap' -%}
+  {%- when 'dm_serif' -%}
+    {%- assign font_family = 'DM Serif Display, serif' -%}
+    {%- assign font_url = 'https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap' -%}
+  {%- else -%}
+    {%- assign font_family = 'Inter, sans-serif' -%}
+    {%- assign font_url = '' -%}
+{%- endcase -%}
+{%- if font_url != '' -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="{{ font_url }}" rel="stylesheet">
+{%- endif -%}
+
+{%- comment -%} Build brand panel inline style: image or gradient {%- endcomment -%}
+{%- if section.settings.brand_image != blank -%}
+  {%- assign brand_bg = section.settings.brand_image | image_url: width: 1200 -%}
+  {%- assign brand_style = 'background-image:url('
+    | append: brand_bg
+    | append: ');background-size:cover;background-position:center;'
+  -%}
+{%- else -%}
+  {%- assign brand_style = '' -%}
+{%- endif -%}
+
+<div class="auth-page">
+  {%- comment -%} ══════════ LEFT: BRAND PANEL ══════════ {%- endcomment -%}
+  <div
+    class="auth-page__brand{% if section.settings.brand_image != blank %} auth-page__brand--has-image{% endif %}"
+    style="{{ brand_style }}"
+  >
+    <a href="{{ routes.root_url }}" class="auth-page__brand-logo">
+      {%- if settings.logo != blank -%}
+        {{
+          settings.logo
+          | image_url: width: 200
+          | image_tag: alt: shop.name, loading: 'eager', width: 200, height: 60
+        }}
+      {%- else -%}
+        <span class="auth-page__brand-logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <h2 class="auth-page__brand-headline" style="font-family:{{ font_family }};">
+      {{ section.settings.brand_headline }}
+    </h2>
+    <p class="auth-page__brand-sub">{{ section.settings.brand_subtext }}</p>
+
+    {%- if section.settings.feature_1 != blank
+      or section.settings.feature_2 != blank
+      or section.settings.feature_3 != blank
+    -%}
+      <ul class="auth-page__brand-features" style="list-style:none;padding:0;margin:0;">
+        {%- if section.settings.feature_1 != blank -%}
+          <li class="auth-page__brand-feature">
+            <span class="auth-page__brand-feature-dot"></span>
+            <span>{{ section.settings.feature_1 }}</span>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.feature_2 != blank -%}
+          <li class="auth-page__brand-feature">
+            <span class="auth-page__brand-feature-dot"></span>
+            <span>{{ section.settings.feature_2 }}</span>
+          </li>
+        {%- endif -%}
+        {%- if section.settings.feature_3 != blank -%}
+          <li class="auth-page__brand-feature">
+            <span class="auth-page__brand-feature-dot"></span>
+            <span>{{ section.settings.feature_3 }}</span>
+          </li>
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ══════════ RIGHT: FORM PANEL ══════════ {%- endcomment -%}
+  <div class="auth-page__form-panel">
+    <div class="auth-page__form-inner">
+      {%- comment -%} Logo shown only on mobile/tablet {%- endcomment -%}
+      <div class="auth-page__form-logo">
+        <a href="{{ routes.root_url }}">
+          {%- if settings.logo != blank -%}
+            {{
+              settings.logo
+              | image_url: width: 130
+              | image_tag: alt: shop.name, loading: 'eager', width: 130, height: 40
+            }}
+          {%- else -%}
+            <span class="auth-page__form-logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+
+      {%- comment -%} ── RECOVER PASSWORD SECTION ─────────────────────── {%- endcomment -%}
+      <div class="auth-page__recover-section" id="auth-recover">
+        <h1 class="auth-page__heading">Reset Password</h1>
+        <p class="auth-page__subheading">Enter your email and we'll send you a reset link.</p>
+
+        {%- form 'recover_customer_password' -%}
+          {%- assign recover_success = form.posted_successfully? -%}
+
+          {%- if form.errors -%}
+            <div class="auth-page__error">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+
+          {%- if recover_success -%}
+            <div class="auth-page__success">
+              We've sent a reset link to your email. Please check your inbox and spam folder.
+            </div>
+          {%- endif -%}
+
+          <div class="auth-page__field">
+            <label class="auth-page__label" for="RecoverEmail">Email address</label>
+            <input
+              class="auth-page__input"
+              type="email"
+              name="email"
+              id="RecoverEmail"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              placeholder="you@example.com"
+              {% if form.errors %}
+                aria-invalid="true"
+              {% endif %}
+            >
+          </div>
+
+          <button type="submit" class="auth-page__btn">Send Reset Link</button>
+
+          <p class="auth-page__footer" style="margin-top:20px;">
+            <a href="{{ routes.account_login_url }}">Back to Sign In</a>
+          </p>
+        {%- endform -%}
+      </div>
+
+      {%- comment -%} ── LOGIN SECTION ────────────────────────────────── {%- endcomment -%}
+      <div class="auth-page__login-section" id="auth-login">
+        <h1 class="auth-page__heading">Welcome back</h1>
+        <p class="auth-page__subheading">Sign in to your {{ shop.name }} account</p>
+
+        {%- comment -%} Show check-email notice after successful registration {%- endcomment -%}
+        <div class="auth-page__registered-notice" id="registered-notice" style="display:none;">
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid #16a34a;border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:1.4rem;color:#15803d;line-height:1.6;">
+            <strong>Account created!</strong> Please check your email and click the confirmation link to activate your
+            account.
+          </div>
+        </div>
+
+        {%- form 'customer_login', novalidate: 'novalidate' -%}
+          <input type="hidden" name="return_to" value="{{ routes.root_url }}">
+
+          {%- if form.errors -%}
+            <div class="auth-page__error">{{ form.errors | default_errors }}</div>
+          {%- endif -%}
+
+          <div class="auth-page__field">
+            <label class="auth-page__label" for="CustomerEmail">Email address</label>
+            <input
+              class="auth-page__input"
+              type="email"
+              name="customer[email]"
+              id="CustomerEmail"
+              autocomplete="email"
+              autocorrect="off"
+              autocapitalize="off"
+              placeholder="you@example.com"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              required
+            >
+          </div>
+
+          <div class="auth-page__field">
+            <label class="auth-page__label" for="CustomerPassword">Password</label>
+            <input
+              class="auth-page__input"
+              type="password"
+              name="customer[password]"
+              id="CustomerPassword"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+              {% if form.errors contains 'form' %}
+                aria-invalid="true"
+              {% endif %}
+              required
+            >
+          </div>
+
+          <div class="auth-page__options">
+            <label class="auth-page__checkbox-label">
+              <input type="checkbox" name="customer[remember_me]">
+              Stay signed in
+            </label>
+            <a href="#auth-recover" class="auth-page__forgot" onclick="toggleRecover(event)">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="auth-page__btn">Sign In</button>
+        {%- endform -%}
+
+        <p class="auth-page__footer">
+          Don't have an account?
+          <a href="{{ routes.account_register_url }}">Create one</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Toggle to recover password view
+  function toggleRecover(e) {
+    e.preventDefault();
+    document.getElementById('auth-login').style.display = 'none';
+    document.getElementById('auth-recover').style.display = 'block';
+    var el = document.getElementById('RecoverEmail');
+    if (el) el.focus();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Show "check email" notice after successful registration (?registered=1)
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('registered') === '1') {
+      var notice = document.getElementById('registered-notice');
+      if (notice) notice.style.display = 'block';
+      // Clean URL without reloading
+      var url = window.location.pathname;
+      window.history.replaceState({}, '', url);
+    }
+
+    // Auto-open recover section if flagged from register page
+    if (sessionStorage.getItem('authShowRecover') === '1') {
+      sessionStorage.removeItem('authShowRecover');
+      toggleRecover({ preventDefault: function () {} });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-login.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left Panel"
+    },
+    {
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Background image",
+      "info": "Leave empty to use the default red gradient. Recommended size: 1200 x 1600px"
+    },
+    {
+      "type": "select",
+      "id": "brand_font",
+      "label": "Headline font",
+      "default": "inter",
+      "options": [
+        { "value": "inter", "label": "Inter (default)" },
+        { "value": "playfair", "label": "Playfair Display – elegant serif" },
+        { "value": "dm_serif", "label": "DM Serif Display – classy" },
+        { "value": "poppins", "label": "Poppins – modern" },
+        { "value": "nunito", "label": "Nunito – friendly & round" },
+        { "value": "raleway", "label": "Raleway – minimal" },
+        { "value": "lobster", "label": "Lobster – playful script" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "brand_headline",
+      "label": "Headline",
+      "default": "Your Happy Place for Custom Gifts"
+    },
+    {
+      "type": "text",
+      "id": "brand_subtext",
+      "label": "Subtext",
+      "default": "Sign in to track orders, save favourites, and get personalised gift ideas."
+    },
+    {
+      "type": "header",
+      "content": "Feature list (optional)"
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Feature 1",
+      "default": "Free shipping on orders over $50"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Feature 2",
+      "default": "Thousands of 5-star reviews"
+    },
+    {
+      "type": "text",
+      "id": "feature_3",
+      "label": "Feature 3",
+      "default": "Fully personalised designs"
+    }
+  ]
+}
+{% endschema %}

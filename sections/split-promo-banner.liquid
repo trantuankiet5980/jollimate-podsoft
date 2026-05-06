@@ -1,0 +1,258 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  .spb-section {
+    font-family: 'Poppins', sans-serif;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  /* Desktop: page-width centered */
+  .spb-desktop-outer {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Mobile: centered container */
+  .spb-mobile-outer {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  /* ───── DESKTOP ───── */
+  .spb-desktop {
+    position: relative;
+    border-radius: 0;
+    overflow: hidden;
+    display: none;
+  }
+
+  .spb-desktop-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .spb-image-link {
+    display: block;
+    line-height: 0;
+  }
+
+  .spb-heading {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 10px;
+    line-height: 1.3;
+  }
+
+  .spb-subtext {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 20px;
+    line-height: 1.6;
+  }
+
+  .spb-btn {
+    display: inline-block;
+    background: #1a6fa8;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+
+  .spb-btn:hover {
+    background: #155d8a;
+  }
+
+  /* ───── MOBILE ───── */
+  .spb-mobile {
+    display: block;
+    overflow: hidden;
+  }
+
+  .spb-mobile-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+    line-height: 1.3;
+  }
+
+  .spb-mobile-subtext {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 22px;
+    line-height: 1.6;
+  }
+
+  .spb-mobile-btn {
+    display: inline-block;
+    background: #1a6fa8;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+  }
+
+  .spb-mobile-btn:hover {
+    background: #155d8a;
+  }
+
+  .spb-mobile-image-wrap {
+    width: 100%;
+  }
+
+  .spb-mobile-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  /* Show/Hide per breakpoint */
+  @media (min-width: 750px) {
+    .spb-desktop { display: block; }
+    .spb-mobile  { display: none; }
+  }
+
+  @media (max-width: 749px) {
+    .spb-desktop { display: none; }
+    .spb-mobile  { display: block; }
+  }
+</style>
+
+<div class="spb-section">
+
+  {%- comment -%} DESKTOP {%- endcomment -%}
+  <div class="spb-desktop-outer">
+    <div class="spb-desktop">
+      {%- if section.settings.desktop_image != blank -%}
+        {%- if section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="spb-image-link" aria-label="{{ section.settings.heading | escape }}">
+        {%- endif -%}
+        {{ section.settings.desktop_image | image_url: width: 1400 | image_tag: loading: 'lazy', class: 'spb-desktop-image', alt: section.settings.heading }}
+        {%- if section.settings.button_link != blank -%}
+          </a>
+        {%- endif -%}
+      {%- else -%}
+        <div style="background:#eee;height:400px;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;">Upload Desktop Image</div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment -%} MOBILE {%- endcomment -%}
+  <div class="spb-mobile-outer">
+    <div class="spb-mobile">
+      <div class="spb-mobile-image-wrap">
+        {%- if section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="spb-image-link" aria-label="{{ section.settings.heading | escape }}">
+        {%- endif -%}
+        {%- if section.settings.mobile_image != blank -%}
+          {{ section.settings.mobile_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'spb-mobile-image', alt: section.settings.heading }}
+        {%- elsif section.settings.desktop_image != blank -%}
+          {{ section.settings.desktop_image | image_url: width: 600 | image_tag: loading: 'lazy', class: 'spb-mobile-image', alt: section.settings.heading }}
+        {%- else -%}
+          <div style="background:#eee;height:220px;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;">Upload Mobile Image</div>
+        {%- endif -%}
+        {%- if section.settings.button_link != blank -%}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Split Promo Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "America's 250th Anniversary"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Mark 250 years with custom gifts and decor made for proud everyday moments."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image (full width background)"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image (below text, optional – falls back to desktop image)"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Mobile Card Background",
+      "default": "#fdf0ec"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split Promo Banner"
+    }
+  ]
+}
+{% endschema %}

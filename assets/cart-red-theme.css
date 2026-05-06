@@ -1,0 +1,130 @@
+/* Red theme for cart, checkout, and product buttons */
+
+/* ===== CART COUNT BADGE ===== */
+.cart-count-bubble,
+.header__icon--cart .cart-count-bubble,
+#cart-icon-bubble .cart-count-bubble {
+  background-color: #F48525 !important;
+  color: #ffffff !important;
+}
+
+.cart-count-bubble span {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+/* ===== CHECKOUT BUTTONS ===== */
+#CartDrawer-Checkout,
+.cart__checkout-button,
+button[name="checkout"] {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
+  font-weight: bold !important;
+}
+
+#CartDrawer-Checkout:hover,
+.cart__checkout-button:hover,
+button[name="checkout"]:hover {
+  background-color: #cc0000 !important;
+  border-color: #cc0000 !important;
+}
+
+/* ===== CONTINUE SHOPPING BUTTON ===== */
+.cart__continue-shopping,
+.cart-drawer__continue-shopping,
+.button--secondary {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
+  font-weight: bold !important;
+}
+
+.cart__continue-shopping:hover,
+.cart-drawer__continue-shopping:hover,
+.button--secondary:hover {
+  background-color: #cc0000 !important;
+  border-color: #cc0000 !important;
+}
+
+/* ===== TEEINBLUE ADD TO CART BUTTON ===== */
+.tee-btn-atc,
+button[name="add"].tee-btn-atc {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+}
+
+.tee-btn-atc:hover,
+button[name="add"].tee-btn-atc:hover {
+  background-color: #cc0000 !important;
+}
+
+/* ===== PRODUCT FORM SUBMIT (Standard Shopify) ===== */
+.product-form__submit {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.product-form__submit:hover {
+  background-color: #cc0000 !important;
+}
+
+/* ===== SIZE/VARIANT SELECTOR (Active state) ===== */
+.product-form__input input:checked+label {
+  border-color: #ff0000 !important;
+}
+
+/* ===== CART DRAWER - ALL BUTTONS ===== */
+cart-drawer .drawer__footer button,
+cart-drawer .cart-drawer__footer button,
+.drawer__footer .button,
+.cart-drawer__footer .button {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
+  font-weight: bold !important;
+}
+
+cart-drawer .drawer__footer button:hover,
+cart-drawer .cart-drawer__footer button:hover,
+.drawer__footer .button:hover,
+.cart-drawer__footer .button:hover {
+  background-color: #cc0000 !important;
+  border-color: #cc0000 !important;
+}
+
+/* ===== CART EMPTY - CONTINUE SHOPPING LINK ===== */
+.cart__ctas a,
+.drawer__inner a.button,
+cart-drawer a.button {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
+  font-weight: bold !important;
+}
+
+.cart__ctas a:hover,
+.drawer__inner a.button:hover,
+cart-drawer a.button:hover {
+  background-color: #cc0000 !important;
+  border-color: #cc0000 !important;
+}
+
+/* ===== PRIMARY BUTTONS (Global red theme) ===== */
+.button--primary,
+button.button--primary {
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border-color: #ff0000 !important;
+}
+
+.button--primary:hover,
+button.button--primary:hover {
+  background-color: #cc0000 !important;
+  border-color: #cc0000 !important;
+}

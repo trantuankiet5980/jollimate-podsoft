@@ -1,0 +1,152 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "essential_estimated_app_block_LYX6g4": {
+          "type": "shopify://apps/essential-estimated/blocks/app-block/02a895dd-b5b5-4103-8966-c6914aa8309e",
+          "settings": {}
+        },
+        "delivery_estimate_A9XHjR": {
+          "type": "delivery_estimate",
+          "settings": {
+            "extra_text": "Orders can be cancelled or modified within 2 hours after being placed.",
+            "extra_text_2": "The above time frame is applied with standard shipping methods.",
+            "custom_richtext": "<ul><li>Orders can be cancelled or modified within 2 hours after being placed.</li><li>The above time frame is applied with standard shipping methods.</li></ul><h4>Refund & Replacement</h4><ul><li>We stand behind the quality of our products.If your item arrives damaged, misprinted, or incorrect, please contact us within <strong>30 days of delivery</strong> with photos of the issue.</li><li>We will gladly <strong>send you a free replacement or issue a full refund</strong>. Because our products are made-to-order, we do not accept returns for incorrect size selection or change of mind.</li></ul>",
+            "custom_html": ""
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "junip_junip_product_summary_BXCJap": {
+          "type": "shopify://apps/junip/blocks/junip-product-summary/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}",
+            "alignment": ""
+          }
+        },
+        "custom_price_9CppbX": {
+          "type": "custom_price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_78DNCi": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:15px;padding:15px;border:1px solid #eee;border-radius:8px;background:#fafafa;\">\n  <div style=\"text-align:center;flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px;\">\n    <svg width=\"28\" height=\"28\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg>\n    <div style=\"font-size:11px;color:#555;font-weight:600;\">Secure<br>Payment</div>\n  </div>\n  <div style=\"text-align:center;flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px;\">\n    <svg width=\"28\" height=\"28\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path><path d=\"M12 8v4\"></path><path d=\"M12 16h.01\"></path></svg>\n    <div style=\"font-size:11px;color:#555;font-weight:600;\">Made in<br>the USA</div>\n  </div>\n  <div style=\"text-align:center;flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px;\">\n    <svg width=\"28\" height=\"28\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>\n    <div style=\"font-size:11px;color:#555;font-weight:600;\">Free Ship<br>$49+</div>\n  </div>\n  <div style=\"text-align:center;flex:1;min-width:80px;display:flex;flex-direction:column;align-items:center;gap:6px;\">\n    <svg width=\"28\" height=\"28\" fill=\"none\" stroke=\"#333\" stroke-width=\"2\" viewBox=\"0 0 24 24\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>\n    <div style=\"font-size:11px;color:#555;font-weight:600;\">Quality<br>Guaranteed</div>\n  </div>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "essential_estimated_app_block_LYX6g4",
+        "delivery_estimate_A9XHjR",
+        "title",
+        "junip_junip_product_summary_BXCJap",
+        "custom_price_9CppbX",
+        "variant_picker",
+        "price",
+        "quantity_selector",
+        "buy_buttons",
+        "custom_liquid_78DNCi"
+      ],
+      "custom_css": [],
+      "settings": {
+        "show_breadcrumbs": true,
+        "enable_sticky_info": true,
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "hide",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "1770343820412ff0a9": {
+      "type": "apps",
+      "blocks": {
+        "junip_junip_product_review_7MHLfm": {
+          "type": "shopify://apps/junip/blocks/junip-product-review/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "product": "{{product}}",
+            "title": "",
+            "alignment": "",
+            "sortOrder": "highestRated"
+          }
+        }
+      },
+      "block_order": [
+        "junip_junip_product_review_7MHLfm"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Related products",
+        "heading_size": "h2",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 28
+      }
+    },
+    "17707989952118d0f3": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1770343820412ff0a9",
+    "related-products",
+    "17707989952118d0f3"
+  ]
+}

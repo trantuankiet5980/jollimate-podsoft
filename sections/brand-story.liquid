@@ -1,0 +1,193 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  .bs-section-{{ section.id }} {
+    font-family: 'Poppins', sans-serif;
+    background-color: {{ section.settings.background_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .bs-container-{{ section.id }} {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .bs-title-{{ section.id }} {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 36px;
+  }
+
+  .bs-grid-{{ section.id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid #f0ddd0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: {{ section.settings.card_bg_color }};
+  }
+
+  .bs-col-{{ section.id }} {
+    padding: 32px 36px;
+    text-align: center;
+  }
+
+  .bs-col-{{ section.id }}:first-child {
+    border-right: 1px solid #f0ddd0;
+  }
+
+  .bs-col-heading-{{ section.id }} {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 14px;
+    text-align: center;
+  }
+
+  .bs-col-text-{{ section.id }} {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+    margin: 0;
+    text-align: justify;
+  }
+
+  @media (max-width: 749px) {
+    .bs-grid-{{ section.id }} {
+      grid-template-columns: 1fr;
+    }
+    .bs-col-{{ section.id }}:first-child {
+      border-right: none;
+      border-bottom: 1px solid #f0ddd0;
+    }
+    .bs-col-{{ section.id }} {
+      padding: 24px 20px;
+    }
+    .bs-title-{{ section.id }} {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+  }
+</style>
+
+<div class="bs-section-{{ section.id }}">
+  <div class="bs-container-{{ section.id }}">
+    {%- if section.settings.title != blank -%}
+      <h2 class="bs-title-{{ section.id }}">{{ section.settings.title }}</h2>
+    {%- endif -%}
+
+    <div class="bs-grid-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        <div class="bs-col-{{ section.id }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.col_heading != blank -%}
+            <h3 class="bs-col-heading-{{ section.id }}">{{ block.settings.col_heading }}</h3>
+          {%- endif -%}
+          {%- if block.settings.col_text != blank -%}
+            <p class="bs-col-text-{{ section.id }}">{{ block.settings.col_text }}</p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Brand Story",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What is Jollimate?"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#eef4fb"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "col_heading",
+          "label": "Column Heading",
+          "default": "Wonderful story"
+        },
+        {
+          "type": "textarea",
+          "id": "col_text",
+          "label": "Column Text",
+          "default": "Jollimate was built on the rising trend of personalization, offering unique gifts that celebrate individuality and love. Our online store simplifies the design process, allowing customers to easily personalize items with their interests and names."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Story",
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "col_heading": "Wonderful story",
+            "col_text": "Jollimate was built on the rising trend of personalization, offering unique gifts that celebrate individuality and love. Our online store simplifies the design process, allowing customers to easily personalize items with their interests and names."
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "col_heading": "Creativity meets emotion",
+            "col_text": "Bringing your unique stories to life through art. Jollimate is where creativity meets emotion. Every design tells a story, and each print is a journey. Let's make your ideas a reality with unique personalized gifts for every occasion!"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

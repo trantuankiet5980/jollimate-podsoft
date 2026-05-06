@@ -1,0 +1,278 @@
+{% schema %}
+{
+  "name": "Browse Recommendations",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Browse More Recommendations"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Base Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 8,
+      "label": "Products to show"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_tab",
+      "name": "Filter Tab",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab Label",
+          "default": "All"
+        },
+        {
+          "type": "text",
+          "id": "tag_filter",
+          "label": "Tag to filter",
+          "info": "Leave empty to show all products"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Browse Recommendations",
+      "blocks": [
+        { "type": "filter_tab", "settings": { "label": "See All" } },
+        { "type": "filter_tab", "settings": { "label": "For Him", "tag_filter": "Him" } },
+        { "type": "filter_tab", "settings": { "label": "For Her", "tag_filter": "Her" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div
+  class="page-width browse-more-section"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  {% if section.settings.heading != blank %}
+    <h3 class="browse-more-heading">{{ section.settings.heading }}</h3>
+  {% endif %}
+
+  <!-- Tab Buttons -->
+  <div class="browse-tabs-container">
+    {% for block in section.blocks %}
+      <button
+        class="browse-tab-btn {% if forloop.first %}active{% endif %}"
+        data-filter-tag="{{ block.settings.tag_filter | downcase | escape }}"
+        onclick="filterProducts(this)"
+      >
+        {{ block.settings.label }}
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="browse-tab-content-wrapper">
+    {%- assign collection = section.settings.collection -%}
+    {% if collection != blank %}
+      <ul class="grid product-grid grid--5-col-desktop grid--2-col-tablet-down" role="list">
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {% assign product_tags = product.tags | join: ',' | downcase %}
+          <li class="grid__item browse-product-item" data-tags="{{ product_tags }}">
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: 'portrait',
+              show_secondary_image: true,
+              show_vendor: false,
+              show_rating: true,
+              lazy_load: true,
+              section_id: section.id
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {% else %}
+      <!-- Placeholder if no collection selected -->
+      <div class="grid product-grid grid--4-col-desktop grid--2-col-tablet-down">
+        {% for i in (1..4) %}
+          <div class="grid__item">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            <p style="text-align:center; color: #666; margin-top: 10px;">Select a collection first</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="{{ section.settings.collection.url | default: '/collections/all' }}" class="button button--secondary"
+      >See More</a
+    >
+  </div>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  .browse-more-section {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .browse-more-heading {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 24px;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  .browse-tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .browse-tab-btn {
+    background: #fff;
+    border: 1.5px solid #333;
+    padding: 10px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .browse-tab-btn:hover {
+    background-color: #f97b22;
+    color: #fff;
+    border-color: #f97b22;
+  }
+
+  .browse-tab-btn.active {
+    background-color: #f97b22;
+    color: #fff;
+    border-color: #f97b22;
+  }
+
+  /* Placeholder grid styling fixes */
+  .browse-tab-content-wrapper .grid__item svg {
+    width: 100%;
+    height: auto;
+    background: #f0f0f0;
+  }
+
+  /* Hidden helper class */
+  .browse-product-item.hidden {
+    display: none !important;
+  }
+
+  /* Truncate title */
+  .browse-product-item .card__heading {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 2 lines max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.4em; /* Optional: ensures consistent height for 2 lines */
+  }
+
+  /* Ensure consistent image height */
+  .browse-product-item .media {
+    padding-bottom: 125% !important; /* Force 4:5 or portrait ratio */
+  }
+  .browse-product-item .media > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* HIDE UNIT PRICE CAPTION */
+  .browse-product-item .unit-price {
+    display: none !important;
+  }
+  .browse-product-item .caption {
+    display: none !important;
+  }
+
+  @media (max-width: 749px) {
+    .browse-more-heading {
+      font-size: 28px;
+    }
+
+    .browse-tab-btn {
+      font-size: 13px;
+      padding: 8px 18px;
+    }
+  }
+</style>
+
+<script>
+  function filterProducts(btn) {
+    // 1. Remove active class from all buttons
+    var buttons = document.getElementsByClassName('browse-tab-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('active');
+    }
+
+    // 2. Add active class to clicked button
+    btn.classList.add('active');
+
+    // 3. Get the filter tag
+    var tagToFilter = btn.getAttribute('data-filter-tag');
+
+    // 4. Get all products
+    var products = document.getElementsByClassName('browse-product-item');
+
+    // 5. Hide/Show logic
+    for (var j = 0; j < products.length; j++) {
+      var productTags = products[j].getAttribute('data-tags');
+
+      // If tag filter is empty ("All"), show everything
+      if (tagToFilter === '') {
+        products[j].classList.remove('hidden');
+      } else {
+        // Check if product tags contain the filter tag
+        if (productTags.indexOf(tagToFilter) > -1) {
+          products[j].classList.remove('hidden');
+        } else {
+          products[j].classList.add('hidden');
+        }
+      }
+    }
+  }
+</script>

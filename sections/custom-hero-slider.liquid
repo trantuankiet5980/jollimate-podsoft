@@ -1,0 +1,436 @@
+{% schema %}
+{
+  "name": "Custom Hero Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Desktop Image (1400px+)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_tablet",
+          "label": "Tablet Image (992px-1400px)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image (<992px)"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Slide Link (if no buttons)"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Banner Image"
+        },
+        {
+          "type": "header",
+          "content": "Content Overlay"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_content",
+          "label": "Show Content Overlay",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "✨ Special Collection"
+        },
+        {
+          "type": "text",
+          "id": "heading_line1",
+          "label": "Heading Line 1",
+          "default": "Gifts That Bring"
+        },
+        {
+          "type": "text",
+          "id": "heading_line2",
+          "label": "Heading Line 2 (Italic)",
+          "default": "Joy & Happiness"
+        },
+        {
+          "type": "textarea",
+          "id": "subtext",
+          "label": "Subtext",
+          "default": "Personalized gifts made with love for the people who matter most."
+        },
+        {
+          "type": "text",
+          "id": "button1_text",
+          "label": "Button 1 Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button1_url",
+          "label": "Button 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "button2_text",
+          "label": "Button 2 Text",
+          "default": "View Collections"
+        },
+        {
+          "type": "url",
+          "id": "button2_url",
+          "label": "Button 2 URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero Slider",
+      "blocks": [
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div
+  class="custom-hero-slider-section"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="hero-slider-container">
+    <div class="hero-slider-wrapper">
+      {% for block in section.blocks %}
+        <div class="hero-slide-item" {{ block.shopify_attributes }}>
+          {%- comment -%} Background Image {%- endcomment -%}
+          <picture>
+            <source media="(min-width: 1401px)" srcset="{{ block.settings.image_desktop | image_url: width: 2000 }}">
+            <source
+              media="(min-width: 992px)"
+              srcset="{{ block.settings.image_tablet | default: block.settings.image_desktop | image_url: width: 1400 }}"
+            >
+            <img
+              src="{{ block.settings.image_mobile | default: block.settings.image_desktop | image_url: width: 800 }}"
+              alt="{{ block.settings.alt_text }}"
+              class="hero-slide-image"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+              width="2000"
+              height="600"
+              fetchpriority="{% if forloop.first %}high{% else %}auto{% endif %}"
+            >
+          </picture>
+
+          {%- comment -%} Dark Gradient Overlay for text readability {%- endcomment -%}
+          <div class="hero-slide-overlay"></div>
+
+          {%- comment -%} Content Overlay (Left-aligned) {%- endcomment -%}
+          {%- if block.settings.show_content -%}
+            <div class="hero-slide-content">
+              <div class="hero-slide-content__inner">
+                {%- if block.settings.badge_text != blank -%}
+                  <span class="hero-slide-badge">{{ block.settings.badge_text }}</span>
+                {%- endif -%}
+
+                {%- if block.settings.heading_line1 != blank or block.settings.heading_line2 != blank -%}
+                  <h1 class="hero-slide-heading">
+                    {%- if block.settings.heading_line1 != blank -%}
+                      <span class="hero-slide-heading__line1">{{ block.settings.heading_line1 }}</span>
+                    {%- endif -%}
+                    {%- if block.settings.heading_line2 != blank -%}
+                      <span class="hero-slide-heading__line2">{{ block.settings.heading_line2 }}</span>
+                    {%- endif -%}
+                  </h1>
+                {%- endif -%}
+
+                {%- if block.settings.subtext != blank -%}
+                  <p class="hero-slide-subtext">{{ block.settings.subtext }}</p>
+                {%- endif -%}
+
+                <div class="hero-slide-buttons">
+                  {%- if block.settings.button1_text != blank -%}
+                    <a href="{{ block.settings.button1_url | default: '#' }}" class="hero-slide-btn hero-slide-btn--primary">
+                      {{ block.settings.button1_text }}
+                    </a>
+                  {%- endif -%}
+                  {%- if block.settings.button2_text != blank -%}
+                    <a href="{{ block.settings.button2_url | default: '#' }}" class="hero-slide-btn hero-slide-btn--secondary">
+                      {{ block.settings.button2_text }}
+                    </a>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-hero-slider-section {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-slider-container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-slider-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+  }
+
+  .hero-slider-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-slide-item {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-slide-image {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Dark gradient overlay for text readability */
+  .hero-slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      rgba(0, 0, 0, 0.05) 70%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Content Overlay */
+  .hero-slide-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding: 3rem 5rem;
+  }
+
+  .hero-slide-content__inner {
+    max-width: 550px;
+  }
+
+  /* Badge */
+  .hero-slide-badge {
+    display: inline-block;
+    background: #f97b22;
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.5rem 1.4rem;
+    border-radius: 50px;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Heading */
+  .hero-slide-heading {
+    font-size: 4.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 1.4rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-slide-heading__line1 {
+    display: block;
+  }
+
+  .hero-slide-heading__line2 {
+    display: block;
+    font-style: italic;
+    color: #ffd700;
+  }
+
+  /* Subtext */
+  .hero-slide-subtext {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin: 0 0 2.4rem;
+    max-width: 420px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Buttons */
+  .hero-slide-buttons {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-slide-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 2.8rem;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .hero-slide-btn--primary {
+    background: #f97b22;
+    color: #ffffff;
+    border: 2px solid #f97b22;
+    box-shadow: 0 4px 15px rgba(249, 123, 34, 0.3);
+  }
+
+  .hero-slide-btn--primary:hover {
+    background: #e06b1a;
+    border-color: #e06b1a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249, 123, 34, 0.4);
+  }
+
+  .hero-slide-btn--secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-slide-btn--secondary:hover {
+    background: #ffffff;
+    color: #333333;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  /* ========================
+     Responsive
+     ======================== */
+  @media screen and (max-width: 991px) {
+    .hero-slide-image {
+      min-height: 350px;
+    }
+
+    .hero-slide-content {
+      padding: 2.5rem 3rem;
+    }
+
+    .hero-slide-heading {
+      font-size: 3.2rem;
+    }
+
+    .hero-slide-subtext {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .hero-slide-image {
+      min-height: 420px;
+      object-position: center;
+    }
+
+    .hero-slide-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.65) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent 100%
+      );
+    }
+
+    .hero-slide-content {
+      align-items: flex-end;
+      padding: 2rem 2rem 3rem;
+    }
+
+    .hero-slide-content__inner {
+      max-width: 100%;
+    }
+
+    .hero-slide-heading {
+      font-size: 2.8rem;
+    }
+
+    .hero-slide-badge {
+      font-size: 1.1rem;
+      padding: 0.4rem 1.2rem;
+    }
+
+    .hero-slide-subtext {
+      font-size: 1.3rem;
+      max-width: 100%;
+    }
+
+    .hero-slide-btn {
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+    }
+  }
+</style>

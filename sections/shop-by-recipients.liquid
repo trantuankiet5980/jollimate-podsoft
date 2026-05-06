@@ -1,0 +1,365 @@
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  .sbr-section {
+    font-family: 'Poppins', sans-serif;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .sbr-container {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .sbr-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .sbr-badge {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #f97b22;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .sbr-heading {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Swiper wrapper */
+  .sbr-swiper-wrapper {
+    position: relative;
+    padding: 0;
+  }
+
+  .sbr-swiper {
+    overflow: hidden;
+  }
+
+  .sbr-swiper .swiper-slide {
+    height: auto;
+  }
+
+  /* Card */
+  .sbr-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+  }
+
+  .sbr-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .sbr-card-image-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 14px;
+    background: {{ section.settings.card_bg_color }};
+  }
+
+  .sbr-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .sbr-card:hover .sbr-card-image {
+    transform: scale(1.05);
+  }
+
+  .sbr-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+  }
+
+  /* Navigation arrows */
+  .sbr-nav-prev,
+  .sbr-nav-next {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .sbr-nav-prev:hover,
+  .sbr-nav-next:hover {
+    background: #f97b22;
+    border-color: #f97b22;
+    box-shadow: 0 4px 16px rgba(249,123,34,0.35);
+  }
+
+  .sbr-nav-prev svg,
+  .sbr-nav-next svg {
+    width: 18px;
+    height: 18px;
+    stroke: #333;
+    fill: none;
+    transition: stroke 0.3s ease;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .sbr-nav-prev:hover svg,
+  .sbr-nav-next:hover svg {
+    stroke: #fff;
+  }
+
+  .sbr-nav-prev { left: -15px; }
+  .sbr-nav-next { right: -15px; }
+
+  .sbr-nav-prev.swiper-button-disabled,
+  .sbr-nav-next.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* Pagination */
+  .sbr-swiper-wrapper .swiper-pagination {
+    position: relative;
+    margin-top: 24px;
+  }
+
+  .sbr-swiper-wrapper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #ddd;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .sbr-swiper-wrapper .swiper-pagination-bullet-active {
+    background: #f97b22;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 749px) {
+    .sbr-heading { font-size: 20px; }
+    .sbr-header { margin-bottom: 20px; }
+    .sbr-container { padding: 0 16px; }
+    .sbr-swiper-wrapper { padding: 0; }
+    .sbr-swiper { overflow: visible; }
+    .sbr-swiper .swiper-wrapper { padding: 0 8px; box-sizing: border-box; }
+    .sbr-nav-prev, .sbr-nav-next { display: none; }
+    .sbr-card-title { font-size: 13px; }
+  }
+</style>
+
+<div
+  class="sbr-section"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="sbr-container">
+    <div class="sbr-header">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="sbr-badge">{{ section.settings.badge_text }}</div>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="sbr-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="sbr-swiper-wrapper">
+      <button class="sbr-nav-prev" id="sbr-prev-{{ section.id }}" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="sbr-nav-next" id="sbr-next-{{ section.id }}" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+      </button>
+
+      <div class="swiper sbr-swiper" id="sbr-swiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {%- for block in section.blocks -%}
+            {%- assign card_link = block.settings.link | default: '#' -%}
+            <div class="swiper-slide" {{ block.shopify_attributes }}>
+              <a href="{{ card_link }}" class="sbr-card">
+                <div class="sbr-card-image-wrap">
+                  {%- if block.settings.image != blank -%}
+                    {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'sbr-card-image' }}
+                  {%- else -%}
+                    {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg sbr-card-image' }}
+                  {%- endif -%}
+                </div>
+                {%- if block.settings.title != blank -%}
+                  <div class="sbr-card-title">{{ block.settings.title }}</div>
+                {%- endif -%}
+              </a>
+            </div>
+          {%- endfor -%}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperEl = document.getElementById('sbr-swiper-{{ section.id }}');
+    if (!swiperEl) return;
+
+    if (swiperEl.swiper) {
+      swiperEl.swiper.destroy(true, true);
+    }
+
+    new Swiper(swiperEl, {
+      slidesPerView: 2,
+      spaceBetween: 12,
+      loop: true,
+      grabCursor: true,
+      watchOverflow: true,
+      pagination: {
+        el: '#sbr-swiper-{{ section.id }} .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '#sbr-next-{{ section.id }}',
+        prevEl: '#sbr-prev-{{ section.id }}',
+      },
+      breakpoints: {
+        600: {
+          slidesPerView: 3,
+          spaceBetween: 12,
+        },
+        900: {
+          slidesPerView: 5,
+          spaceBetween: 16,
+        },
+        1100: {
+          slidesPerView: 6,
+          spaceBetween: 20,
+        },
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Shop By Recipients",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "🎁 SHOP BY RECIPIENTS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop By Recipients"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#fdf0ec"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipient_item",
+      "name": "Recipient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Mom"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Recipients",
+      "blocks": [
+        { "type": "recipient_item", "settings": { "title": "Mom/Grandma" } },
+        { "type": "recipient_item", "settings": { "title": "Dad/Grandpa" } },
+        { "type": "recipient_item", "settings": { "title": "Kid & Baby" } },
+        { "type": "recipient_item", "settings": { "title": "Couple" } },
+        { "type": "recipient_item", "settings": { "title": "Bestie" } },
+        { "type": "recipient_item", "settings": { "title": "Pet Lover" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-register",
+      "settings": {
+        "brand_font": "dm_serif",
+        "brand_headline": "Start your gifting journey today",
+        "brand_subtext": "Create an account to enjoy exclusive perks, order tracking, and personalised recommendations.",
+        "feature_1": "",
+        "feature_2": "",
+        "feature_3": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

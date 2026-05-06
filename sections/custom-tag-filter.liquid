@@ -1,0 +1,137 @@
+{% schema %}
+{
+  "name": "Tag Filters (Pills)",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Who are you shopping for today?"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_tag",
+      "name": "Tag Pill",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Mom"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tag Filters (Pills)",
+      "blocks": [
+        { "type": "filter_tag", "settings": { "label": "Mom" } },
+        { "type": "filter_tag", "settings": { "label": "Dad" } },
+        { "type": "filter_tag", "settings": { "label": "Him" } },
+        { "type": "filter_tag", "settings": { "label": "Her" } },
+        { "type": "filter_tag", "settings": { "label": "Family" } },
+        { "type": "filter_tag", "settings": { "label": "Friends" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div
+  class="page-width"
+  style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  {% if section.settings.heading != blank %}
+    <h3 class="h3 center" style="text-align: center; margin-bottom: 25px;">{{ section.settings.heading }}</h3>
+  {% endif %}
+
+  <div class="tag-pills-container">
+    <div class="tag-pills-scroll-wrapper">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" class="tag-pill-item">
+          {{ block.settings.label }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .tag-pills-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tag-pills-scroll-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    /* Add horizontal scroll for mobile if needed, but wrap is better usually */
+  }
+
+  .tag-pill-item {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.3;
+    transition: all 0.2s ease;
+    background-color: #fff;
+    white-space: nowrap;
+  }
+
+  .tag-pill-item:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Optional: Make it scrollable on very small screens instead of wrapping too much */
+  @media screen and (max-width: 480px) {
+    .tag-pills-container {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 10px; /* Space for scrollbar */
+    }
+    .tag-pills-scroll-wrapper {
+      flex-wrap: nowrap;
+      padding: 0 5px;
+    }
+  }
+</style>

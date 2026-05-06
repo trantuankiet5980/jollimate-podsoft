@@ -1,0 +1,261 @@
+<div class="page-width" style="margin-top: 40px; margin-bottom: 60px;">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1>Liquid Learning Playground</h1>
+    <p>Chào mừng bạn! Đây là nơi thực hành code Liquid cơ bản.</p>
+    <p>File code này nằm tại: <code>sections/learning-product.liquid</code></p>
+  </div>
+
+  <!-- BÀI 1: HIỂN THỊ DỮ LIỆU (OUTPUT) -->
+  <div class="lesson-card">
+    <h2>1. Hiển thị dữ liệu (Output)</h2>
+    <p>
+      Dùng hai dấu ngoặc nhọn <code>{% raw %}{{ }}{% endraw %}</code> để in ra thông tin sản phẩm.
+    </p>
+
+    <div class="code-result">
+      <p><strong>Tên sản phẩm:</strong> {{ product.title }}</p>
+      <p><strong>ID Sản phẩm:</strong> {{ product.id }}</p>
+      <p><strong>Đường dẫn (URL):</strong> {{ product.url }}</p>
+    </div>
+
+    <div class="exercise">
+      <p><strong>Bài tập:</strong> Hãy thử in ra "Product Handle" (đường dẫn thân thiện) của sản phẩm bên dưới:</p>
+      <!-- Viết code của bạn vào dòng dưới đây -->
+      Handle: {{ product.handle }}
+      <br>
+      <br>
+      giá : {{ product.price | money }}
+      <br>
+      <br>
+      product json : {{ product.collections | json }}
+      handle collections :
+      {% for collection in product.collections %}
+        {{ collection.handle -}}
+        {%- if forloop.last == false %}, {% endif %}
+      {% endfor %}
+
+      {% comment %} start {% endcomment %}
+      {% for collection in product.collections %}
+        <br>
+        <br>
+        <strong>{{ collection.title }}</strong> <br>
+        Mô tả: {{ collection.description }}
+        <br>
+        Đường dẫn: {{ collection.url }}
+        <br>
+        ID: {{ collection.id }}
+        <br>
+        Handle: {{ collection.handle }}
+        <br>
+        hình ảnh :
+        {% if collection.image %}
+          <br>
+
+          {{ collection.image | image_url: width: 300 | image_tag }}
+
+        {% else %}
+          Không có hình ảnh
+        {% endif %}
+      {% endfor %}
+      {% comment %} end for {% endcomment %}
+
+      <br>
+    </div>
+  </div>
+
+  <!-- BÀI 2: BỘ LỌC (FILTERS) -->
+  <div class="lesson-card">
+    <h2>2. Bộ lọc (Filters)</h2>
+    <p>Dùng dấu gạch đứng <code>|</code> để sửa đổi dữ liệu hiển thị (viết hoa, định dạng tiền, v.v).</p>
+
+    <div class="code-result">
+      <p><strong>Viết hoa tên (upcase):</strong> {{ product.title | upcase }}</p>
+      <p><strong>Viết thường tên (downcase):</strong> {{ product.title | downcase }}</p>
+      <p><strong>Giá tiền (money):</strong> {{ product.price | money }}</p>
+      <p>
+        <strong>Giá tiền không đuôi (money_without_trailing_zeros):</strong>
+        {{ product.price | money_without_trailing_zeros }}
+      </p>
+    </div>
+  </div>
+
+  <!-- BÀI 3: ĐIỀU KIỆN (IF / ELSE) -->
+  <div class="lesson-card">
+    <h2>3. Điều kiện (If / Else)</h2>
+    <p>
+      Dùng <code>{% raw %}{% if %} ... {% endif %}{% endraw %}</code> để kiểm tra điều kiện.
+    </p>
+
+    <div class="code-result">
+      <p><strong>Trạng thái kho hàng:</strong></p>
+
+      {% if product.available %}
+        <span style="color: green; font-weight: bold;">Còn hàng (Available)</span>
+      {% else %}
+        <span style="color: red; font-weight: bold;">Hết hàng (Sold out)</span>
+      {% endif %}
+
+      <br>
+      <br>
+
+      <p><strong>Kiểm tra giá:</strong></p>
+      <h3>Thử thách chứng minh: "Phải sang trái"</h3>
+      {% assign test_price = 3 %}
+      <p>Giả sử ta xét <strong>giá = 3</strong>.</p>
+      <p>Biểu thức kiểm tra: <code>Giá > 1000 (Sai) AND Giá > 0 (Đúng) OR Giá == 3 (Đúng)</code></p>
+
+      <ul>
+        <li><strong>Logic thông thường (Left-to-Right):</strong> (Sai & Đúng) v.v.. = <strong>TRUE</strong></li>
+        <li><strong>Logic Liquid (Right-to-Left):</strong> Sai & (Đúng hay Đúng) = <strong>FALSE</strong></li>
+      </ul>
+
+      <p><strong>Kết quả thực tế của Liquid:</strong></p>
+      {% if test_price > 1000 and test_price > 0 or test_price == 3 %}
+        <p style="color: red; font-weight: bold;">Kết quả là TRUE (Logic kiểu thông thường)</p>
+      {% else %}
+        <p style="color: green; font-weight: bold;">Kết quả là FALSE (Đúng chuẩn Liquid: Từ phải sang trái!)</p>
+        <small
+          >Giải thích: Nó tính cụm bên phải (<code>>0 or ==3</code>) trước -> thành True. Sau đó mới lấy (<code
+            >>1000</code
+          >) AND với True -> kết quả cuối là False.</small
+        >
+      {% endif %}
+
+      {% if product.name contains 'Card' %}
+        <p style="color: green; font-weight: bold;">Tên sản phẩm chứa 'Card'</p>
+      {% else %}
+        <p style="color: red; font-weight: bold;">Tên sản phẩm không chứa 'Card'</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- BÀI 4: VÒNG LẶP (FOR LOOP) -->
+  <div class="lesson-card">
+    <h2>4. Vòng lặp (For Loop)</h2>
+    <p>
+      Dùng <code>{% raw %}{% for item in list %}{% endraw %}</code> để duyệt qua danh sách (ví dụ: danh sách ảnh, danh
+      sách tags).
+    </p>
+
+    <div class="code-result">
+      <h3>Danh sách Tags của sản phẩm:</h3>
+      <ul>
+        {% for tag in product.tags %}
+          <li>Tag: {{ tag }}</li>
+        {% else %}
+          <li>Sản phẩm này không có tag nào.</li>
+        {% endfor %}
+      </ul>
+
+      <h3>Danh sách các biến thể (Variants):</h3>
+      <ul>
+        {% for variant in product.variants limit: 5 %}
+          <li>
+            {{ variant.title }} - Giá: {{ variant.price | money }}
+            {% if variant.inventory_quantity > 0 %}
+              (Còn {{ variant.inventory_quantity }} cái)
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- BÀI 5: TRUY CẬP HÌNH ẢNH -->
+  <div class="lesson-card">
+    <h2>5. Hình ảnh (Images)</h2>
+    <p>Cách hiển thị hình ảnh sản phẩm.</p>
+
+    <div class="code-result" style="display: flex; gap: 10px; flex-wrap: wrap;">
+      {% for media in product.media limit: 3 %}
+        <div style="width: 150px;">
+          <!-- image_url tự động tạo link ảnh, image_tag tự động tạo thẻ <img> -->
+          {{ media | image_url: width: 300 | image_tag: style: 'width: 100%; height: auto; border-radius: 8px;' }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- BÀI 6: MẢNG & ĐỐI TƯỢNG (ARRAYS & OBJECTS) -->
+  <div class="lesson-card">
+    <h2>6. Mảng & Đối tượng (Arrays & Objects)</h2>
+    <p>Ví dụ với <code>product.collections</code> (Danh sách bộ sưu tập chứa sản phẩm này).</p>
+
+    <div class="code-result">
+      <p><strong>1. Xem dạng JSON thô (để debug):</strong></p>
+      <p>Lệnh <code>| json</code> giúp biến đổi Object thành chuỗi JSON để dễ nhìn cấu trúc.</p>
+      <textarea style="width: 100%; height: 80px; font-family: monospace; border: 1px solid #ccc; padding: 5px;">{{ product.collections | json }}</textarea>
+
+      <p><strong>2. Lấy bộ sưu tập đầu tiên:</strong></p>
+      <ul>
+        <!-- Cách 1: Dùng .first -->
+        <li>
+          Cách 1 (<code>product.collections.first.title</code>):
+          <strong>{{ product.collections.first.title }}</strong>
+        </li>
+
+        <!-- Cách 2: Dùng chỉ số [0] -->
+        <li>
+          Cách 2 (<code>product.collections[0].title</code>):
+          <strong>{{ product.collections[0].title }}</strong>
+        </li>
+      </ul>
+
+      <p><strong>3. Lưu ý về định nghĩa Object:</strong></p>
+      <p>
+        Cấu trúc của đối tượng <code>product</code> (gồm title, price, variants...) được định nghĩa bởi
+        <strong>Shopify Core (Backend)</strong>, không nằm trong file code của theme. Bạn không thể sửa cấu trúc này
+        (không thể thêm trường bừa bãi), chỉ có thể sử dụng dữ liệu nó cung cấp hoặc dùng <strong>Metafields</strong> để
+        mở rộng.
+      </p>
+      <p>
+        👉 Bạn nên xem
+        <a href="https://shopify.dev/docs/api/liquid/objects/product" target="_blank">Tài liệu chính chủ Shopify</a> để
+        biết <code>product</code> có những thuộc tính gì.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .lesson-card {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  .lesson-card h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+  }
+  .code-result {
+    background: #fff;
+    border: 1px dashed #bbb;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .exercise {
+    margin-top: 20px;
+    background: #fff8e1;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 5px solid #ffc107;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Learning Product",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Learning Product"
+    }
+  ]
+}
+{% endschema %}

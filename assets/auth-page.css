@@ -1,0 +1,532 @@
+/* ============================================================
+   AUTH PAGE – Standalone Login / Register pages
+   Split layout: Left = brand panel, Right = form
+   ============================================================ */
+
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* ── Page wrapper ─────────────────────────────────────────── */
+.auth-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 80px);
+  font-family: "Inter", var(--font-body-family), sans-serif;
+}
+
+/* ── Left: Brand panel ────────────────────────────────────── */
+.auth-page__brand {
+  background: linear-gradient(145deg, #f97b22 0%, #c72c41 60%, #8b1a2c 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 48px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.auth-page__brand::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  top: -100px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.auth-page__brand::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  bottom: -80px;
+  left: -60px;
+  pointer-events: none;
+}
+
+.auth-page__brand-logo {
+  display: block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-page__brand-logo img {
+  max-width: 160px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.auth-page__brand-logo-text {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+}
+
+.auth-page__brand-headline {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-page__brand-sub {
+  font-size: 1.4rem;
+  opacity: 0.85;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 340px;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-page__brand-features {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 300px;
+}
+
+.auth-page__brand-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.3rem;
+  opacity: 0.92;
+}
+
+.auth-page__brand-feature-dot {
+  width: 7px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* When a background image is set – add dark overlay for readability */
+.auth-page__brand--has-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+.auth-page__brand--has-image > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Right: Form panel ────────────────────────────────────── */
+.auth-page__form-panel {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 64px;
+  overflow-y: auto;
+}
+
+.auth-page__form-inner {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* ── Logo (shown on right panel – mobile also) ───────────── */
+.auth-page__form-logo {
+  text-align: center;
+  margin-bottom: 28px;
+  display: none;
+  /* hidden on desktop – shown in brand panel */
+}
+
+.auth-page__form-logo img {
+  max-width: 130px;
+  height: auto;
+}
+
+.auth-page__form-logo-text {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #f97b22;
+}
+
+/* ── Heading ──────────────────────────────────────────────── */
+.auth-page__heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.auth-page__subheading {
+  font-size: 1.4rem;
+  color: #666;
+  margin-bottom: 32px;
+}
+
+/* ── Form fields ─────────────────────────────────────────── */
+.auth-page__field {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.auth-page__label {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.auth-page__input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  color: #111;
+  background: #fafafa;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.auth-page__input::placeholder {
+  color: #aaa;
+}
+
+.auth-page__input:focus {
+  border-color: #f97b22;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(249, 72, 94, 0.1);
+}
+
+.auth-page__input[aria-invalid="true"] {
+  border-color: #dc2626;
+  background: #fff5f5;
+}
+
+/* ── Options row ─────────────────────────────────────────── */
+.auth-page__options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 1.3rem;
+}
+
+.auth-page__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #555;
+}
+
+.auth-page__checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #f97b22;
+  cursor: pointer;
+}
+
+.auth-page__forgot {
+  color: #f97b22;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+.auth-page__forgot:hover {
+  text-decoration: underline;
+}
+
+/* ── Submit button ───────────────────────────────────────── */
+.auth-page__btn {
+  width: 100%;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #f97b22 0%, #e03b50 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.3px;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(249, 72, 94, 0.35);
+}
+
+.auth-page__btn:hover {
+  background: linear-gradient(135deg, #e03b50 0%, #c72c41 100%);
+  box-shadow: 0 6px 20px rgba(249, 72, 94, 0.45);
+  transform: translateY(-1px);
+}
+
+.auth-page__btn:active {
+  transform: translateY(0);
+}
+
+.auth-page__btn--outline {
+  background: white;
+  color: #333;
+  border: 1.5px solid #e0e0e0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.auth-page__btn--outline:hover {
+  background: #f8f8f8;
+  border-color: #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: none;
+}
+
+/* ── Divider ─────────────────────────────────────────────── */
+.auth-page__divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 24px 0;
+  color: #aaa;
+  font-size: 1.2rem;
+}
+
+.auth-page__divider::before,
+.auth-page__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ebebeb;
+}
+
+/* ── Error / Notice ──────────────────────────────────────── */
+.auth-page__error {
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  color: #991b1b;
+  line-height: 1.5;
+}
+
+.auth-page__error a {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.auth-page__success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid #16a34a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  color: #15803d;
+  line-height: 1.5;
+}
+
+/* ── Footer text ─────────────────────────────────────────── */
+.auth-page__footer {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #666;
+  margin-top: 24px;
+}
+
+.auth-page__footer a {
+  color: #f97b22;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-page__footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── Terms text ──────────────────────────────────────────── */
+.auth-page__terms {
+  font-size: 1.2rem;
+  color: #999;
+  text-align: center;
+  line-height: 1.6;
+  margin: 16px 0;
+}
+
+.auth-page__terms a {
+  color: #666;
+  text-decoration: underline;
+}
+
+/* ── Check Email screen ──────────────────────────────────── */
+.auth-page__check-email {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.auth-page__check-email-icon {
+  margin-bottom: 20px;
+}
+
+.auth-page__check-email-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.auth-page__check-email-body {
+  font-size: 1.5rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.auth-page__check-email-body strong {
+  display: block;
+  color: #f97b22;
+  font-size: 1.4rem;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+.auth-page__check-email-note {
+  font-size: 1.3rem;
+  color: #999;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* ── Recover section hide/show ───────────────────────────── */
+.auth-page__recover-section {
+  display: none;
+}
+
+.auth-page__login-section {
+  display: block;
+}
+
+/* ── Social buttons ──────────────────────────────────────── */
+.auth-page__social {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-page__social-btn {
+  width: 100%;
+  padding: 13px 20px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.auth-page__social-btn:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.auth-page__social-btn svg {
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE: Tablet ──────────────────────────────────── */
+@media screen and (max-width: 900px) {
+  .auth-page {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .auth-page__brand {
+    padding: 48px 32px 40px;
+    min-height: auto;
+  }
+
+  .auth-page__brand-features {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 500px;
+    gap: 10px;
+  }
+
+  .auth-page__form-panel {
+    padding: 48px 32px 56px;
+  }
+
+  .auth-page__form-logo {
+    display: block;
+  }
+}
+
+/* ── RESPONSIVE: Mobile ──────────────────────────────────── */
+@media screen and (max-width: 600px) {
+  /* Hide entire brand panel – only show the clean form */
+  .auth-page__brand {
+    display: none;
+  }
+
+  /* Show logo in form panel since brand panel is hidden */
+  .auth-page__form-logo {
+    display: block;
+  }
+
+  .auth-page__form-panel {
+    padding: 36px 24px 48px;
+  }
+
+  .auth-page__heading {
+    font-size: 2.4rem;
+  }
+
+  .auth-page__form-inner {
+    max-width: 100%;
+  }
+}

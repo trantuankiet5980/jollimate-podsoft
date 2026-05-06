@@ -1,0 +1,107 @@
+{%- style -%}
+  .help-center-page-footer {
+    padding: 2.8rem 0;
+    border-top: 1px solid #ebebeb;
+    margin-top: 0;
+  }
+
+  .help-center-page-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    color: #999;
+  }
+
+  .help-center-page-footer__brand {
+    color: #999;
+  }
+
+  .help-center-page-footer__back-top {
+    color: #F97B22;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: opacity 0.2s;
+  }
+
+  .help-center-page-footer__back-top:hover {
+    opacity: 0.75;
+  }
+{%- endstyle -%}
+
+<style>
+  /* Ensure help center page fills at least full viewport height */
+  body:has(.help-center-page-footer) {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  body:has(.help-center-page-footer) #MainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  body:has(.help-center-page-footer) #MainContent > .shopify-section:nth-last-child(2) {
+    flex: 1;
+  }
+</style>
+
+<script>
+  // Fallback for browsers without :has() support
+  (function() {
+    function stretchHelpCenter() {
+      var main = document.getElementById('MainContent');
+      if (!main || !document.querySelector('.help-center-page-footer')) return;
+      var sections = main.querySelectorAll('.shopify-section');
+      if (sections.length < 2) return;
+      // Target the second-to-last section (articles) to stretch
+      var stretchSection = sections[sections.length - 2];
+      var totalHeight = 0;
+      for (var i = 0; i < sections.length; i++) {
+        totalHeight += sections[i].offsetHeight;
+      }
+      var headerEl = document.querySelector('.section-header, header');
+      var headerHeight = headerEl ? headerEl.offsetHeight : 0;
+      var needed = window.innerHeight - headerHeight - totalHeight;
+      if (needed > 0) {
+        stretchSection.style.paddingBottom = needed + 'px';
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', stretchHelpCenter);
+    } else {
+      stretchHelpCenter();
+    }
+    window.addEventListener('resize', stretchHelpCenter);
+  })();
+</script>
+
+<div class="help-center-page-footer">
+  <div class="page-width">
+    <div class="help-center-page-footer__inner">
+      <span class="help-center-page-footer__brand">{{ section.settings.brand_text }}</span>
+      <a href="#" class="help-center-page-footer__back-top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+        Back to top
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Help Center Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand Text (left)",
+      "default": "Jollimate Help Center"
+    }
+  ]
+}
+{% endschema %}

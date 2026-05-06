@@ -1,0 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "empty_oops_text": "Oops!!!",
+        "empty_image": "shopify://shop_images/ChatGPT_Image_Mar_11_2026_09_56_56_AM.png",
+        "empty_title": "YOUR CART IS EMPTY",
+        "empty_subtext": "It looks like you haven't added anything to your cart. Go ahead and explore some special personalized gifts for you and your loved ones from our top categories",
+        "empty_button_label": "Keep Shopping",
+        "empty_button_link": "",
+        "delivery_start_month": "none",
+        "delivery_start_day": 0,
+        "delivery_end_month": "Mar",
+        "delivery_end_day": 0,
+        "delivery_year": "0"
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "blocks": {
+        "subtotal": {
+          "type": "subtotal",
+          "settings": {}
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "subtotal",
+        "buttons"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "cart-items",
+    "cart-footer"
+  ]
+}

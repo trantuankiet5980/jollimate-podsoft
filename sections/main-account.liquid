@@ -1,0 +1,214 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{{ 'account-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="account-page section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="account-page__layout">
+      {%- comment -%} SIDEBAR {%- endcomment -%}
+      <aside class="account-page__sidebar">
+        <nav class="account-nav">
+          <a href="{{ routes.account_url }}" class="account-nav__link account-nav__link--active"> Account Settings </a>
+          <a href="{{ routes.account_url }}#orders" class="account-nav__link"> My Purchases </a>
+          <a href="/pages/wishlist" class="account-nav__link"> Wish List </a>
+        </nav>
+      </aside>
+
+      {%- comment -%} MAIN CONTENT {%- endcomment -%}
+      <main class="account-page__content">
+        {%- comment -%} MY PROFILE SECTION {%- endcomment -%}
+        <section class="account-card">
+          <h2 class="account-card__title">My Profile</h2>
+
+          <form class="profile-form" id="ProfileForm">
+            <div class="profile-form__row">
+              <label class="profile-form__label">Name:</label>
+              <div class="profile-form__field">
+                <input
+                  type="text"
+                  name="customer[name]"
+                  value="{{ customer.name }}"
+                  class="profile-form__input"
+                  placeholder="Your name"
+                >
+              </div>
+            </div>
+
+            <div class="profile-form__row">
+              <label class="profile-form__label">Email:</label>
+              <div class="profile-form__field profile-form__field--readonly">
+                <span>{{ customer.email }}</span>
+                <a href="#" class="profile-form__edit-link">Edit</a>
+              </div>
+            </div>
+
+            <div class="profile-form__row">
+              <label class="profile-form__label">Phone number:</label>
+              <div class="profile-form__field">
+                <input
+                  type="tel"
+                  name="customer[phone]"
+                  value="{{ customer.phone }}"
+                  class="profile-form__input"
+                  placeholder="Your phone number"
+                >
+              </div>
+            </div>
+
+            <div class="profile-form__row">
+              <label class="profile-form__label">Gender:</label>
+              <div class="profile-form__field profile-form__field--radio">
+                <label class="profile-form__radio">
+                  <input type="radio" name="customer[gender]" value="male">
+                  <span>Male</span>
+                </label>
+                <label class="profile-form__radio">
+                  <input type="radio" name="customer[gender]" value="female">
+                  <span>Female</span>
+                </label>
+                <label class="profile-form__radio">
+                  <input type="radio" name="customer[gender]" value="other" checked>
+                  <span>Other</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="profile-form__row">
+              <label class="profile-form__label">Date Of Birth:</label>
+              <div class="profile-form__field profile-form__field--date">
+                <select name="customer[dob_day]" class="profile-form__select">
+                  <option value="">Day</option>
+                  {%- for i in (1..31) -%}
+                    <option value="{{ i }}">{{ i }}</option>
+                  {%- endfor -%}
+                </select>
+                <select name="customer[dob_month]" class="profile-form__select">
+                  <option value="">Month</option>
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+                <select name="customer[dob_year]" class="profile-form__select">
+                  <option value="">Year</option>
+                  {%- assign current_year = 'now' | date: '%Y' | plus: 0 -%}
+                  {%- for i in (1940..current_year) -%}
+                    <option value="{{ i }}">{{ i }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            </div>
+
+            <div class="profile-form__actions">
+              <a href="#" class="profile-form__change-password">Change password</a>
+              <button type="submit" class="profile-form__save-btn">Save</button>
+            </div>
+          </form>
+        </section>
+
+        {%- comment -%} MY ADDRESSES SECTION {%- endcomment -%}
+        <section class="account-card">
+          <div class="account-card__header">
+            <h2 class="account-card__title">My Addresses</h2>
+            <a href="{{ routes.account_addresses_url }}" class="account-card__add-btn"> + Add New Address </a>
+          </div>
+
+          {%- if customer.addresses.size > 0 -%}
+            <div class="addresses-list">
+              {%- for address in customer.addresses -%}
+                <div class="address-item">
+                  {%- if address == customer.default_address -%}
+                    <span class="address-item__badge">Default</span>
+                  {%- endif -%}
+                  {%- if address.name != blank -%}
+                    <p class="address-item__name">{{ address.name }}</p>
+                  {%- endif -%}
+                  {%- if address.address1 != blank -%}
+                    <p>{{ address.address1 }}</p>
+                  {%- endif -%}
+                  {%- if address.address2 != blank -%}
+                    <p>{{ address.address2 }}</p>
+                  {%- endif -%}
+                  {%- if address.city != blank or address.province != blank or address.zip != blank -%}
+                    <p>
+                      {{ address.city }}
+                      {%- if address.city != blank and address.province != blank -%},{%- endif -%}
+                      {{ address.province }}
+                      {{ address.zip }}
+                    </p>
+                  {%- endif -%}
+                  {%- if address.country != blank -%}
+                    <p>{{ address.country }}</p>
+                  {%- endif -%}
+                  {%- if address.phone != blank -%}
+                    <p>{{ address.phone }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <p class="addresses-list__empty">No addresses saved yet.</p>
+          {%- endif -%}
+        </section>
+
+        {%- comment -%} SIGN OUT {%- endcomment -%}
+        <div class="account-page__signout">
+          <a href="{{ routes.account_logout_url }}" class="signout-btn">Sign Out</a>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-account.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

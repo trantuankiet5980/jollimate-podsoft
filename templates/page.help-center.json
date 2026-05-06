@@ -1,0 +1,229 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "help-center-hero",
+      "settings": {
+        "show_section": true,
+        "logo_width": 100,
+        "header_left_text": "Jollimate Help Center",
+        "store_icon": "shopify://shop_images/LOGO-JOLLIMATE-STYLE-01.png",
+        "header_right_text": "Jollimate Store",
+        "title": "Hi, How can Jollimate help you?",
+        "search_placeholder": "Search for answers"
+      }
+    },
+    "articles": {
+      "type": "help-center-articles",
+      "blocks": {
+        "trending_1": {
+          "type": "article",
+          "settings": {
+            "title": "How can I request a refund or replacement?",
+            "url": "shopify://blogs/trending-articles/how-can-i-request-a-refund-or-replacement"
+          }
+        },
+        "trending_2": {
+          "type": "article",
+          "settings": {
+            "title": "Can I return my order from Jollimate?",
+            "url": "shopify://blogs/trending-articles/can-i-return-my-order-from-gossby"
+          }
+        },
+        "trending_3": {
+          "type": "article",
+          "settings": {
+            "title": "Track my orders using my Jollimate Account",
+            "url": "shopify://blogs/trending-articles/track-my-orders-using-my-art-gift-account"
+          }
+        },
+        "trending_4": {
+          "type": "article",
+          "settings": {
+            "title": "Buy favorite items again",
+            "url": "shopify://blogs/trending-articles/buy-favorite-items-again"
+          }
+        },
+        "trending_5": {
+          "type": "article",
+          "settings": {
+            "title": "How to customize and place a Jollimate order?",
+            "url": "shopify://blogs/trending-articles/how-to-customize-and-place-a-jollimate-order"
+          }
+        },
+        "trending_6": {
+          "type": "article",
+          "settings": {
+            "title": "Account Overview",
+            "url": "shopify://blogs/trending-articles/account-overview"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "title": "How to track my Jollimate order?",
+            "answer": "<p><strong>Option 1:</strong></p><ul><li>Go to <a href=\"https://jollimate.com/a/track-order\" target=\"_blank\" title=\"https://jollimate.com/a/track-order\">Track order page </a>on the Gossby website.</li><li>Enter your order number and email address in the provided fields.</li><li>Click on the \"Track\" button to view the status of your order.</li></ul><p><strong>Option 2:</strong></p><ul><li>Sign in to your account. Check how to log in your Jollimate account <a href=\"https://jollimate.com/\" target=\"_blank\" title=\"https://jollimate.com/\">here</a>.</li><li>Access \"My Purchases\" tab to see all your placed orders with us.</li><li>Find the order you want to track and click on the \"View your order\" button.</li><li>A tracking page will open with the shipping carrier and tracking number for your order.</li><li>You can then …</li></ul>",
+            "read_more_url": "shopify://blogs/faq/how-to-track-my-jollimate-order"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "title": "Why has my order tracking status not been updated? What should I do?",
+            "answer": "<p>Tracking information may not be updated immediately for some reasons, such as:</p><p>- The tracking number has just been created. After being sent out, your tracking number will need up to 7 business days to be updated due to delays between the scanning process and the website's updates.</p><p> - The package may not be scanned until it reaches the regional hub near the destination.</p><p> - The package is in transit between the origin and the destination country. Once the package leaves the origin country …</p>",
+            "read_more_url": "shopify://blogs/faq/why-has-my-order-tracking-status-not-been-updated-what-should-i-do"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "title": "What does the total price include?",
+            "answer": "<p><strong>Your total payment = product prices + shipping fee + tax (if any)</strong></p><p><strong>Note:</strong></p><p>- The Discount code only applies to the item subtotal, not the total price.</p><p>- The shipping fee is calculated based on the shipping method, item weight, and the shipping destination.</p><p> - Tax is only required in some countries, the detailed explanation can be found in the question below. To get more detail about Tax </p><p>- The shipping fee and tax will be added on the checkout page …</p>",
+            "read_more_url": "shopify://blogs/faq/what-does-the-total-price-include"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "title": "Will I be charged with customs and taxes?",
+            "answer": "<p>It depends on your shipping address because Tax and Custom fees are regulated by destination countries. Currently, the VAT is applied to some European countries and Canada.<br/><br/>- Regarding Tax: prices displayed on our website have not yet included taxes, but you will be informed of the exact tax rate during your checkout before you complete the order. The standard VAT rate in the EU is in the range of 16 – 27%. In Canada, the tax rate you will be charged depends on your province. Check more …<br/><br/></p>",
+            "read_more_url": "shopify://blogs/faq/will-i-be-charged-with-customs-and-taxes"
+          }
+        }
+      },
+      "block_order": [
+        "trending_1",
+        "trending_2",
+        "trending_3",
+        "trending_4",
+        "trending_5",
+        "trending_6",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4"
+      ],
+      "settings": {
+        "show_section": true,
+        "trending_title": "Trending Articles",
+        "faq_title": "FAQs"
+      }
+    },
+    "topics": {
+      "type": "help-center-topics",
+      "blocks": {
+        "topic_1": {
+          "type": "topic",
+          "settings": {
+            "title": "Shipping & Delivery",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_2": {
+          "type": "topic",
+          "settings": {
+            "title": "Product Information",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_3": {
+          "type": "topic",
+          "settings": {
+            "title": "Promotion Code",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_4": {
+          "type": "topic",
+          "settings": {
+            "title": "Manage & Cancel Order",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_5": {
+          "type": "topic",
+          "settings": {
+            "title": "General Inquiries",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_6": {
+          "type": "topic",
+          "settings": {
+            "title": "Payments & Billing",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_7": {
+          "type": "topic",
+          "settings": {
+            "title": "Refund & Resend",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_8": {
+          "type": "topic",
+          "settings": {
+            "title": "Account Questions",
+            "url": "#",
+            "icon_svg": ""
+          }
+        },
+        "topic_9": {
+          "type": "topic",
+          "settings": {
+            "title": "Product Care",
+            "url": "#",
+            "icon_svg": ""
+          }
+        }
+      },
+      "block_order": [
+        "topic_1",
+        "topic_2",
+        "topic_3",
+        "topic_4",
+        "topic_5",
+        "topic_6",
+        "topic_7",
+        "topic_8",
+        "topic_9"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_section": true,
+        "title": "Help Topics",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "footer_left_text": "Gossby Help Center"
+      }
+    },
+    "footer": {
+      "type": "help-center-footer",
+      "settings": {
+        "brand_text": "Jollimate Help Center"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "articles",
+    "topics",
+    "footer"
+  ]
+}

@@ -1,0 +1,185 @@
+<style type="text/css">
+  .container-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem;
+    text-align: center;
+    gap: 4rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    min-height: 70vh;
+  }
+
+  @media screen and (min-width: 750px) {
+    .container-404 {
+      flex-direction: row;
+      text-align: left;
+      justify-content: space-between;
+    }
+  }
+
+  .container-404 .error {
+    flex: 1;
+  }
+
+  .container-404 h1 {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    color: #333;
+  }
+
+  .container-404 p {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  .container-404 .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    .container-404 .cta {
+      flex-direction: row;
+      justify-content: flex-start;
+      max-width: none;
+      margin: 0;
+    }
+  }
+
+  .container-404 .cta-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1.5rem 3rem;
+    background-color: #F97B22;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .container-404 .cta-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1.5rem 3rem;
+    background-color: transparent;
+    color: #333;
+    text-decoration: none;
+    border: 2px solid #333;
+    border-radius: 6px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  }
+
+  .container-404 .cta-back:hover {
+    background-color: #b02625;
+    transform: translateY(-2px);
+  }
+
+  .container-404 .cta-secondary:hover {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .container-404 .hero-img {
+    flex: 1;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media screen and (min-width: 750px) {
+    .container-404 .hero-img {
+      max-width: 45%;
+    }
+  }
+</style>
+
+<section class="container-404">
+  <div class="error">
+    <h1>{{ section.settings.title | default: 'Uh Ohh!' }}</h1>
+    <p>{{ section.settings.subtext | default: "We couldn't find the page that you're looking for :(" }}</p>
+    <div class="cta">
+      <a class="cta-back" href="{{ section.settings.button_link | default: routes.root_url }}">
+        {{ section.settings.button_label | default: 'Go Back Home' }}
+      </a>
+      <a class="cta-secondary" href="{{ section.settings.button_link_2 | default: routes.all_products_collection_url }}">
+        {{ section.settings.button_label_2 | default: 'Continue Shopping' }}
+      </a>
+    </div>
+  </div>
+  
+  {% if section.settings.image != blank %}
+    {{ section.settings.image | image_url: width: 800 | image_tag: alt: section.settings.image.alt, class: 'hero-img', loading: 'lazy' }}
+  {% else %}
+    <img src="https://github.com/smthari/404-page-using-html-css/blob/Starter/Images/404.png?raw=true" alt="404 image placeholder" class="hero-img" loading="lazy" width="800" height="600" />
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "404 Error Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image (Optional)",
+      "info": "Upload an image. If left blank, a default placeholder will be used."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Uh Ohh!"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "We couldn't find the page that you're looking for :("
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Primary Button Label",
+      "default": "Go Back Home"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary Button Label",
+      "default": "Continue Shopping"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary Button Link"
+    }
+  ]
+}
+{% endschema %}
