@@ -23,34 +23,43 @@
     "hero_banner": {
       "type": "image-banner",
       "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/BANNER_MOTHERDAY-PC_1.png",
-        "image_2": "shopify://shop_images/BANNER_MOTHERDAY-MOBILE.png",
-        "image_overlay_opacity": 0,
-        "banner_link": "shopify://collections/mother-day",
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": false,
-        "show_overlay_content": false,
-        "overlay_badge": "✨ Special Collection",
-        "overlay_heading_1": "Gifts That Bring",
-        "overlay_heading_2": "Joy & Happiness",
-        "overlay_subtext": "Personalized gifts made with love for the people who matter most.",
-        "overlay_btn1_text": "Shop Now",
-        "overlay_btn1_url": "shopify://collections/all",
-        "overlay_btn2_text": "View Collections",
-        "overlay_btn2_url": "shopify://collections"
-      }
+      "settings": {}
     },
     "collections_custom": {
       "type": "collections-custom",
       "blocks": {
+        "cc_8": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/picture.png",
+            "title": "Wall Art",
+            "link": "shopify://collections/photo"
+          }
+        },
+        "cc_10": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/image-removebg-preview_6.png",
+            "title": "Apparel",
+            "link": "shopify://collections/apparel"
+          }
+        },
+        "cc_7": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/keychain.png",
+            "title": "Keychains",
+            "link": "shopify://collections/memory-remembrance-pin"
+          }
+        },
+        "collection_item_gpVQmg": {
+          "type": "collection_item",
+          "settings": {
+            "image": "shopify://shop_images/ring.png",
+            "title": "Wedding Gift",
+            "link": "/collections/wedding"
+          }
+        },
         "cc_1": {
           "type": "collection_item",
           "settings": {
@@ -75,30 +84,6 @@
             "link": "shopify://collections/custom-photo-puzzle"
           }
         },
-        "cc_7": {
-          "type": "collection_item",
-          "settings": {
-            "image": "shopify://shop_images/keychain.png",
-            "title": "Keychains",
-            "link": "shopify://collections/memory-remembrance-pin"
-          }
-        },
-        "collection_item_gpVQmg": {
-          "type": "collection_item",
-          "settings": {
-            "image": "shopify://shop_images/ring.png",
-            "title": "Wedding Gift",
-            "link": "/collections/wedding"
-          }
-        },
-        "cc_8": {
-          "type": "collection_item",
-          "settings": {
-            "image": "shopify://shop_images/picture.png",
-            "title": "Wall Art",
-            "link": "shopify://collections/photo"
-          }
-        },
         "cc_9": {
           "type": "collection_item",
           "disabled": true,
@@ -107,25 +92,17 @@
             "title": "Block Puzzles",
             "link": "shopify://collections/block-puzzles"
           }
-        },
-        "cc_10": {
-          "type": "collection_item",
-          "settings": {
-            "image": "shopify://shop_images/image-removebg-preview_6.png",
-            "title": "Apparel",
-            "link": "shopify://collections/apparel"
-          }
         }
       },
       "block_order": [
+        "cc_8",
+        "cc_10",
+        "cc_7",
+        "collection_item_gpVQmg",
         "cc_1",
         "cc_4",
         "cc_5",
-        "cc_7",
-        "collection_item_gpVQmg",
-        "cc_8",
-        "cc_9",
-        "cc_10"
+        "cc_9"
       ],
       "settings": {
         "heading": "",
@@ -190,7 +167,7 @@
         "collection_item_pPVyLx": {
           "type": "collection_item",
           "settings": {
-            "image": "shopify://shop_images/photomagnet.jpg",
+            "image": "shopify://shop_images/698b06d30aa2a_large_f8709ffe-8e8a-49d8-98d5-0e2293804202.webp",
             "title": "Photo Magnet",
             "link": "shopify://collections/photo-magnet"
           }
@@ -341,20 +318,20 @@
     "shop_by_occasions": {
       "type": "category-slider",
       "blocks": {
-        "occ_1": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Birthday.png",
-            "title": "Birthday",
-            "link": "/collections/birthday"
-          }
-        },
         "occ_2": {
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Anniversary.png",
             "title": "Anniversary",
             "link": "/collections/anniversary"
+          }
+        },
+        "occ_1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Birthday.png",
+            "title": "Birthday",
+            "link": "/collections/birthday"
           }
         },
         "occ_3": {
@@ -410,8 +387,8 @@
         }
       },
       "block_order": [
-        "occ_1",
         "occ_2",
+        "occ_1",
         "occ_3",
         "occ_4",
         "occ_5",
@@ -657,30 +634,7 @@
     "promo_image_banner": {
       "type": "image-banner",
       "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/Custom_Photo_Gifts_Banner_087fe4ab-ec0f-4b3f-8277-dcf1fb722916.webp",
-        "image_2": "shopify://shop_images/Thi_t_k_ch_a_co_ten_1.png",
-        "image_overlay_opacity": 0,
-        "banner_link": "shopify://collections/mother-day",
-        "image_height": "adapt",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true,
-        "show_overlay_content": false,
-        "overlay_badge": "✨ Special Collection",
-        "overlay_heading_1": "Gifts That Bring",
-        "overlay_heading_2": "Joy & Happiness",
-        "overlay_subtext": "Personalized gifts made with love for the people who matter most.",
-        "overlay_btn1_text": "Shop Now",
-        "overlay_btn1_url": "",
-        "overlay_btn2_text": "View Collections",
-        "overlay_btn2_url": ""
-      }
+      "settings": {}
     },
     "product_list_main": {
       "type": "featured-collection-filterable",

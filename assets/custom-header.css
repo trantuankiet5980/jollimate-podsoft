@@ -1447,7 +1447,7 @@ header-drawer,
   .custom-top-bar__search-row {
     order: 2;
     /* Put search below logo */
-    padding: 0.4rem 1.5rem 0.5rem !important;
+    padding: 0.4rem 1.5rem 0 !important;
   }
 
   .custom-top-bar__search-row .custom-top-bar__search-form {
