@@ -309,7 +309,7 @@
           }
 
           #MainContent .shopify-section:first-child > .color-background-1.gradient > [class*='-padding'] {
-            padding-top: 0 !important;
+            padding-top: 20px !important;
             padding-bottom: 0 !important;
           }
 
@@ -330,6 +330,83 @@
           #MainContent .shopify-section [class^='ts-section-'],
           #MainContent .shopify-section .fcf-section {
             font-family: var(--font-body-family) !important;
+          }
+        }
+      </style>
+    {%- endif -%}
+
+    {%- if template.name == 'collection' -%}
+      <style>
+        #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text {
+          padding-top: 20px !important;
+        }
+
+        @media screen and (max-width: 749px) {
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] {
+            margin-top: 0 !important;
+          }
+
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text {
+            padding-bottom: 4px !important;
+          }
+
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text__wrapper {
+            width: calc(100% - 3rem / var(--font-body-scale));
+          }
+
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text__blocks {
+            max-width: 34rem;
+            margin: 0 auto;
+          }
+
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text__blocks > * + * {
+            margin-top: 6px !important;
+          }
+
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text__heading {
+            max-width: 100%;
+            margin: 0 auto !important;
+            font-size: 22px !important;
+            line-height: 1.14 !important;
+            letter-spacing: 0 !important;
+          }
+
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text__text {
+            max-width: 32rem;
+            margin: 0 auto !important;
+          }
+
+          #MainContent .shopify-section[id$='__rich_text_FWAQTE'] .rich-text__text p {
+            display: -webkit-box;
+            margin: 0 auto !important;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            font-size: 14px !important;
+            line-height: 1.32 !important;
+            letter-spacing: 0 !important;
+          }
+
+          #MainContent .shopify-section[id$='__product-grid'] {
+            margin-top: 8px !important;
+          }
+
+          #MainContent .shopify-section[id$='__product-grid'] > [class*='section-'][class*='-padding'] {
+            padding-top: 0 !important;
+          }
+
+          #MainContent .collection-header {
+            margin-bottom: 10px !important;
+          }
+
+          #MainContent .collection-header__title {
+            font-size: 22px !important;
+            line-height: 1.15 !important;
+            letter-spacing: 0 !important;
+          }
+
+          #MainContent .facets-container {
+            padding-top: 0 !important;
           }
         }
       </style>

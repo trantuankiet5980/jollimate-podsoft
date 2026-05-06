@@ -220,6 +220,17 @@
   );
 }
 
+.custom-product-card .card__media img {
+  transition: transform 0.22s ease;
+  transform-origin: center center;
+}
+
+@media screen and (min-width: 990px) and (hover: hover) {
+  .product-card-wrapper:hover .custom-product-card .card__media img {
+    transform: scale(1.04);
+  }
+}
+
 .card--card .card__inner .card__media {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;

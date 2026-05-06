@@ -303,7 +303,7 @@
     @media (max-width: 749px) {
       #MainContent #shopify-section-{{ section.id }} .custom-collection-grid-section,
       #shopify-section-{{ section.id }} .custom-collection-grid-section {
-        padding-top: 16px !important;
+        padding-top: 20px !important;
       }
 
       #shopify-section-{{ section.id }} .epc-heading {
@@ -315,13 +315,14 @@
       }
 
       #shopify-section-{{ section.id }} .epc-grid {
-        max-width: var(--popular-collection-max-width);
-        grid-template-columns: repeat(var(--popular-collection-columns), minmax(0, 1fr));
-        gap: 16px clamp(14px, 3.8vw, 18px);
+        max-width: 100%;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
       }
 
       #shopify-section-{{ section.id }} .epc-title {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 1.2;
       }
     }
   {% endif %}
