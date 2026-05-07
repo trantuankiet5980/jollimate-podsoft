@@ -3470,3 +3470,18 @@ sticky-header,
 .vm--modal {
   cursor: default;
 }
+
+@media screen and (max-width: 749px) {
+  #MainContent .cc-title,
+  #MainContent .pcg-card-title,
+  #MainContent .epc-title,
+  #MainContent .sbo-card-title,
+  #MainContent .sbr-card-title,
+  #MainContent .category-circle-text,
+  #MainContent [class^="cs-card-title-"],
+  #MainContent [class*=" cs-card-title-"],
+  #MainContent [class^="sbp-card-title-"],
+  #MainContent [class*=" sbp-card-title-"] {
+    font-size: 14px !important;
+  }
+}

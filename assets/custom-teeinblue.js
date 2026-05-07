@@ -1,11 +1,318 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const teeGalleryTimeout = setTimeout(() => {
-    const teeGallery = document.querySelector(".tee-gallery-content");
-    if (teeGallery) {
-      teeGallery.style.height = "100%";
+  const galleryWrapperSelector = ".product > .grid__item.product__media-wrapper";
+  const nativeGallerySelector = 'media-gallery[id^="MediaGallery-"]';
+  const personalizeSelector =
+    ".tee-btn--personalize, .tee-btn-wrapper--personalize, button, a, [role='button'], .tee-btn";
+  const customizationControlSelector = [
+    "#tee-artwork-form input",
+    "#tee-artwork-form textarea",
+    "#tee-artwork-form select",
+    "#tee-artwork-form .tee-radio",
+    "#tee-artwork-form .tee-swatch",
+    "#tee-artwork-form .tee-clipart-col",
+    "#tee-artwork-form .tee-img-variant-option",
+    "#tee-artwork-form .tee-color-variant-option",
+    "#tee-artwork-form .tee-upload",
+    ".tee-customization-wrapper input",
+    ".tee-customization-wrapper textarea",
+    ".tee-customization-wrapper select",
+    ".tee-customization-wrapper .tee-radio",
+    ".tee-customization-wrapper .tee-swatch",
+    ".tee-customization-wrapper .tee-clipart-col",
+    ".tee-customization-wrapper .tee-img-variant-option",
+    ".tee-customization-wrapper .tee-color-variant-option",
+    ".tee-customization-wrapper .tee-upload",
+  ].join(", ");
+  const previewContainerSelector = [
+    ".tee-gallery-content",
+    "#tee-gallery",
+    ".tee-gallery:not(.tee-dialog-gallery)",
+    ".tee-product-preview",
+    ".tee-artwork-preview",
+    ".tee-preview-wrapper",
+    ".tee-preview:not(.tee-preview-btn):not(button)",
+  ].join(", ");
+  const previewSurfaceSelector = [
+    "#tee-gallery",
+    ".tee-gallery",
+    ".tee-mockup",
+    ".tee-slider",
+    "canvas",
+    ".tee-gallery-content img",
+    ".tee-product-preview img",
+    ".tee-artwork-preview img",
+    ".tee-preview-wrapper img",
+    ".tee-preview img",
+  ].join(", ");
+  const previewHostClass = "tee-live-preview-host";
+  const activeClass = "tee-live-preview-active";
+  const layoutActiveClass = "tee-live-preview-layout";
+
+  function injectLivePreviewStyles() {
+    if (document.getElementById("tee-live-preview-styles")) return;
+
+    const style = document.createElement("style");
+    style.id = "tee-live-preview-styles";
+    style.textContent = `
+      ${galleryWrapperSelector}.${activeClass} > ${nativeGallerySelector} {
+        display: none !important;
+      }
+      @media screen and (min-width: 750px) {
+        .product.${layoutActiveClass}:not(.product--no-media) > .product__media-wrapper {
+          max-width: 48% !important;
+          width: 48% !important;
+        }
+        .product.${layoutActiveClass}:not(.product--no-media) > .product__info-wrapper {
+          max-width: 52% !important;
+          width: 52% !important;
+        }
+      }
+      ${galleryWrapperSelector}:not(.${activeClass}) > ${nativeGallerySelector} {
+        display: block !important;
+      }
+      ${galleryWrapperSelector}:not(.${activeClass}) > .${previewHostClass},
+      ${galleryWrapperSelector}:not(.${activeClass}) > .tee-gallery-content,
+      ${galleryWrapperSelector}:not(.${activeClass}) > #tee-gallery,
+      ${galleryWrapperSelector}:not(.${activeClass}) > .tee-gallery {
+        inset: 0 auto auto 0;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        visibility: hidden !important;
+        width: 100% !important;
+        z-index: -1;
+      }
+      ${galleryWrapperSelector}.${activeClass} > .${previewHostClass},
+      ${galleryWrapperSelector}.${activeClass} > .tee-gallery-content,
+      ${galleryWrapperSelector}.${activeClass} > #tee-gallery,
+      ${galleryWrapperSelector}.${activeClass} > .tee-gallery {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        position: relative !important;
+        visibility: visible !important;
+        z-index: auto;
+      }
+      ${galleryWrapperSelector} .${previewHostClass} {
+        display: block;
+        width: 100%;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-gallery-content,
+      ${galleryWrapperSelector}.${activeClass} #tee-gallery,
+      ${galleryWrapperSelector}.${activeClass} .tee-gallery {
+        box-sizing: border-box;
+        max-width: 100%;
+        width: 100% !important;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-gallery-content {
+        background: #fff;
+        height: auto !important;
+        min-height: 0;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-slider {
+        max-width: 100%;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-slider__inner,
+      ${galleryWrapperSelector}.${activeClass} .tee-slider__track,
+      ${galleryWrapperSelector}.${activeClass} .tee-slide--active {
+        min-height: 100%;
+        width: 100%;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-thumbnails,
+      ${galleryWrapperSelector}.${activeClass} .tee-slider__button,
+      ${galleryWrapperSelector}.${activeClass} .tee-slider__dots {
+        display: none !important;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-slide:not(.tee-slide--active) {
+        display: none !important;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-slide--active {
+        display: flex !important;
+      }
+      ${galleryWrapperSelector}.${activeClass} .tee-mockup,
+      ${galleryWrapperSelector}.${activeClass} .tee-mockup img,
+      ${galleryWrapperSelector}.${activeClass} .tee-slider img {
+        max-width: 100%;
+      }
+      @media screen and (max-width: 749px) {
+        body:not(.gallery--sticky) ${galleryWrapperSelector}.${activeClass} .tee-gallery-content {
+          position: relative !important;
+          top: auto !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function isDialogPreview(element) {
+    return Boolean(
+      element.closest(
+        ".tee-dialog-gallery, .tee-dialog, .vm--modal, .vm--container, [role='dialog']",
+      ),
+    );
+  }
+
+  function hasPreviewSurface(element) {
+    return Boolean(
+      element.matches(previewSurfaceSelector) ||
+        element.querySelector(previewSurfaceSelector),
+    );
+  }
+
+  function findTeeLivePreview() {
+    const galleryContentCandidates = Array.from(
+      document.querySelectorAll(".tee-gallery-content, #tee-gallery, .tee-gallery"),
+    ).filter((element) => !isDialogPreview(element) && hasPreviewSurface(element));
+
+    const galleryContent =
+      galleryContentCandidates.find(
+        (element) => !element.closest(`.${previewHostClass}`),
+      ) || galleryContentCandidates[0];
+
+    if (galleryContent) return galleryContent;
+
+    const gallery = Array.from(
+      document.querySelectorAll(previewContainerSelector),
+    ).find((element) => !isDialogPreview(element) && hasPreviewSurface(element));
+
+    if (!gallery) return null;
+    return gallery.closest(".tee-gallery-content") || gallery;
+  }
+
+  function getPreviewHost(galleryWrapper) {
+    let host = galleryWrapper.querySelector(`:scope > .${previewHostClass}`);
+    if (host) return host;
+
+    host = document.createElement("div");
+    host.className = previewHostClass;
+
+    const nativeGallery = galleryWrapper.querySelector(nativeGallerySelector);
+    if (nativeGallery) {
+      galleryWrapper.insertBefore(host, nativeGallery);
+    } else {
+      galleryWrapper.prepend(host);
     }
-    clearTimeout(teeGalleryTimeout);
-  }, 2000);
+
+    return host;
+  }
+
+  let mountingPreview = false;
+  let previewObserver = null;
+  let previewObserverTarget = null;
+  let livePreviewRequested = false;
+  let previewResizeNotified = false;
+  let _rt;
+
+  function refreshLivePreview(delay = 200) {
+    if (!livePreviewRequested) return;
+
+    clearTimeout(_rt);
+    _rt = setTimeout(() => {
+      mountTeeLivePreview();
+      scaleMockups();
+    }, delay);
+  }
+
+  function observeLivePreview(teePreview) {
+    if (!teePreview || previewObserverTarget === teePreview) return;
+
+    if (previewObserver) previewObserver.disconnect();
+    previewObserverTarget = teePreview;
+    previewObserver = new MutationObserver(() => refreshLivePreview(150));
+    previewObserver.observe(teePreview, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["style", "class", "src"],
+    });
+  }
+
+  function notifyTeeinbluePreviewVisible() {
+    if (previewResizeNotified) return;
+
+    previewResizeNotified = true;
+    [0, 80, 250, 700].forEach((delay) => {
+      window.setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, delay);
+    });
+  }
+
+  function activateLivePreview(galleryWrapper, teePreview) {
+    const wasActive = galleryWrapper.classList.contains(activeClass);
+    galleryWrapper.closest(".product")?.classList.add(layoutActiveClass);
+    galleryWrapper.classList.add(activeClass);
+    observeLivePreview(teePreview);
+
+    if (!wasActive) notifyTeeinbluePreviewVisible();
+  }
+
+  function mountTeeLivePreview() {
+    if (!livePreviewRequested) return;
+    if (mountingPreview) return;
+
+    const galleryWrapper = document.querySelector(galleryWrapperSelector);
+    const teePreview = findTeeLivePreview();
+
+    if (!galleryWrapper) return;
+    if (!teePreview) {
+      galleryWrapper.classList.remove(activeClass);
+      return;
+    }
+
+    injectLivePreviewStyles();
+    if (teePreview.closest(`.${previewHostClass}`)) {
+      activateLivePreview(galleryWrapper, teePreview);
+      return;
+    }
+
+    mountingPreview = true;
+
+    const host = getPreviewHost(galleryWrapper);
+    host.appendChild(teePreview);
+    activateLivePreview(galleryWrapper, teePreview);
+
+    teePreview.style.height = "100%";
+    requestAnimationFrame(() => {
+      scaleMockups();
+      mountingPreview = false;
+    });
+  }
+
+  function scheduleMountTeeLivePreview(delay = 0) {
+    window.setTimeout(mountTeeLivePreview, delay);
+  }
+
+  function scheduleMountAttempts() {
+    livePreviewRequested = true;
+    [0, 100, 300, 700, 1200, 2000, 3500, 5000].forEach(
+      scheduleMountTeeLivePreview,
+    );
+  }
+
+  function isCustomizeStartClick(target) {
+    const action = target.closest(personalizeSelector);
+    if (action) {
+      const actionText = [
+        action.innerText,
+        action.value,
+        action.getAttribute("aria-label"),
+        action.getAttribute("title"),
+        action.className,
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      if (/personalize|personalise|customize|customise|custom/.test(actionText)) {
+        return true;
+      }
+    }
+
+    return Boolean(target.closest(customizationControlSelector));
+  }
 
   // === DESKTOP: Scale main mockup to fit slider ===
   // Only targets .tee-gallery (main gallery), NOT mobile configurator or dialog
@@ -25,15 +332,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(scaleMockups, 500);
   setTimeout(scaleMockups, 2000);
+  injectLivePreviewStyles();
 
-  let _rt;
-  window.addEventListener("resize", () => { clearTimeout(_rt); _rt = setTimeout(scaleMockups, 150); });
+  document.addEventListener(
+    "click",
+    (e) => {
+      if (livePreviewRequested || !isCustomizeStartClick(e.target)) return;
 
-  // Watch for variant/option changes (re-scale when Teeinblue renders new mockup)
-  const _root = document.querySelector(".tee-gallery-content, .tee-campaign-container");
-  if (_root) {
-    new MutationObserver(() => { clearTimeout(_rt); _rt = setTimeout(scaleMockups, 200); })
-      .observe(_root, { childList: true, subtree: true, attributeFilter: ["style"] });
+      scheduleMountAttempts();
+    },
+    true,
+  );
+
+  window.addEventListener("resize", () => {
+    refreshLivePreview(150);
+  });
+
+  // Watch Teeinblue's async app render without observing every style/class change on the whole page.
+  if (document.body) {
+    new MutationObserver(() => refreshLivePreview(200)).observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
   }
 
 

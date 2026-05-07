@@ -740,10 +740,13 @@
                           {%- liquid
                             assign icon_svg = 'icon-menu-' | append: link.handle | append: '.svg' | asset_url
                             assign icon_png = 'icon-menu-' | append: link.handle | append: '.png' | asset_img_url: '120x'
-
+                            assign icon_src = icon_svg
+                            if link.handle == 'fathers-day'
+                              assign icon_src = icon_png
+                            endif
                           -%}
                           <img
-                            src="{{ icon_svg }}"
+                            src="{{ icon_src }}"
                             alt=""
                             class="menu-grid-item__icon"
                             onerror="this.onerror=function(){this.style.display='none'}; this.src='{{ icon_png }}';"

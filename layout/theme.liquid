@@ -68,9 +68,6 @@
     {%- endunless -%}
     
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {%- if template.name == 'product' -%}
-      {{ 'custom-junip-reviews.css' | asset_url | stylesheet_tag }}
-    {%- endif -%}
 
     {{ content_for_header }}
 
@@ -330,6 +327,19 @@
           #MainContent .shopify-section [class^='ts-section-'],
           #MainContent .shopify-section .fcf-section {
             font-family: var(--font-body-family) !important;
+          }
+
+          #MainContent .shopify-section .cc-title,
+          #MainContent .shopify-section .pcg-card-title,
+          #MainContent .shopify-section .epc-title,
+          #MainContent .shopify-section .sbo-card-title,
+          #MainContent .shopify-section .sbr-card-title,
+          #MainContent .shopify-section .category-circle-text,
+          #MainContent .shopify-section [class^='cs-card-title-'],
+          #MainContent .shopify-section [class*=' cs-card-title-'],
+          #MainContent .shopify-section [class^='sbp-card-title-'],
+          #MainContent .shopify-section [class*=' sbp-card-title-'] {
+            font-size: 14px !important;
           }
         }
       </style>
@@ -700,15 +710,7 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {%- liquid
-      assign is_teeinblue_product = false
-      if template.name == 'product'
-        if product.tags contains 'teeinblue-campaign' or product.tags contains 'teeinblue' or product.type == 'Customizer' or product.type == 'teeinblue' or product.vendor == 'teeinblue'
-          assign is_teeinblue_product = true
-        endif
-      endif
-    -%}
-    {%- if is_teeinblue_product -%}
+    {%- if template.name == 'product' -%}
       <script src="{{ 'custom-teeinblue.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
     {%- if request.path contains '/a/track-order' -%}

@@ -13,7 +13,7 @@
 
 {%- liquid
   assign is_teeinblue = false
-  if product.tags contains 'teeinblue-campaign' or product.tags contains 'teeinblue' or product.type == 'Customizer' or product.type == 'teeinblue'
+  if product.tags contains 'teeinblue-campaign' or product.tags contains 'teeinblue' or product.type == 'Customizer' or product.type == 'teeinblue' or product.vendor == 'teeinblue'
     assign is_teeinblue = true
   endif
 
@@ -185,7 +185,7 @@
   -%}
     <slider-component
       id="GalleryThumbnails-{{ section.id }}{{ id_append }}"
-      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}{% if is_teeinblue %} tee-thumbnails visually-hidden{% endif %}"
+      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
     >
       <button
         type="button"

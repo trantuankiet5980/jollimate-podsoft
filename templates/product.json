@@ -14,11 +14,14 @@
       "blocks": {
         "essential_estimated_app_block_LYX6g4": {
           "type": "shopify://apps/essential-estimated/blocks/app-block/02a895dd-b5b5-4103-8966-c6914aa8309e",
+          "disabled": true,
           "settings": {}
         },
         "delivery_estimate_A9XHjR": {
           "type": "delivery_estimate",
           "settings": {
+            "min_delivery_days": 8,
+            "max_delivery_days": 13,
             "extra_text": "Orders can be cancelled or modified within 2 hours after being placed.",
             "extra_text_2": "The above time frame is applied with standard shipping methods.",
             "custom_richtext": "<ul><li>Orders can be cancelled or modified within 2 hours after being placed.</li><li>The above time frame is applied with standard shipping methods.</li></ul><h4>Refund & Replacement</h4><ul><li>We stand behind the quality of our products.If your item arrives damaged, misprinted, or incorrect, please contact us within <strong>30 days of delivery</strong> with photos of the issue.</li><li>We will gladly <strong>send you a free replacement or issue a full refund</strong>. Because our products are made-to-order, we do not accept returns for incorrect size selection or change of mind.</li></ul>",
@@ -90,7 +93,7 @@
         "media_fit": "cover",
         "gallery_layout": "thumbnail_slider",
         "media_position": "left",
-        "image_zoom": "hover",
+        "image_zoom": "none",
         "mobile_thumbnails": "hide",
         "hide_variants": false,
         "enable_video_looping": false,
@@ -124,8 +127,8 @@
       "settings": {
         "heading": "Related products",
         "heading_size": "h2",
-        "products_to_show": 5,
-        "columns_desktop": 5,
+        "products_to_show": 8,
+        "columns_desktop": 4,
         "color_scheme": "background-1",
         "image_ratio": "portrait",
         "show_secondary_image": true,
