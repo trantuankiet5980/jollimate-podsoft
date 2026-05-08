@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryAbsoluteTop = window.pageYOffset + $gallery.getBoundingClientRect().top;
       }
     };
-    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("resize", updateDimensions, { passive: true });
     updateDimensions();
 
     let hasStickyButton = false;
@@ -128,8 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     };
     const $window = window;
-    $window.addEventListener("scroll", onScroll);
-    $window.addEventListener("DOMMouseScroll", onScroll); // For older browsers
+    $window.addEventListener("scroll", onScroll, { passive: true });
   };
   const w = window.innerWidth;
   const h = window.innerHeight;

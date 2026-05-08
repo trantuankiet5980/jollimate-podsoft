@@ -139,7 +139,7 @@
     "cart_drawer_collection": "hydrogen",
     "badge_1_tag": "Best Seller",
     "badge_1_color": "#ef4444",
-    "badge_2_tag": "New",
+    "badge_2_tag": "",
     "badge_2_color": "#ef4444",
     "badge_3_tag": "Hot",
     "sections": {
@@ -180,7 +180,7 @@
       },
       "8670728856252544919": {
         "type": "shopify://apps/essential-estimated/blocks/app-embed/02a895dd-b5b5-4103-8966-c6914aa8309e",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       },
       "16017602894386113438": {

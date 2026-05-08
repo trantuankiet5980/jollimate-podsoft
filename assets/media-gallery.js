@@ -30,11 +30,59 @@ if (!customElements.get("media-gallery")) {
                 ),
               );
           });
+        this.bindDesktopViewerButtons();
         if (
           this.dataset.desktopLayout.includes("thumbnail") &&
           this.mql.matches
         )
           this.removeListSemantic();
+      }
+
+      bindDesktopViewerButtons() {
+        this.elements.viewer
+          .querySelectorAll(
+            '.slider-buttons button[name="previous"], .slider-buttons button[name="next"]',
+          )
+          .forEach((button) => {
+            button.addEventListener("click", (event) => {
+              if (!this.mql.matches) return;
+              if (!this.dataset.desktopLayout.includes("thumbnail")) return;
+
+              event.preventDefault();
+              this.switchDesktopMedia(event.currentTarget.name === "next" ? 1 : -1);
+            });
+          });
+      }
+
+      switchDesktopMedia(direction) {
+        const thumbnails = Array.from(
+          this.elements.thumbnails.querySelectorAll("[data-target]"),
+        ).filter((thumbnail) => {
+          const button = thumbnail.querySelector("button");
+          return (
+            button &&
+            thumbnail.offsetParent !== null &&
+            window.getComputedStyle(thumbnail).display !== "none"
+          );
+        });
+
+        if (thumbnails.length < 2) return;
+
+        const activeMediaId = this.elements.viewer
+          .querySelector(".product__media-item.is-active")
+          ?.getAttribute("data-media-id");
+        const activeThumbnail =
+          thumbnails.find(
+            (thumbnail) =>
+              thumbnail.querySelector("button[aria-current='true']") ||
+              thumbnail.dataset.target === activeMediaId,
+          ) || thumbnails[0];
+
+        const activeIndex = thumbnails.indexOf(activeThumbnail);
+        const nextIndex =
+          (activeIndex + direction + thumbnails.length) % thumbnails.length;
+
+        this.setActiveMedia(thumbnails[nextIndex].dataset.target, false);
       }
 
       onSlideChanged(event) {

@@ -567,13 +567,13 @@ class HeaderDrawer extends MenuDrawer {
 
   openMenuDrawer(summaryElement) {
     this.header = this.header || document.querySelector(".section-header");
+    const headerWrapper = this.closest(".header-wrapper");
     this.borderOffset =
       this.borderOffset ||
-      this.closest(".header-wrapper").classList.contains(
-        "header-wrapper--border-bottom",
-      )
+      (headerWrapper &&
+      headerWrapper.classList.contains("header-wrapper--border-bottom")
         ? 1
-        : 0;
+        : 0);
     document.documentElement.style.setProperty(
       "--header-bottom-position",
       `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`,
