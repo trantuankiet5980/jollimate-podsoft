@@ -1,10 +1,15 @@
-/* Red theme for cart, checkout, and product buttons */
+/* Orange theme for cart, checkout, and product buttons */
+:root {
+  --theme-action-orange: #F36B21;
+  --theme-action-orange-hover: #d95616;
+  --theme-action-orange-shadow: rgba(243, 107, 33, 0.32);
+}
 
 /* ===== CART COUNT BADGE ===== */
 .cart-count-bubble,
 .header__icon--cart .cart-count-bubble,
 #cart-icon-bubble .cart-count-bubble {
-  background-color: #F48525 !important;
+  background-color: var(--theme-action-orange) !important;
   color: #ffffff !important;
 }
 
@@ -17,66 +22,91 @@
 #CartDrawer-Checkout,
 .cart__checkout-button,
 button[name="checkout"] {
-  background-color: #ff0000 !important;
+  background-color: var(--theme-action-orange) !important;
   color: #ffffff !important;
-  border-color: #ff0000 !important;
+  border-color: var(--theme-action-orange) !important;
   font-weight: bold !important;
 }
 
 #CartDrawer-Checkout:hover,
 .cart__checkout-button:hover,
 button[name="checkout"]:hover {
-  background-color: #cc0000 !important;
-  border-color: #cc0000 !important;
+  background-color: var(--theme-action-orange-hover) !important;
+  border-color: var(--theme-action-orange-hover) !important;
 }
 
 /* ===== CONTINUE SHOPPING BUTTON ===== */
 .cart__continue-shopping,
 .cart-drawer__continue-shopping,
 .button--secondary {
-  background-color: #ff0000 !important;
+  background-color: var(--theme-action-orange) !important;
   color: #ffffff !important;
-  border-color: #ff0000 !important;
+  border-color: var(--theme-action-orange) !important;
   font-weight: bold !important;
 }
 
 .cart__continue-shopping:hover,
 .cart-drawer__continue-shopping:hover,
 .button--secondary:hover {
-  background-color: #cc0000 !important;
-  border-color: #cc0000 !important;
+  background-color: var(--theme-action-orange-hover) !important;
+  border-color: var(--theme-action-orange-hover) !important;
 }
 
 /* ===== TEEINBLUE ADD TO CART BUTTON ===== */
 .tee-btn-atc,
-button[name="add"].tee-btn-atc {
-  background-color: #ff0000 !important;
+.tee-add-to-cart-btn,
+.tee-btn-add-to-cart,
+.tee-submit-btn,
+button[name="add"],
+button[name="add"].tee-btn-atc,
+button[class*="tee"][class*="add-to-cart"],
+a[class*="tee"][class*="add-to-cart"] {
+  background: var(--theme-action-orange) !important;
   color: #ffffff !important;
-  border: none !important;
+  border: 1px solid var(--theme-action-orange) !important;
   font-weight: bold !important;
-  border-radius: 4px !important;
+  border-radius: 999px !important;
+  min-height: 52px !important;
+  box-shadow: 0 8px 18px var(--theme-action-orange-shadow) !important;
+  letter-spacing: 0.02em !important;
 }
 
 .tee-btn-atc:hover,
-button[name="add"].tee-btn-atc:hover {
-  background-color: #cc0000 !important;
+.tee-add-to-cart-btn:hover,
+.tee-btn-add-to-cart:hover,
+.tee-submit-btn:hover,
+button[name="add"]:hover,
+button[name="add"].tee-btn-atc:hover,
+button[class*="tee"][class*="add-to-cart"]:hover,
+a[class*="tee"][class*="add-to-cart"]:hover {
+  background: var(--theme-action-orange-hover) !important;
+  border-color: var(--theme-action-orange-hover) !important;
+  box-shadow: 0 10px 22px rgba(217, 86, 22, 0.34) !important;
+  transform: translateY(-1px);
 }
 
 /* ===== PRODUCT FORM SUBMIT (Standard Shopify) ===== */
 .product-form__submit {
-  background-color: #ff0000 !important;
+  background: var(--theme-action-orange) !important;
   color: #ffffff !important;
-  border: none !important;
+  border: 1px solid var(--theme-action-orange) !important;
   font-weight: bold !important;
+  border-radius: 999px !important;
+  min-height: 52px !important;
+  box-shadow: 0 8px 18px var(--theme-action-orange-shadow) !important;
+  letter-spacing: 0.02em !important;
 }
 
 .product-form__submit:hover {
-  background-color: #cc0000 !important;
+  background: var(--theme-action-orange-hover) !important;
+  border-color: var(--theme-action-orange-hover) !important;
+  box-shadow: 0 10px 22px rgba(217, 86, 22, 0.34) !important;
+  transform: translateY(-1px);
 }
 
 /* ===== SIZE/VARIANT SELECTOR (Active state) ===== */
 .product-form__input input:checked+label {
-  border-color: #ff0000 !important;
+  border-color: var(--theme-action-orange) !important;
 }
 
 /* ===== CART DRAWER - ALL BUTTONS ===== */
@@ -84,9 +114,9 @@ cart-drawer .drawer__footer button,
 cart-drawer .cart-drawer__footer button,
 .drawer__footer .button,
 .cart-drawer__footer .button {
-  background-color: #ff0000 !important;
+  background-color: var(--theme-action-orange) !important;
   color: #ffffff !important;
-  border-color: #ff0000 !important;
+  border-color: var(--theme-action-orange) !important;
   font-weight: bold !important;
 }
 
@@ -94,37 +124,37 @@ cart-drawer .drawer__footer button:hover,
 cart-drawer .cart-drawer__footer button:hover,
 .drawer__footer .button:hover,
 .cart-drawer__footer .button:hover {
-  background-color: #cc0000 !important;
-  border-color: #cc0000 !important;
+  background-color: var(--theme-action-orange-hover) !important;
+  border-color: var(--theme-action-orange-hover) !important;
 }
 
 /* ===== CART EMPTY - CONTINUE SHOPPING LINK ===== */
 .cart__ctas a,
 .drawer__inner a.button,
 cart-drawer a.button {
-  background-color: #ff0000 !important;
+  background-color: var(--theme-action-orange) !important;
   color: #ffffff !important;
-  border-color: #ff0000 !important;
+  border-color: var(--theme-action-orange) !important;
   font-weight: bold !important;
 }
 
 .cart__ctas a:hover,
 .drawer__inner a.button:hover,
 cart-drawer a.button:hover {
-  background-color: #cc0000 !important;
-  border-color: #cc0000 !important;
+  background-color: var(--theme-action-orange-hover) !important;
+  border-color: var(--theme-action-orange-hover) !important;
 }
 
-/* ===== PRIMARY BUTTONS (Global red theme) ===== */
+/* ===== PRIMARY BUTTONS (Global orange theme) ===== */
 .button--primary,
 button.button--primary {
-  background-color: #ff0000 !important;
+  background-color: var(--theme-action-orange) !important;
   color: #ffffff !important;
-  border-color: #ff0000 !important;
+  border-color: var(--theme-action-orange) !important;
 }
 
 .button--primary:hover,
 button.button--primary:hover {
-  background-color: #cc0000 !important;
-  border-color: #cc0000 !important;
+  background-color: var(--theme-action-orange-hover) !important;
+  border-color: var(--theme-action-orange-hover) !important;
 }

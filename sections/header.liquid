@@ -741,9 +741,6 @@
                             assign icon_svg = 'icon-menu-' | append: link.handle | append: '.svg' | asset_url
                             assign icon_png = 'icon-menu-' | append: link.handle | append: '.png' | asset_img_url: '120x'
                             assign icon_src = icon_svg
-                            if link.handle == 'fathers-day'
-                              assign icon_src = icon_png
-                            endif
                           -%}
                           <img
                             src="{{ icon_src }}"

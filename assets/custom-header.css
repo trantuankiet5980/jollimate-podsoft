@@ -1549,3 +1549,33 @@ header-drawer,
     /* Already handled by small-hide, but ensure order */
   }
 }
+
+/* Use the mobile header on tablet/iPad widths so crowded desktop nav does not wrap or clip. */
+@media screen and (min-width: 990px) and (max-width: 1199px) {
+  .custom-header-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .custom-top-bar.custom-top-bar--orange,
+  .custom-main-header,
+  .custom-top-bar__nav-row {
+    display: none !important;
+  }
+
+  .custom-header-mobile.large-up-hide {
+    display: block !important;
+    order: 1;
+  }
+
+  .custom-header-mobile header-drawer,
+  .custom-header-mobile .menu-drawer-container {
+    display: block !important;
+  }
+
+  .custom-top-bar__search-row {
+    display: flex !important;
+    order: 2;
+    padding: 0.6rem 2.4rem 0.8rem !important;
+  }
+}

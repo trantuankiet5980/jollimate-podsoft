@@ -33,7 +33,26 @@
       tabindex="0"
     >
       {%- liquid
-        if product.selected_or_first_available_variant.featured_media != null
+        assign is_teeinblue = false
+        if product.tags contains 'teeinblue-campaign' or product.tags contains 'teeinblue' or product.type == 'Customizer' or product.type == 'teeinblue' or product.vendor == 'teeinblue'
+          assign is_teeinblue = true
+        endif
+
+        assign tee_mockup_media_count = 0
+        if is_teeinblue
+          for media in product.media
+            unless variant_images contains media.src
+              assign tee_mockup_media_count = tee_mockup_media_count | plus: 1
+            endunless
+          endfor
+        endif
+
+        assign tee_fallback_media = product.selected_or_first_available_variant.featured_media
+        if tee_fallback_media == blank
+          assign tee_fallback_media = product.featured_media
+        endif
+
+        if is_teeinblue == false and product.selected_or_first_available_variant.featured_media != null
           assign media = product.selected_or_first_available_variant.featured_media
           render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
         endif
@@ -41,15 +60,29 @@
 
       {%- for media in product.media -%}
         {%- liquid
-          if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
-            assign variant_image = true
-          else
-            assign variant_image = false
+          assign render_media = true
+          if is_teeinblue
+            assign render_media = false
+            if tee_mockup_media_count > 0
+              unless variant_images contains media.src
+                assign render_media = true
+              endunless
+            elsif tee_fallback_media != blank and media.id == tee_fallback_media.id
+              assign render_media = true
+            endif
           endif
 
-          unless media.id == product.selected_or_first_available_variant.featured_media.id
-            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
-          endunless
+          if render_media
+            if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
+              assign variant_image = true
+            else
+              assign variant_image = false
+            endif
+
+            if is_teeinblue or media.id != product.selected_or_first_available_variant.featured_media.id
+              render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
+            endif
+          endif
         -%}
       {%- endfor -%}
     </div>

@@ -14,7 +14,7 @@
       "custom_css": [],
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n.hero-banner{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:7552/2176}\n.hero-banner img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner__btn{\n  position:absolute;\n  bottom:22%;\n  left:50%;\n  transform:translateX(-50%);\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  box-sizing:border-box;\n  white-space:nowrap;\n  line-height:1;\n  background:#fff;\n  color:#d4618c;\n  text-decoration:none;\n  padding:14px 44px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner__btn:hover{\n  background:#F97B22;\n  color:#fff;\n  box-shadow:0 4px 16px rgba(249,123,34,0.4);\n}\n@media(max-width:768px){\n  .hero-banner{\n    padding:0 12px;\n    aspect-ratio:1328/784;\n  }\n  .hero-banner img{\n    border-radius:12px;\n  }\n  .hero-banner__btn{\n    bottom:12%;\n    left:50%;\n    padding:8px 24px;\n    font-size:14px;\n    border-radius:25px;\n  }\n}\n</style>\n<div class=\"hero-banner\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/Iaoe5.jpg?v=1774948649&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/Iaoe5.jpg?v=1774948649&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/Iaoe5.jpg?v=1774948649 1328w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/kB2lM_upscayl_4x_realesrgan-x4plus.jpg?v=1774943345&width=1904 1904w\" sizes=\"100vw\" width=\"7552\" height=\"2176\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" alt=\"Mother's Day Collection - Personalized Gifts\">\n  </picture>\n  <a href=\"/collections/mothers-day\" class=\"hero-banner__btn\">PERSONALIZE NOW</a>\n</div>",
+        "custom_liquid": "<style>\n.hero-banner{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:1904/554}\n.hero-banner img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner__btn{\n  position:absolute;\n  bottom:7%;\n  left:31%;\n  transform:translateX(-50%);\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  box-sizing:border-box;\n  white-space:nowrap;\n  line-height:1;\n  background:#173F6D;\n  color:#FFFFFF;\n  text-decoration:none;\n  padding:14px 44px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner__btn:hover{\n  background:#123457;\n  color:#FFFFFF;\n  box-shadow:0 4px 16px rgba(18,52,87,0.35);\n}\n@media(max-width:768px){\n  .hero-banner{\n    padding:0 12px 14px;\n    aspect-ratio:1248/832;\n    background:#FFF7EC;\n  }\n  .hero-banner img{\n    border-radius:12px;\n  }\n  .hero-banner__btn{\n    bottom:12%;\n    left:50%;\n    padding:8px 24px;\n    font-size:14px;\n    border-radius:25px;\n  }\n}\n@media(min-width:769px) and (max-width:1200px){\n  .hero-banner__btn,.hero-banner-2__btn,.hero-banner-3__btn{\n    padding:clamp(8px,1vw,12px) clamp(24px,3vw,40px);\n    border-radius:32px;\n    font-size:clamp(14px,1.55vw,20px);\n    letter-spacing:.3px;\n    box-shadow:0 2px 10px rgba(0,0,0,0.14);\n  }\n  .hero-banner-3__btn{\n    padding:clamp(9px,1.1vw,13px) clamp(26px,3.2vw,42px);\n  }\n}\n</style>\n<style>\n.mobile-banner-copy{display:none}\n@media(max-width:768px){\n  .mobile-banner-frame{background:#FFF7EC}\n  [id*=\"custom_liquid_hyAUV3\"],[id*=\"custom_liquid_4bkYd4\"]{background:#FFF7EC!important}\n  [id*=\"custom_liquid_hyAUV3\"] [class*=\"-padding\"],[id*=\"custom_liquid_4bkYd4\"] [class*=\"-padding\"]{padding-top:0!important;padding-bottom:0!important;background:#FFF7EC!important}\n  .hero-banner__btn,.hero-banner-2__btn,.hero-banner-3__btn{display:none!important}\n  .mobile-banner-copy{display:block;background:#FFF7EC;padding:8px 22px 22px;text-align:center}\n  .mobile-banner-copy__inner{max-width:360px;margin:0 auto}\n  .mobile-banner-copy__eyebrow{margin:0 0 6px;font-size:14px;line-height:1.2;font-weight:700;color:#143a5a}\n  .mobile-banner-copy__title{margin:0 0 8px;font-size:24px;line-height:1.15;font-weight:800;color:#143a5a;letter-spacing:0}\n  .mobile-banner-copy__desc{margin:0;font-size:15px;line-height:1.45;font-weight:400;color:#25384b}\n  .mobile-banner-copy__button{display:inline-flex;align-items:center;justify-content:center;min-height:38px;margin-top:14px;padding:0 26px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.4px;line-height:1;text-decoration:none;color:#FFFFFF;background:#173F6D;box-shadow:0 3px 10px rgba(0,0,0,.12)}\n  .mobile-banner-copy--anniversary .mobile-banner-copy__eyebrow,.mobile-banner-copy--anniversary .mobile-banner-copy__title{color:#b21d31}\n  .mobile-banner-copy--anniversary .mobile-banner-copy__button{background:#C61B52}\n  .mobile-banner-copy--graduation .mobile-banner-copy__eyebrow,.mobile-banner-copy--graduation .mobile-banner-copy__title{color:#d65058}\n  .mobile-banner-copy--father .mobile-banner-copy__button:hover{background:#123457}\n  .mobile-banner-copy--anniversary .mobile-banner-copy__button:hover{background:#A91545}\n  .mobile-banner-copy--graduation .mobile-banner-copy__button{background:#D95555}\n  .mobile-banner-copy--graduation .mobile-banner-copy__button:hover{background:#C94747}\n}\n@media(max-width:380px){\n  .mobile-banner-copy{padding:4px 14px 20px}\n  .mobile-banner-copy__title{font-size:22px;line-height:1.14;margin-bottom:7px}\n  .mobile-banner-copy__desc{font-size:14px;line-height:1.42}\n  .mobile-banner-copy__button{min-height:36px;padding:0 22px;font-size:12px}\n}\n</style>\n<div class=\"mobile-banner-frame\">\n<div class=\"mobile-banner-copy mobile-banner-copy--father\">\n  <div class=\"mobile-banner-copy__inner\">\n    <p class=\"mobile-banner-copy__eyebrow\">Happy Father's Day</p>\n    <h2 class=\"mobile-banner-copy__title\">Big Hugs For Dad</h2>\n    <p class=\"mobile-banner-copy__desc\">Celebrate Father's Day with<br>heartwarming keepsakes and family love</p>\n    <a href=\"/collections/fathers-day\" class=\"mobile-banner-copy__button\">PERSONALIZE NOW</a>\n  </div>\n</div>\n<div class=\"hero-banner\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-FATHERDAY.png?v=1778399133&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-FATHERDAY.png?v=1778399133&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-FATHERDAY.png?v=1778399133 1248w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-FATHERDAY.png?v=1778399057&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-FATHERDAY.png?v=1778399057&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-FATHERDAY.png?v=1778399057&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-FATHERDAY.png?v=1778399057&width=1904 1904w\" sizes=\"100vw\" width=\"1904\" height=\"554\" loading=\"eager\" fetchpriority=\"high\" decoding=\"async\" alt=\"Father’s Day banner with warm family-themed illustrations, featuring a father hugging his children while wearing a personalized ‘Greatest Dad Ever’ T-shirt, alongside soft blue and yellow decorative elements and celebratory typography.\">\n  </picture>\n  <a href=\"/collections/fathers-day\" class=\"hero-banner__btn\">PERSONALIZE NOW</a>\n</div>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 0,
         "padding_bottom": 0
@@ -31,7 +31,7 @@
         "collection_item_Czq3iq": {
           "type": "collection_item",
           "settings": {
-            "image": "shopify://shop_images/69d45f5174e9d_2e4b6432-f0a0-4aca-9177-280c3f7c26eb.webp",
+            "image": "shopify://shop_images/ICON_WEB-ACRYLIC.png",
             "title": "Acrylic",
             "link": "shopify://collections/acrylic-plaque"
           }
@@ -39,7 +39,7 @@
         "collection_item_LTeDX3": {
           "type": "collection_item",
           "settings": {
-            "image": "shopify://shop_images/69dcd97e0a269_211aa4af-8ef4-4f43-815d-3883564fda52.webp",
+            "image": "shopify://shop_images/ICON_WEB-_SUNCATCHER.png",
             "title": "Suncatchers",
             "link": "shopify://collections/suncatcher-ornament"
           }
@@ -47,7 +47,7 @@
         "cc_8": {
           "type": "collection_item",
           "settings": {
-            "image": "shopify://shop_images/picture.png",
+            "image": "shopify://shop_images/ICON_WEB-_WALL_ART.png",
             "title": "Wall Art",
             "link": "shopify://collections/photo"
           }
@@ -55,7 +55,7 @@
         "cc_10": {
           "type": "collection_item",
           "settings": {
-            "image": "shopify://shop_images/image-removebg-preview_6.png",
+            "image": "shopify://shop_images/ICON_WEB-_APPAREL.png",
             "title": "Apparel",
             "link": "shopify://collections/apparel"
           }
@@ -63,7 +63,7 @@
         "cc_7": {
           "type": "collection_item",
           "settings": {
-            "image": "shopify://shop_images/keychain.png",
+            "image": "shopify://shop_images/ICON_WEB-_KEYCHAINS.png",
             "title": "Keychains",
             "link": "shopify://collections/memory-remembrance-pin"
           }
@@ -80,7 +80,7 @@
         "cc_1": {
           "type": "collection_item",
           "settings": {
-            "image": "shopify://shop_images/Mug.png",
+            "image": "shopify://shop_images/ICON_WEB-MUG_fb19b476-d65a-4002-a0d6-c42a86c455ad.png",
             "title": "Mugs",
             "link": "shopify://collections/mug"
           }
@@ -129,8 +129,8 @@
         "heading": "",
         "padding_top": 16,
         "padding_bottom": 0,
-        "circle_bg_color": "#f9e7ea",
-        "bg_gradient": "linear-gradient(180deg, rgba(249, 231, 234, 1), rgba(249, 242, 236, 1) 100%)"
+        "circle_bg_color": "#e9f3fd",
+        "bg_gradient": "linear-gradient(180deg, rgba(233, 243, 253, 1), rgba(233, 243, 253, 1) 100%)"
       }
     },
     "benefits_bar": {
@@ -329,6 +329,7 @@
         "sf_8",
         "sf_9"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Who Are You Shopping For Today?",
         "background_color": "#ffffff",
@@ -342,7 +343,7 @@
         "item_Bdrw9k": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/69e9a02dc1773_e4a35a16-c386-439e-8257-6ac47bf73ad8.png",
+            "image": "shopify://shop_images/CATA_THEME-_FATHER_DAY.png",
             "title": "Father's Day",
             "link": "shopify://collections/fathers-day"
           }
@@ -366,7 +367,7 @@
         "occ_3": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Wedding.png",
+            "image": "shopify://shop_images/CATA_THEME-WEDDING.png",
             "title": "Wedding",
             "link": "/collections/wedding"
           }
@@ -374,7 +375,7 @@
         "occ_8": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Pet.png",
+            "image": "shopify://shop_images/CATA_THEME-_PET.png",
             "title": "Pet",
             "link": "shopify://collections/for-pet-lover"
           }
@@ -382,9 +383,9 @@
         "occ_4": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Mother_day.png",
-            "title": "Mother's Day",
-            "link": "/collections/mothers-day"
+            "image": "shopify://shop_images/CATA_THEME-_250th.png",
+            "title": "America's 250th",
+            "link": "shopify://collections/americas-2026"
           }
         },
         "occ_5": {
@@ -440,7 +441,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n.hero-banner-2{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:1904/544}\n.hero-banner-2 img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner-2__btn{\n  position:absolute;\n  bottom:22%;\n  left:50%;\n  transform:translateX(-50%);\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  box-sizing:border-box;\n  white-space:nowrap;\n  line-height:1;\n  background:#b21d31;\n  color:#fff;\n  text-decoration:none;\n  padding:14px 48px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner-2__btn:hover{\n  background:#1a3a5c;\n  color:#fff;\n  box-shadow:0 4px 16px rgba(26,58,92,0.4);\n}\n@media(max-width:768px){\n  .hero-banner-2{\n    padding:0 12px;\n    aspect-ratio:1248/832;\n  }\n  .hero-banner-2 img{\n    border-radius:12px;\n  }\n  .hero-banner-2__btn{\n    bottom:41.5%;\n    left:35%;\n    padding:6px 20px;\n    font-size:10px;\n    border-radius:25px;\n  }\n}\n</style>\n<div class=\"hero-banner-2\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/c70b6.jpg?v=1774948870&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/c70b6.jpg?v=1774948870&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/c70b6.jpg?v=1774948870 1248w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/qA3Gh.jpg?v=1774944296&width=1904 1904w\" sizes=\"100vw\" width=\"1904\" height=\"544\" loading=\"lazy\" decoding=\"async\" alt=\"America's 250th Anniversary - Personalized Patriotic Gifts\">\n  </picture>\n  <a href=\"/collections/americas-2026\" class=\"hero-banner-2__btn\">PERSONALIZE NOW</a>\n</div>",
+        "custom_liquid": "<style>\n.hero-banner-2{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:1904/554}\n.hero-banner-2 img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner-2__btn{\n  position:absolute;\n  bottom:7%;\n  left:31%;\n  transform:translateX(-50%);\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  box-sizing:border-box;\n  white-space:nowrap;\n  line-height:1;\n  background:#C61B52;\n  color:#FFFFFF;\n  text-decoration:none;\n  padding:14px 48px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner-2__btn:hover{\n  background:#A91545;\n  color:#FFFFFF;\n  box-shadow:0 4px 16px rgba(169,21,69,0.35);\n}\n@media(max-width:768px){\n  .hero-banner-2{\n    padding:0 12px 14px;\n    aspect-ratio:1248/832;\n    background:#FFF7EC;\n  }\n  .hero-banner-2 img{\n    border-radius:12px;\n  }\n  .hero-banner-2__btn{\n    bottom:41.5%;\n    left:35%;\n    padding:6px 20px;\n    font-size:10px;\n    border-radius:25px;\n  }\n}\n@media(min-width:769px) and (max-width:1200px){\n  .hero-banner-2__btn{\n    padding:clamp(8px,1vw,12px) clamp(24px,3vw,40px);\n    border-radius:32px;\n    font-size:clamp(14px,1.55vw,20px);\n    letter-spacing:.3px;\n    box-shadow:0 2px 10px rgba(0,0,0,0.14);\n  }\n}\n</style>\n<div class=\"mobile-banner-frame\">\n<div class=\"mobile-banner-copy mobile-banner-copy--anniversary\">\n  <div class=\"mobile-banner-copy__inner\">\n    <p class=\"mobile-banner-copy__eyebrow\">250 Anniversary</p>\n    <h2 class=\"mobile-banner-copy__title\">250 Years of American Spirit</h2>\n    <p class=\"mobile-banner-copy__desc\">Be part of the nationwide celebration<br>honoring a quarter millennium of history</p>\n    <a href=\"/collections/americas-2026\" class=\"mobile-banner-copy__button\">PERSONALIZE NOW</a>\n  </div>\n</div>\n<div class=\"hero-banner-2\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-250th.png?v=1778399178&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-250th.png?v=1778399178&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-250th.png?v=1778399178 1248w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-250th.png?v=1778399177&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-250th.png?v=1778399177&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-250th.png?v=1778399177&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-250th.png?v=1778399177&width=1904 1904w\" sizes=\"100vw\" width=\"1904\" height=\"554\" loading=\"lazy\" decoding=\"async\" alt=\"250th Anniversary banner featuring patriotic red, white, and blue decorations, fireworks illustrations, Statue of Liberty artwork, and a group of smiling people wearing personalized American-themed T-shirts celebrating 250 years of American spirit.\">\n  </picture>\n  <a href=\"/collections/americas-2026\" class=\"hero-banner-2__btn\">PERSONALIZE NOW</a>\n</div>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 16,
         "padding_bottom": 16
@@ -779,7 +780,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n.hero-banner-3{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:1904/544}\n.hero-banner-3 img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner-3__btn{\n  position:absolute;\n  bottom:12%;\n  left:50%;\n  transform:translateX(-50%);\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  box-sizing:border-box;\n  white-space:nowrap;\n  line-height:1;\n  background:#F97B22;\n  color:#fff;\n  text-decoration:none;\n  padding:18px 56px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner-3__btn:hover{\n  background:#333;\n  color:#fff;\n  box-shadow:0 4px 16px rgba(249,123,34,0.4);\n}\n@media(max-width:768px){\n  .hero-banner-3{\n    padding:0 12px;\n    aspect-ratio:1248/832;\n  }\n  .hero-banner-3 img{\n    border-radius:12px;\n  }\n  .hero-banner-3__btn{\n    bottom:41%;\n    left:36%;\n    padding:6px 18px;\n    font-size:12px;\n    border-radius:25px;\n  }\n}\n</style>\n<div class=\"hero-banner-3\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/X3NdL_89ffbd7a-de0f-4988-a490-ddd24d48feec.jpg?v=1774949941&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/X3NdL_89ffbd7a-de0f-4988-a490-ddd24d48feec.jpg?v=1774949941&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/X3NdL_89ffbd7a-de0f-4988-a490-ddd24d48feec.jpg?v=1774949941 1248w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/0DY4W.jpg?v=1774947267&width=1904 1904w\" sizes=\"100vw\" width=\"1904\" height=\"544\" loading=\"lazy\" decoding=\"async\" alt=\"Class 2026 Graduation Day - Personalized Graduation Gifts\">\n  </picture>\n  <a href=\"/collections/graduation-gift\" class=\"hero-banner-3__btn\">PERSONALIZE NOW</a>\n</div>",
+        "custom_liquid": "<style>\n.hero-banner-3{position:relative;width:100%;overflow:hidden;display:block;aspect-ratio:1904/554}\n.hero-banner-3 img{width:100%;height:100%;object-fit:cover;display:block}\n.hero-banner-3__btn{\n  position:absolute;\n  bottom:7%;\n  left:31%;\n  transform:translateX(-50%);\n  display:inline-flex;\n  align-items:center;\n  justify-content:center;\n  box-sizing:border-box;\n  white-space:nowrap;\n  line-height:1;\n  background:#D95555;\n  color:#FFFFFF;\n  text-decoration:none;\n  padding:18px 56px;\n  border-radius:40px;\n  font-size:24px;\n  font-weight:700;\n  letter-spacing:0.5px;\n  box-shadow:0 3px 12px rgba(0,0,0,0.15);\n  transition:all 0.3s ease;\n  z-index:2;\n}\n.hero-banner-3__btn:hover{\n  background:#C94747;\n  color:#FFFFFF;\n  box-shadow:0 4px 16px rgba(201,71,71,0.35);\n}\n@media(max-width:768px){\n  .hero-banner-3{\n    padding:0 12px 14px;\n    aspect-ratio:1248/832;\n    background:#FFF7EC;\n  }\n  .hero-banner-3 img{\n    border-radius:12px;\n  }\n  .hero-banner-3__btn{\n    bottom:41%;\n    left:36%;\n    padding:6px 18px;\n    font-size:12px;\n    border-radius:25px;\n  }\n}\n@media(min-width:769px) and (max-width:1200px){\n  .hero-banner-3__btn{\n    padding:clamp(9px,1.1vw,13px) clamp(26px,3.2vw,42px);\n    border-radius:32px;\n    font-size:clamp(14px,1.55vw,20px);\n    letter-spacing:.3px;\n    box-shadow:0 2px 10px rgba(0,0,0,0.14);\n  }\n}\n</style>\n<div class=\"mobile-banner-frame\">\n<div class=\"mobile-banner-copy mobile-banner-copy--graduation\">\n  <div class=\"mobile-banner-copy__inner\">\n    <p class=\"mobile-banner-copy__eyebrow\">Happy Graduation</p>\n    <h2 class=\"mobile-banner-copy__title\">Celebrate The Class Of 2026</h2>\n    <p class=\"mobile-banner-copy__desc\">Graduation gifts made for proud graduates<br>and unforgettable milestone memories.</p>\n    <a href=\"/collections/graduation-gift\" class=\"mobile-banner-copy__button\">PERSONALIZE NOW</a>\n  </div>\n</div>\n<div class=\"hero-banner-3\">\n  <picture>\n    <source media=\"(max-width:768px)\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-GRADUATION.png?v=1778399178&width=600 600w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-GRADUATION.png?v=1778399178&width=900 900w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-MOBILE-GRADUATION.png?v=1778399178 1248w\" sizes=\"calc(100vw - 24px)\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-GRADUATION.png?v=1778399177&width=1904\" srcset=\"https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-GRADUATION.png?v=1778399177&width=960 960w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-GRADUATION.png?v=1778399177&width=1440 1440w, https://cdn.shopify.com/s/files/1/0797/7435/1609/files/BANNER-GRADUATION.png?v=1778399177&width=1904 1904w\" sizes=\"100vw\" width=\"1904\" height=\"554\" loading=\"lazy\" decoding=\"async\" alt=\"Graduation celebration banner featuring elegant graduation-themed graphics, diploma and cap illustrations, and a family proudly celebrating a graduate holding a personalized Class of 2026 photo blanket in soft peach and coral tones.\">\n  </picture>\n  <a href=\"/collections/graduation-gift\" class=\"hero-banner-3__btn\">PERSONALIZE NOW</a>\n</div>\n</div>",
         "color_scheme": "background-1",
         "padding_top": 16,
         "padding_bottom": 16
@@ -962,7 +963,7 @@
         "heading": "Shop By Recipients",
         "card_shape": "circle",
         "background_color": "#ffffff",
-        "card_bg_color": "#fdf0ec",
+        "card_bg_color": "#e9f3fd",
         "padding_top": 16,
         "padding_bottom": 16
       }
@@ -1063,7 +1064,7 @@
         "title": "What is Jollimate?",
         "title_color": "#1a1a1a",
         "background_color": "#ffffff",
-        "card_bg_color": "#fdf0ec",
+        "card_bg_color": "#e9f3fd",
         "padding_top": 16,
         "padding_bottom": 16
       }

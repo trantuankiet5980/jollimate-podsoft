@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const previewHostClass = "tee-live-preview-host";
   const activeClass = "tee-live-preview-active";
   const layoutActiveClass = "tee-live-preview-layout";
+  const emptyCustomizeFormClass = "tee-customize-main-form--empty";
+  const customFitZoomAttr = "teeCustomFitZoom";
 
   function injectLivePreviewStyles() {
     if (document.getElementById("tee-live-preview-styles")) return;
@@ -143,8 +145,47 @@ document.addEventListener("DOMContentLoaded", () => {
           top: auto !important;
         }
       }
+      .tee-customize-main-form.${emptyCustomizeFormClass} {
+        border: 0 !important;
+        display: none !important;
+        margin: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+      }
     `;
     document.head.appendChild(style);
+  }
+
+  function isVisibleTeeField(field) {
+    if (!field || field.closest(".sr-only")) return false;
+    if (field.hidden || field.getAttribute("aria-hidden") === "true") return false;
+
+    const style = window.getComputedStyle(field);
+    if (style.display === "none" || style.visibility === "hidden") return false;
+
+    const rect = field.getBoundingClientRect();
+    return rect.width > 1 && rect.height > 1;
+  }
+
+  function hasVisibleCustomizationFields(form) {
+    return Array.from(form.querySelectorAll(".tee-field")).some(isVisibleTeeField);
+  }
+
+  function syncEmptyCustomizeForms() {
+    document.querySelectorAll(".tee-customize-main-form").forEach((form) => {
+      form.classList.remove(emptyCustomizeFormClass);
+      form.classList.toggle(
+        emptyCustomizeFormClass,
+        !hasVisibleCustomizationFields(form),
+      );
+    });
+  }
+
+  let emptyCustomizeFormTimer = null;
+
+  function scheduleEmptyCustomizeFormSync(delay = 0) {
+    clearTimeout(emptyCustomizeFormTimer);
+    emptyCustomizeFormTimer = window.setTimeout(syncEmptyCustomizeForms, delay);
   }
 
   function isDialogPreview(element) {
@@ -206,13 +247,59 @@ document.addEventListener("DOMContentLoaded", () => {
   let previewResizeNotified = false;
   let _rt;
 
+  function isTeeTextInput(element) {
+    if (!element || !element.matches) return false;
+    if (
+      !element.closest(
+        "#tee-artwork-form, .tee-customization-wrapper, .tee-campaign-container",
+      )
+    ) {
+      return false;
+    }
+
+    const tagName = element.tagName.toLowerCase();
+    const inputType = (element.getAttribute("type") || "text").toLowerCase();
+
+    return (
+      tagName === "textarea" ||
+      (tagName === "input" &&
+        ["text", "search", "email", "tel", "url"].includes(inputType)) ||
+      element.matches("input.tee-input-text, textarea.tee-input-text")
+    );
+  }
+
+  function getActiveTeeTextInput() {
+    return isTeeTextInput(document.activeElement)
+      ? document.activeElement
+      : null;
+  }
+
+  function clearCustomMockupScaling() {
+    document
+      .querySelectorAll(".tee-gallery:not(.tee-dialog-gallery) .tee-mockup")
+      .forEach((mockup) => {
+        if (mockup.dataset[customFitZoomAttr] !== "true") return;
+
+        mockup.style.removeProperty("zoom");
+        delete mockup.dataset[customFitZoomAttr];
+      });
+  }
+
+  function notifyTeeinblueGeometryChanged() {
+    [0, 80].forEach((delay) => {
+      window.setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, delay);
+    });
+  }
+
   function refreshLivePreview(delay = 200) {
     if (!livePreviewRequested) return;
 
     clearTimeout(_rt);
     _rt = setTimeout(() => {
       mountTeeLivePreview();
-      scaleMockups();
+      if (!getActiveTeeTextInput()) scaleMockups();
     }, delay);
   }
 
@@ -318,6 +405,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Only targets .tee-gallery (main gallery), NOT mobile configurator or dialog
   function scaleMockups() {
     if (window.innerWidth < 750) return; // skip on mobile
+    if (getActiveTeeTextInput()) return;
+
     const gallery = document.querySelector(".tee-gallery:not(.tee-dialog-gallery)");
     if (!gallery) return;
     const slider = gallery.querySelector(".tee-slider");
@@ -326,13 +415,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (w <= 0) return;
     slider.querySelectorAll(".tee-mockup").forEach((m) => {
       const mw = parseFloat(m.style.width) || 648;
-      if (mw > 0) m.style.zoom = w / mw;
+      if (mw > 0) {
+        m.style.zoom = w / mw;
+        m.dataset[customFitZoomAttr] = "true";
+      }
     });
   }
 
   setTimeout(scaleMockups, 500);
   setTimeout(scaleMockups, 2000);
   injectLivePreviewStyles();
+  syncEmptyCustomizeForms();
+  [200, 800, 1800, 3500].forEach((delay) => {
+    window.setTimeout(syncEmptyCustomizeForms, delay);
+  });
 
   document.addEventListener(
     "click",
@@ -344,13 +440,39 @@ document.addEventListener("DOMContentLoaded", () => {
     true,
   );
 
+  document.addEventListener(
+    "focusin",
+    (e) => {
+      if (!isTeeTextInput(e.target)) return;
+
+      clearCustomMockupScaling();
+      notifyTeeinblueGeometryChanged();
+    },
+    true,
+  );
+
+  document.addEventListener(
+    "focusout",
+    (e) => {
+      if (!isTeeTextInput(e.target)) return;
+
+      window.setTimeout(() => {
+        if (!getActiveTeeTextInput()) scaleMockups();
+      }, 450);
+    },
+    true,
+  );
+
   window.addEventListener("resize", () => {
     refreshLivePreview(150);
   });
 
   // Watch Teeinblue's async app render without observing every style/class change on the whole page.
   if (document.body) {
-    new MutationObserver(() => refreshLivePreview(200)).observe(document.body, {
+    new MutationObserver(() => {
+      refreshLivePreview(200);
+      scheduleEmptyCustomizeFormSync(100);
+    }).observe(document.body, {
       childList: true,
       subtree: true,
     });
